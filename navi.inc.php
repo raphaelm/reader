@@ -90,7 +90,7 @@ if (isset($_SESSION['loggedin_as'])) {
 		}
 	}
 	echo '<li class="feednavi_hr"></li>
-		  <li id="infoline">Entwickler und Betreiber: <a href="http://geeksfactory.de" target="_blank">geek\'s factory</a><br />Icons von <a href="http://famfamfam.com" target="_blank">famfamfam.com</a></li></ul>
+		  <li id="infoline">Entwickler und Betreiber: <a href="http://geeksfactory.de" target="_blank">geek\'s factory</a><br /><a href="http://git.geeksfactory.de/reader.git" target="_blank">get the source!</a><br />Icons von <a href="http://famfamfam.com" target="_blank">famfamfam.com</a></li></ul>
 		  </div>
 		  </div>';
 }
