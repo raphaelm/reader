@@ -1,0 +1,147 @@
+<?php
+session_start();
+if (isset($_SESSION['loggedin_as'])) {
+	require_once("dbconnect.php");
+	include('headeri.php');
+	include('navi.inc.php');
+	echo '<div id="right-col">';
+	echo '<div id="wrap" class="reader-field"><h2>Alle Feeds</h2><p>';
+	if(!isset($_GET['show']) || $_GET['show'] == 'unread') echo '<strong>Ungelesene Einträge</strong> &middot; '; else echo '<a href="?show=unread">Ungelesene Einträge</a> &middot; ';
+	if(isset($_GET['show']) && $_GET['show'] == 'all') echo '<strong>Alle Einträge</strong> &middot; '; else echo '<a href="?show=all">Alle Einträge</a> &middot; ';
+	echo '<a href="markasread.php?feedid=all">Alles als gelesen markieren</a>';
+	echo '</p>';
+
+	$dq = mysql_query("SELECT COUNT(`feedid`) as c, (SELECT COUNT(id) FROM feeds WHERE lastupdate < ".(time()-1000).") as c2 FROM `view_feed_subscriptions` WHERE `userid` =". $_SESSION['loggedin_as']. " AND lastupdate < ".(time()-1000));
+	$d = mysql_fetch_object($dq);
+	if($d->c > 7 or $d->c2 > 13){
+		echo '<p class="error">
+					Wir leiden derzeit leider unter einem technischen Problem und hoffen, dass dieses bald behoben werden kann.
+				</p>';
+	}
+
+	$lasttimestamp = mysql_query("SELECT 
+				`timestamp`
+			FROM
+				`feeds_entries`
+			WHERE
+				".(
+				(!isset($_GET['show']) || $_GET['show'] == 'unread') ?
+					"0 = (SELECT
+							COUNT(`article_id`)
+						FROM
+							`feeds_read`
+						WHERE
+							`user_id` = ". $_SESSION['loggedin_as']. "
+						AND
+							`feeds_read`.`article_id` = `feeds_entries`.`article_id`
+					)
+					AND"
+				: '')."
+				1 = (SELECT
+						COUNT(`feedid`)
+					FROM
+						`feeds_subscription`
+					WHERE
+						`userid` =". $_SESSION['loggedin_as']. "
+					AND
+						`feeds_subscription`.`feedid` = `feeds_entries`.`feed_id`
+				)
+			ORDER by 
+				timestamp DESC	
+			LIMIT 30");
+
+	while($r = mysql_fetch_object($lasttimestamp)) {$last = $r;}
+	$lasttimestamp = $last->timestamp;
+
+	$all_qry = mysql_query("SELECT
+				`feed_id`,
+				IF(
+					((SELECT alias FROM feeds_subscription WHERE `userid` = ".$_SESSION['loggedin_as']." AND `feeds_subscription`.`feedid` = `feeds_entries`.`feed_id`) != ''),
+					(SELECT alias FROM feeds_subscription WHERE `userid` = ".$_SESSION['loggedin_as']." AND `feeds_subscription`.`feedid` = `feeds_entries`.`feed_id`),
+					`name`
+				) as `feedtitle`,
+				`feeds`.`url` as `feedurl`,
+				`article_id`,
+				`title`,
+				`guid`,
+				`timestamp`,
+				(SELECT COUNT(*) FROM sticky s WHERE user_id = ".$_SESSION['loggedin_as']." AND s.article_id = `feeds_entries`.article_id) as `sticky`,
+				`article_id`,
+				`summary`,
+				`feeds_entries`.`url` as `articleurl`,
+				(
+					SELECT
+						COUNT(`article_id`)
+					FROM
+						`feeds_read`
+					WHERE
+						`user_id` = ". $_SESSION['loggedin_as']. "
+					AND
+						`feeds_read`.`article_id` = `feeds_entries`.`article_id`
+				) as `read_status`
+				FROM
+					`feeds_entries`
+				INNER JOIN
+					`feeds`
+					ON
+						`feeds`.`id` = `feeds_entries`.`feed_id`
+				WHERE
+					".(
+					(!isset($_GET['show']) || $_GET['show'] == 'unread') ?
+						"0 = (SELECT
+								COUNT(`article_id`)
+							FROM
+								`feeds_read`
+							WHERE
+								`user_id` = ". $_SESSION['loggedin_as']. "
+							AND
+								`feeds_read`.`article_id` = `feeds_entries`.`article_id`
+						)
+						AND"
+					: '')."
+					1 = (SELECT
+							COUNT(`feedid`)
+						FROM
+							`feeds_subscription`
+						WHERE
+							`userid` =". $_SESSION['loggedin_as']. "
+						AND
+							`feeds_subscription`.`feedid` = `feeds_entries`.`feed_id`
+					)
+					AND timestamp >= ".intval($lasttimestamp)."
+				ORDER by 
+					`timestamp` desc");
+					
+	echo '<script type="text/javascript">
+		var lasttimestamp = '.$lasttimestamp.';
+	</script>';
+	
+	if(mysql_num_rows($all_qry) == 0){
+		echo '<p class="info">
+				Deine Feeds besitzen keine '.((!isset($_GET['show']) || $_GET['show'] == 'unread') ? 'ungelesenen ' : '').'Einträge. Wenn du einen gerade erst aboniert hast, kann es bis zu fünf Minuten dauern, bis hier Einträge erscheinen. Außerdem werden keine Einträge angezeigt, die älter als 30 Tage sind.
+			</p>
+			<script type="text/javascript">
+				window.setTimeout(function(){
+						$("#wrap").append("<p class=\"reload\"><a href=\'javascript:location.reload();\'>Neu laden</a></p>");
+					}, 120000);
+			</script>';
+	}
+	while ($row = mysql_fetch_assoc($all_qry)) {
+		echo '<div id="article_'.$row["article_id"].'"'.($row["read_status"] == 0 ? ' class="unreadarticle"' : ' class="readarticle'.(($row["sticky"] == 1) ? ' sticky' : '').'"').'>';
+		echo '<a href="'. $row["articleurl"]. '" class="titlelink" target="_blank">'. utf_correct($row["title"]). '</a><br />';
+		echo '<em>'. date("d.m.Y". " - ". "H:i", $row["timestamp"]). ': '. $row["feedtitle"]. '</em>';
+		if($row["sticky"] == 1) echo ' &middot; <a href="javascript:unsticky('.$row["article_id"].');" class="stickylink">nicht merken</a>';
+		else echo ' &middot; <a href="javascript:sticky('.$row["article_id"].');" class="stickylink">merken</a>';
+		echo '<br /><div class="sum">'. utf_correct(gzuncompress($row["summary"])). '</div><div class="clear"></div></div>';
+	}      
+	
+	echo '</div></div>
+		<div id="right-gap"></div>
+		<div class="clear"></div>'; 
+		
+	include('footl.php');
+	
+} else {
+	header('Location: index.php');
+	exit;       
+}

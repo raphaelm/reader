@@ -1,0 +1,11 @@
+<?php
+$dbhostname = "localhost"; // Hostname, meist localhost
+$dbusername = "reader"; // MySQL-Username
+$dbpassword = "testfoobar"; // MySQL-Passwort
+$database = "gf_reader"; // Name der Datenbank
+$salt = "asdklu c430985zfvydlskghldfg" // Salz für Passwortsicherheit
+$secret = "ds#äpirauzfclödizgvuzdskfjggfdsfgdfgjfgzh"; // Salz für Hashsicherheit
+$title = "geek's factory reader"; // Name des Readers
+$mailsender = '"geek\'s factory reader" <reader@geeksfactory.de>';
+$mainurl = "http://reader.geeksfactory.de/";
+date_default_timezone_set('Europe/Berlin');

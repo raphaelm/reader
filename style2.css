@@ -1,0 +1,183 @@
+/* geek's factory reader */
+
+html
+{
+	height: 100%;
+	width: 100%;
+}
+body
+{
+	background: #ffffff;
+	color: #000000;
+	font-size: 12px;
+	font-family: Arial, sans-serif;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+.clear
+{
+	clear: both;	
+}
+#left-col
+{
+	background: #fff;
+	height: 100%;
+	border-color:#DFDFDF;
+	border-width:0px 20px 0px 20px;
+	border-style:solid;
+	position:absolute;
+	left:0px;
+	width:240px;
+	top:0;
+	overflow-y: auto;
+}
+#right-col
+{
+	margin-right: 20px;
+	background: #fff;
+	height: 100%;
+	overflow: auto;
+}
+#right-gap
+{
+	margin:0px;
+	background: #DFDFDF;
+	height: 100%;
+	position: absolute;
+	right:0px;
+	overflow:auto;
+	top:0;
+	width:20px;
+}
+a img, a:hover img, a:visited img
+{
+	text-decoration: none;
+	border: none;
+}
+#logo
+{
+	margin: 10px auto 10px 20px;
+	width: 200px;
+	height: 50px;
+}
+
+#navi ul
+{
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+		font-size: 13px;
+		margin: 0 0px 10px 0px;
+}
+#navi ul li a {
+		display: block;
+		padding: 2px 20px 2px 20px;
+		margin: 2px 0 2px 0;
+}
+#navi ul li a span.unread {
+		color: #000000;
+		font-weight: bold;
+}
+#navi ul li a:hover {
+		background: #eee;
+		color: #0066FF;
+}
+#navi .text {
+		display: block;
+		padding-left: 20px;
+}
+#navi ul li img.favicon {
+		float: left;
+		margin-top: 0px;
+		margin-right: 5px;
+		width: 16px;
+	height: 16px;
+}
+.feednavi_hr {
+		border-bottom: 1px solid #0066FF;
+		margin-top: 4px;
+		margin-bottom: 4px;
+}
+a, 
+a:link, 
+a:active, 
+a:visited
+{
+	text-decoration: none;
+	color: #0066FF;
+}
+a:hover
+{
+	color: #40B3FF;
+}
+#wrap
+{
+	margin: 10px 10px 10px 300px;
+}
+.titlelink
+{
+	font-size: 16px;
+	font-weight: bold;
+}
+.sum
+{
+	padding: 0;
+	margin: 5px 0 10px 20px;
+}
+.sum p
+{
+	padding: 0;
+	margin: 0 0 10px 0;
+}
+.unreadarticle
+{
+	background: #E5E5FF;
+	padding: 5px;
+}
+.readarticle
+{
+	padding: 5px;
+}
+.sticky {
+	background: #E5FFE5;
+	padding: 5px;
+}
+.error {
+	padding: 10px;
+	background: #FFAEAE;
+	margin: 10px auto 10px auto;
+}
+.okay {
+	padding: 10px;
+	background: #B3FFAE;
+	margin: 10px auto 10px auto;
+}
+.info {
+	padding: 10px;
+	background: #FFFFCA;
+	margin: 10px auto 10px auto;
+}
+.erroricon {
+	opacity: 0.5;
+}
+.erroricon:hover {
+	opacity: 1;
+}
+a.feedlink {
+	color: #000;
+}
+.reload {
+	text-align: center;
+	font-size: 16px;
+}
+#navi ul li#infoline {
+	text-align: center;
+	font-size: 10px;
+}
+#navi ul li#infoline a {
+	display: inline;
+	padding: 0;
+	margin: 0;
+}

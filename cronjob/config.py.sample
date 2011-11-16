@@ -1,0 +1,8 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+dbhostname = "localhost"
+dbusername = "reader"
+dbpassword = "testfoo";
+database = "gf_reader";
+icondir = "/var/www/reader.geeksfactory.de/html/favicons"
