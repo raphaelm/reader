@@ -12,9 +12,11 @@ import config
 import os, sys
 import urlparse 
 import urllib
+import socket
 
 class GFR:
 	def __init__(self):
+		socket.setdefaulttimeout(15)
 		try:
 			self.conn = MySQLdb.connect(host = config.dbhostname,
 							   user = config.dbusername,
@@ -48,9 +50,14 @@ class GFR:
 			except UnicodeError:
 				feed_title = feed[1]
 			feed_url = feed[2]
-			self.getFeed(feed_id, feed_title, feed_url)
+			try:
+				self.getFeed(feed_id, feed_title, feed_url)
+			except:
+				print "error on parsing feed %s" % feed_id
 			
 	def getFeed(self, feed_id, feed_title, feed_url, verbosity = False):
+		start = time.time()
+	
 		try:
 			iconname = config.icondir+'/'+str(feed_id)+'.png';
 			if not os.path.exists(iconname) or os.path.getmtime(iconname) < time.time()-(3600*24):
@@ -60,7 +67,8 @@ class GFR:
 				webFile.close()
 				localFile.close()
 		except:
-			print "Error fetching icon for feed %s" % feed_url
+			#print "Error fetching icon for feed %s" % feed_url
+			pass
 		
 		f = feedparser.parse(feed_url)
 		
@@ -70,15 +78,15 @@ class GFR:
 			self.cursor.execute("UPDATE `feeds` Set `lastupdate` = %s WHERE `id` = %s", (time.time(), feed_id))
 			
 		try:
-			if f.feed.title != feed_title and not f.feed.title.startswith("http://"): # feed_title ist anders als letztes Mal
+			if f.feed.title.encode("utf-8") != feed_title and not f.feed.title.startswith("http://"): # feed_title ist anders als letztes Mal
 				feed_title = f.feed.title
 				if feed_title.strip() == '':
 					feed_title = feed_url
 				self.cursor.execute("UPDATE `feeds` Set `name` = %s WHERE `id` = %s", (feed_title, feed_id))
 		except:
-			print "Error parsing title for feed %s" % feed_url
+			#print "Error parsing title for feed %s" % feed_url
+			pass
 			
-		self.cursor.execute("DELETE FROM `feeds_entries` WHERE `feed_id` = %s AND `guid` = %s", (feed_id, str(feed_id)+'invalid'))
 		if len(f.entries) > 0:
 			for entry in f.entries:
 				try:
@@ -127,3 +135,9 @@ class GFR:
 						self.cursor.execute("INSERT INTO `feeds_entries` (`feed_id`, `title`, `url`, `guid`, `timestamp`, `summary`) VALUES (%s, %s, %s, %s, %s, %s)", qp)
 					finally:
 						pass
+		end = time.time()
+		d = end-start
+		if d > 5:
+			self.cursor.execute("UPDATE `feeds` Set `slower` = 1 WHERE `id` = %s", (feed_id))
+		else:
+			self.cursor.execute("UPDATE `feeds` Set `slower` = 0 WHERE `id` = %s", (feed_id))
