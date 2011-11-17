@@ -55,7 +55,7 @@ class GFR:
 			except:
 				print "error on parsing feed %s" % feed_id
 			
-	def getFeed(self, feed_id, feed_title, feed_url, verbosity = False):
+	def getFeed(self, feed_id, feed_title, feed_url):
 		start = time.time()
 	
 		try:
@@ -127,8 +127,6 @@ class GFR:
 				
 				entry_summary = zlib.compress(entry_summary, 9)
 				
-				if verbosity:
-					print "Entry:", (feed_id, entry_title, entry_link, entry_guid, entry_timestamp)
 				qp = (feed_id, entry_title, entry_link, entry_guid, int(entry_timestamp), entry_summary)
 				if entry_guid not in self.guids:
 					try:
