@@ -13,8 +13,10 @@ if (isset($_SESSION['loggedin_as'])) {
 		$url = fetch_feedurl(trim($url));
 		$feedname = fetch_feedtitle($url);
 		if($feedname == '') $feedname = htmlspecialchars($url);
-		mysql_query("INSERT IGNORE INTO `feeds` (`name`, `url`) VALUES ('". mysql_real_escape_string($feedname). "', '". mysql_real_escape_string($url)."')");
-		mysql_query("INSERT IGNORE INTO `feeds_subscription` (`feedid`, `userid`, `lastupdate`) VALUES ((SELECT `id` FROM `feeds` WHERE `url` = '". mysql_real_escape_string($url)."', ".time.time()."), '". $_SESSION['loggedin_as']. "')");
+		mysql_query("INSERT IGNORE INTO `feeds` (`name`, `url`, `lastupdate`) VALUES ('". mysql_real_escape_string($feedname). "', '". mysql_real_escape_string($url)."', ".time().")");
+		echo mysql_error();
+		mysql_query("INSERT IGNORE INTO `feeds_subscription` (`feedid`, `userid`) VALUES ((SELECT `id` FROM `feeds` WHERE `url` = '". mysql_real_escape_string($url)."'), '". $_SESSION['loggedin_as']. "')");
+		echo mysql_error();
 	}
 	
 	if(isset($_GET['mailchange']) and $_GET['mailchange'] == 'success')
@@ -22,9 +24,12 @@ if (isset($_SESSION['loggedin_as'])) {
 	
 	if (isset($_POST['feedurl']) && !empty($_POST['feedurl'])) {
 		if(mysql_num_rows(mysql_query('SELECT * FROM feeds_subscription a WHERE a.userid = '.$_SESSION['loggedin_as'].' and 1 = (SELECT COUNT(*) FROM feeds f WHERE f.id = a.feedid AND f.url = "'.mysql_real_escape_string($_POST['feedurl']).'")')) == 0){
-			echo mysql_error();
-			$add = add_feed($_POST['feedurl']);
-			echo '<p class="okay">Dein Feed wurde erfolgreich hinzugefügt. Nach dem nächsten Feed-Update (in spätestens 5 Minuten) wird dann links in der Leiste auch sein korrekter Titel angezeigt.</p>';
+			if(strpos($_POST['feedurl'], 'http') !== 0){
+				echo '<p class="error">Es werden nur http:// und https://-URLs akzeptiert.</p>';
+			}else{
+				$add = add_feed($_POST['feedurl']);
+				echo '<p class="okay">Dein Feed wurde erfolgreich hinzugefügt. Nach dem nächsten Feed-Update (in spätestens 5 Minuten) wird dann links in der Leiste auch sein korrekter Titel angezeigt.</p>';
+			}
 		}else
 			echo '<p class="error">Du hast diesen Feed bereits abonniert.</p>';
 	}
