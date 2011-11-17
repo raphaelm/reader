@@ -57,7 +57,7 @@ function selarea($actual){
 	
 	echo "<li><a href=\"m_all.php\">Alle Feeds <span id='unreadcount_all'>".($unread["all"] > 0 ? '('.$unread["all"].')': '')."</span></a></li>";
 		  
-	$feeds_qry = mysql_query("SELECT `feedid`, `feedname` FROM `view_feed_subscriptions` WHERE `userid` =". $_SESSION['loggedin_as']. " ORDER by `feedname` asc");
+	$feeds_qry = mysql_query("SELECT `feedid`, `feedname` FROM `view_feed_subscriptions` WHERE `userid` =". $_SESSION['loggedin_as']. " AND feedid > 0 ORDER by `feedname` asc");
 	if(mysql_num_rows($feeds_qry) == 0){
 		echo "<p>Keine Feeds gefunden.</p>";
 	} else {
