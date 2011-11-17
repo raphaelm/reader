@@ -13,10 +13,13 @@ if (!empty($_POST['website'])) {
 	$password = sha1($_POST["regpassword"]. $salt);
 	$mail = mysql_real_escape_string($_POST['regmail']);
 	$reg_qry = mysql_query("INSERT INTO `user` (`name`, `password`, `mail`) VALUES ('". $username. "', '". $password."', '". $mail."')");
+	if(mysql_num_rows(mysql_query("SELECT * FROM feeds WHERE id = 0")) == 1){
+		mysql_query("INSERT INTO feeds_subscription (feedid, userid) VALUES (0, ".mysql_insert_id().")");
+	}
 	if ($reg_qry != false) {
-		echo "Registrierung erfolgreich! <a href='/'>Zur Hauptseite</a>";
+		echo "<p class='okay'>Registrierung erfolgreich! <a href='/'>Zur Hauptseite</a></p>";
 	} else {
-		echo "Registrierung fehlgeschlagen! Eventuell ist dieser Nutzername bereits vergeben! <a href='javascript:history.back()'>Zurück</a>";
+		echo "<p class='error'>Registrierung fehlgeschlagen! Eventuell ist dieser Nutzername bereits vergeben! <a href='javascript:history.back()'>Zurück</a></p>";
 	}
 } else {
 	echo '<div id="header"></div><div id="content2">
