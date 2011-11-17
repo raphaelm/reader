@@ -72,14 +72,13 @@ if (isset($_SESSION['loggedin_as'])) {
 		mysql_query("INSERT INTO `feeds_read` (`article_id`, `user_id`) VALUES (".intval($_GET['article']).", ".intval($_SESSION['loggedin_as']).")");
 		
 		$all_qry = mysql_query("SELECT
-					COUNT(`feed_id`) as c
+					COUNT(`feed_id`) as c,
 					`feed_id`
 				FROM
 					`feeds_entries`
 				INNER JOIN
 					`feeds`
-						ON
-							`feeds`.`id` = `feeds_entries`.`feed_id`
+					ON `feeds`.`id` = `feeds_entries`.`feed_id`
 				WHERE
 					0 = (SELECT
 							COUNT(`article_id`)
@@ -104,6 +103,7 @@ if (isset($_SESSION['loggedin_as'])) {
 					`feed_id`
 				ORDER by 
 					`timestamp` desc");
+	echo mysql_error();
 		$json = array();
 		$json['unread'] = array();
 		while ($row = mysql_fetch_assoc($all_qry)) {
