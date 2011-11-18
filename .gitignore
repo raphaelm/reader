@@ -1,0 +1,4 @@
+config.inc.php
+cronjob/config.py
+*.pyc
+
