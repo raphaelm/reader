@@ -99,6 +99,7 @@ if (isset($_SESSION['loggedin_as'])) {
 			ORDER by 
 				`timestamp` desc");
 			
+	if($lasttimestamp < 1) $lasttimestamp = 0;
 	echo '<script type="text/javascript">
 			lasttimestamp = '.$lasttimestamp.';
 		</script>';

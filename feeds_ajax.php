@@ -77,6 +77,7 @@ if (isset($_SESSION['loggedin_as'])) {
 			 echo '<script type="text/javascript">
 					lasttimestamp = '.$lasttimestamp.';
 				 </script>';
+			if($lasttimestamp < 1) $lasttimestamp = 0;
 			 
 			if(mysql_num_rows($entries_qry) == 0) die('<!-- NOTHING MORE -->');
 			

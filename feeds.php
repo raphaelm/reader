@@ -85,6 +85,7 @@ if (isset($_SESSION['loggedin_as'])) {
 						AND timestamp >= ".intval($lasttimestamp)."
 					ORDER by 
 						`timestamp` desc"); 
+			if($lasttimestamp < 1) $lasttimestamp = 0;
 			echo '<script type="text/javascript">
 					var lasttimestamp = '.$lasttimestamp.';
 				</script>';
