@@ -1,0 +1,16 @@
+SETUP
+-----
+* Rename config.inc.php.sample to config.inc.php and set the variables in the file
+* Rename cronjob/config.py.sample to cronjob/config.py and set the variables here as well
+* Execute database/gf_reader.sql on your databse server
+* Put the files (except database/) in a directory which can be accessed from the web
+* Set up a cronjob which executes cronjob/fetch_feeds.py on regular basis (we use every 3 mins)
+     make sure the user executing the cronjob has write access to favicons/
+* Have fun
+
+REQUIREMENTS
+------------
+* PHP 5.2
+* Python 2.x (at least 2.6)
+* Python feedparser 4.x (debian: python-feedparser, http://code.google.com/p/feedparser/ )
+* Python MySQL driver (debian: python-mysqldb, http://mysql-python.sourceforge.net/ )
