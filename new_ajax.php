@@ -4,7 +4,7 @@ if (isset($_SESSION['loggedin_as'])) {
 	require_once("dbconnect.php");
 
 	$all_qry = mysql_query("SELECT
-				COUNT(`feed_id`) as c
+				COUNT(`feed_id`) as c,
 				`feed_id`
 			FROM
 				`feeds_entries`
