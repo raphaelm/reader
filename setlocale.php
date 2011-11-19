@@ -8,6 +8,7 @@ if(isset($_GET['locale']) and in_array($_GET['locale'], $locales)){
 	$locale = $_COOKIE['locale'];
 }
 
+
 putenv('LC_ALL='.$locale);
 setlocale(LC_ALL, $locale);
 bindtextdomain('reader', './i18n');
