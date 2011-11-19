@@ -121,7 +121,7 @@ if (isset($_SESSION['loggedin_as'])) {
 	while ($row = mysql_fetch_assoc($all_qry)) {
 		echo '<div id="article_'.$row["article_id"].'"'.($row["read_status"] == 0 ? ' class="unreadarticle"' : ' class="readarticle'.(($row["sticky"] == 1) ? ' sticky' : '').'"').'>';
 		echo '<a href="javascript:void(0);" class="titlelink" onclick="togglearticle('.$row["article_id"].')">'. utf_correct($row["title"]). '</a>';
-		echo '<em>'. date(_("d.m.Y H:i"), $row["timestamp"]). ': '. utf_correct($row["feedtitle"]). '</em>';
+		echo '<em>'. date(_("d.m.Y - H:i"), $row["timestamp"]). ': '. utf_correct($row["feedtitle"]). '</em>';
 		if($row["sticky"] == 1) echo ' &middot; <a href="javascript:unsticky('.$row["article_id"].');" class="stickylink">'._('nicht merken').'</a>';
 		else echo ' &middot; <a href="javascript:sticky('.$row["article_id"].');" class="stickylink">'._('merken').'</a>';
 		echo '<br />';

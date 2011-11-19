@@ -5,7 +5,7 @@ if (!empty($_POST['website'])) {
 		<input class="inputl" type="password" name="regpassword" value="'._('Passwort').'" />
 		<input class="inputl" type="text" name="regmail" value="'._('name@domain.tld').'" />
 		<input class="inputl" type="text" name="website" value="" style="display:none;"/>
-		<input class="buttonl" type="submit" value="'._('Registrieren.')'" /> 
+		<input class="buttonl" type="submit" value="'._('Registrieren.').'" /> 
 	</form></div>';      
 } elseif (!empty($_POST['regusername']) && !empty($_POST['regpassword']) && !empty($_POST['regmail'])) {
 	require_once('dbconnect.php');

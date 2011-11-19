@@ -65,7 +65,7 @@ if (isset($_SESSION['loggedin_as'])) {
 			if($_POST['mail'] != $me->mail){
 				if(preg_match('/^[a-z0-9.\-+_]+@[a-z0-9.\-+_]+\.[a-z]+$/i', $_POST['mail']) == 0)
 					echo '<p class="error">
-						'._('„'.htmlspecialchars($_POST['mail']).'“ ist keine gültige E-Mail-Adresse. Wenn du das anders siehst, kontaktiere uns bitte.').'
+						'.sprintf(_('„%s“ ist keine gültige E-Mail-Adresse. Wenn du das anders siehst, kontaktiere uns bitte.'), htmlspecialchars($_POST['mail'])).'
 					</p>';
 				else{
 					mail($_POST['mail'], '['.$title.'] '._('Bestätigung der Änderung der E-Mail-Adresse'), sprintf(_('Hallo!
