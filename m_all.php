@@ -132,6 +132,6 @@ if (isset($_SESSION['loggedin_as'])) {
 	include('footm.php');
 }
 else {
-header('Location: index.php'); exit;       
+	header('Location: index.php'); exit;       
 }
 ?>

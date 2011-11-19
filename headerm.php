@@ -1,4 +1,5 @@
-<?php require_once("config.inc.php") ?>
+<?php require_once("config.inc.php");
+require_once('setlocale.php'); ?>
 <!DOCTYPE html>
 <html>
   <head>
