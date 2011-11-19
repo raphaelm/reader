@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: gfreader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-11-19 22:19+0100\n"
-"PO-Revision-Date: 2011-11-19 23:23+0100\n"
+"PO-Revision-Date: 2011-11-19 23:29+0100\n"
 "Last-Translator: Raphael <raphael@geeksfactory.de>\n"
 "Language-Team: Raphael Michel <raphael@geeksfactory.de>\n"
 "Language: \n"
@@ -86,7 +86,7 @@ msgstr "d-m-Y - H:i"
 #: m_all.php:125
 #: m_feeds.php:100
 msgid "nicht merken"
-msgstr "boomark"
+msgstr "remove bookmark"
 
 #: all.php:134
 #: all_ajax.php:115
@@ -95,7 +95,7 @@ msgstr "boomark"
 #: m_all.php:126
 #: m_feeds.php:101
 msgid "merken"
-msgstr "remove bookmark"
+msgstr "bookmark"
 
 #: all_ajax.php:117
 #: feeds_ajax.php:90
