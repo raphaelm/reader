@@ -110,14 +110,14 @@ if (isset($_SESSION['loggedin_as'])) {
 		echo '<div id="article_'.$row["article_id"].'"'.($row["read_status"] == 0 ? ' class="unreadarticle"' : ' class="readarticle'.(($row["sticky"] == 1) ? ' sticky' : '').'"').'>';
 		echo '<a '.   (isset($_GET['mobile']) ? 'onclick="togglearticle('.$row["article_id"].')" href="javascript:void(0);' : 'target="_blank" href="'. $row["articleurl"]). '" class="titlelink">';
 		echo utf_correct($row["title"]). '</a>';
-		echo (isset($_GET['mobile']) ? '' : '<br />').'<em>'. date("d.m.Y". " - ". "H:i", $row["timestamp"]). ': '. utf_correct($row["feedtitle"]). '</em>';
-		if($row["sticky"] == 1) echo ' &middot; <a href="javascript:unsticky('.$row["article_id"].');" class="stickylink">nicht merken</a>';
-		else echo ' &middot; <a href="javascript:sticky('.$row["article_id"].');" class="stickylink">merken</a>';
+		echo (isset($_GET['mobile']) ? '' : '<br />').'<em>'. date(_("d.m.Y - H:i"), $row["timestamp"]). ': '. utf_correct($row["feedtitle"]). '</em>';
+		if($row["sticky"] == 1) echo ' &middot; <a href="javascript:unsticky('.$row["article_id"].');" class="stickylink">'._('nicht merken').'</a>';
+		else echo ' &middot; <a href="javascript:sticky('.$row["article_id"].');" class="stickylink">'._('merken').'</a>';
 		echo '<br />';
-		echo '<div class="sum"'.(isset($_GET['mobile']) ? ' style="display:none"><a href="'.$row["articleurl"].'" target="_blank">zum Originalbeitrag</a><br />' : '>' ). utf_correct(gzuncompress($row["summary"])). '</div></div>';
+		echo '<div class="sum"'.(isset($_GET['mobile']) ? ' style="display:none"><a href="'.$row["articleurl"].'" target="_blank">'._('zum Originalbeitrag').'</a><br />' : '>' ). utf_correct(gzuncompress($row["summary"])). '</div></div>';
 	}        
 
 } else {
-	echo json_encode(array('error' => 'not logged in')); 
+	echo json_encode(array('error' => _('not logged in'))); 
 	exit;       
 }

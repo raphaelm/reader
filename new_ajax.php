@@ -72,7 +72,7 @@ if (isset($_SESSION['loggedin_as'])) {
 	echo json_encode($json); 
 	exit; 
 } else {
-	echo json_encode(array('error' => 'Nicht eingeloggt!')); 
+	echo json_encode(array('error' => _('Nicht eingeloggt!'))); 
 	exit;       
 }
 ?>

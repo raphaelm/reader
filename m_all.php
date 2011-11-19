@@ -8,13 +8,13 @@ if (isset($_SESSION['loggedin_as'])) {
 	?>
 	<div id="wrap">
 	<div id="topbar">
-		<a href="m_all.php"><img src="images/gfr.gif" alt="geek's factory reader" /></a> <?php selarea("Alle Feeds"); ?>
+		<a href="m_all.php"><img src="images/gfr.gif" alt="geek's factory reader" /></a> <?php selarea(_("Alle Feeds")); ?>
 	</div>
 	<p id="subnav">
-		<?php if(!isset($_GET['show']) || $_GET['show'] == 'unread') echo '<strong>Ungelesene Einträge</strong> &middot; '; else echo '<a href="?show=unread">Ungelesene Einträge</a> &middot; ';
-		if(isset($_GET['show']) && $_GET['show'] == 'all') echo '<strong>Alle Einträge</strong>'; else echo '<a href="?show=all">Alle Einträge</a>';
+		<?php if(!isset($_GET['show']) || $_GET['show'] == 'unread') echo '<strong>'.('Ungelesene Einträge').'</strong> &middot; '; else echo '<a href="?show=unread">'._('Ungelesene Einträge').'</a> &middot; ';
+		if(isset($_GET['show']) && $_GET['show'] == 'all') echo '<strong>'.('Alle Einträge').'</strong>'; else echo '<a href="?show=all">'._('Alle Einträge').'</a>';
 		?><br />
-		<a href="markasread.php?feedid=all&mobile=true">Alles als gelesen markieren</a>
+		<a href="markasread.php?feedid=all&mobile=true"><?php echo _("Alles als gelesen markieren"); ?></a>
 	</p>
 	<?php
 	
@@ -115,19 +115,19 @@ if (isset($_SESSION['loggedin_as'])) {
 			</script>';
 	if(mysql_num_rows($all_qry) == 0){
 		echo '<p class="info">
-				Deine Feeds besitzen keine '.((!isset($_GET['show']) || $_GET['show'] == 'unread') ? 'ungelesenen ' : '').'Einträge. Wenn du einen gerade erst aboniert hast, kann es bis zu fünf Minuten dauern, bis hier Einträge erscheinen. Außerdem werden keine Einträge angezeigt, die älter als 30 Tage sind.
+					'.sprintf(_('Dieser Feed besitzt keine%s Einträge. Wenn du ihn gerade erst aboniert hast, kann es bis zu fünf Minuten dauern, bis hier Einträge erscheinen. Außerdem werden keine Einträge angezeigt, die älter als 30 Tage sind.'), ((!isset($_GET['show']) || $_GET['show'] == 'unread') ? _(' ungelesenen') : '')).'
 				</p>';
 	}
 	while ($row = mysql_fetch_assoc($all_qry)) {
 		echo '<div id="article_'.$row["article_id"].'"'.($row["read_status"] == 0 ? ' class="unreadarticle"' : ' class="readarticle'.(($row["sticky"] == 1) ? ' sticky' : '').'"').'>';
 		echo '<a href="javascript:void(0);" class="titlelink" onclick="togglearticle('.$row["article_id"].')">'. utf_correct($row["title"]). '</a>';
-		echo '<em>'. date("d.m.Y". " - ". "H:i", $row["timestamp"]). ': '. utf_correct($row["feedtitle"]). '</em>';
-		if($row["sticky"] == 1) echo ' &middot; <a href="javascript:unsticky('.$row["article_id"].');" class="stickylink">nicht merken</a>';
-		else echo ' &middot; <a href="javascript:sticky('.$row["article_id"].');" class="stickylink">merken</a>';
+		echo '<em>'. date(_("d.m.Y H:i"), $row["timestamp"]). ': '. utf_correct($row["feedtitle"]). '</em>';
+		if($row["sticky"] == 1) echo ' &middot; <a href="javascript:unsticky('.$row["article_id"].');" class="stickylink">'._('nicht merken').'</a>';
+		else echo ' &middot; <a href="javascript:sticky('.$row["article_id"].');" class="stickylink">'._('merken').'</a>';
 		echo '<br />';
-		echo '<div class="sum"><a href="'.$row["articleurl"].'" target="_blank">zum Originalbeitrag</a><br />'. utf_correct(gzuncompress($row["summary"])). '</div></div>';
+		echo '<div class="sum"><a href="'.$row["articleurl"].'" target="_blank">'._('zum Originalbeitrag').'</a><br />'. utf_correct(gzuncompress($row["summary"])). '</div></div>';
 	}      
-	echo "<a href='javascript:loadmore();' class='loadmore'>Mehr laden</a>";
+	echo "<a href='javascript:loadmore();' class='loadmore'>"._('Mehr laden')."</a>";
 	echo '</div>';
 	include('footm.php');
 }

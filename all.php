@@ -5,17 +5,17 @@ if (isset($_SESSION['loggedin_as'])) {
 	include('headeri.php');
 	include('navi.inc.php');
 	echo '<div id="right-col">';
-	echo '<div id="wrap" class="reader-field"><h2>Alle Feeds</h2><p>';
-	if(!isset($_GET['show']) || $_GET['show'] == 'unread') echo '<strong>Ungelesene Einträge</strong> &middot; '; else echo '<a href="?show=unread">Ungelesene Einträge</a> &middot; ';
-	if(isset($_GET['show']) && $_GET['show'] == 'all') echo '<strong>Alle Einträge</strong> &middot; '; else echo '<a href="?show=all">Alle Einträge</a> &middot; ';
-	echo '<a href="markasread.php?feedid=all">Alles als gelesen markieren</a>';
+	echo '<div id="wrap" class="reader-field"><h2>'._('Alle Feeds').'</h2><p>';
+	if(!isset($_GET['show']) || $_GET['show'] == 'unread') echo '<strong>'._('Ungelesene Einträge').'</strong> &middot; '; else echo '<a href="?show=unread">'._('Ungelesene Einträge').'</a> &middot; ';
+	if(isset($_GET['show']) && $_GET['show'] == 'all') echo '<strong>'._('Alle Einträge').'</strong> &middot; '; else echo '<a href="?show=all">'._('Alle Einträge').'</a> &middot; ';
+	echo '<a href="markasread.php?feedid=all">'._('Alles als gelesen markieren').'</a>';
 	echo '</p>';
 
 	$dq = mysql_query("SELECT COUNT(`feedid`) as c, (SELECT COUNT(id) FROM feeds WHERE lastupdate < ".(time()-1000).") as c2 FROM `view_feed_subscriptions` WHERE `userid` =". $_SESSION['loggedin_as']. " AND lastupdate < ".(time()-1000));
 	$d = mysql_fetch_object($dq);
 	if($d->c > 7 or $d->c2 > 13){
 		echo '<p class="error">
-					Wir leiden derzeit leider unter einem technischen Problem und hoffen, dass dieses bald behoben werden kann.
+					'._('Wir leiden derzeit leider unter einem technischen Problem und hoffen, dass dieses bald behoben werden kann.').'
 				</p>';
 	}
 
@@ -118,20 +118,20 @@ if (isset($_SESSION['loggedin_as'])) {
 	
 	if(mysql_num_rows($all_qry) == 0){
 		echo '<p class="info">
-				Deine Feeds besitzen keine '.((!isset($_GET['show']) || $_GET['show'] == 'unread') ? 'ungelesenen ' : '').'Einträge. Wenn du einen gerade erst aboniert hast, kann es bis zu fünf Minuten dauern, bis hier Einträge erscheinen. Außerdem werden keine Einträge angezeigt, die älter als 30 Tage sind.
+					'.sprintf(_('Dieser Feed besitzt keine%s Einträge. Wenn du ihn gerade erst aboniert hast, kann es bis zu fünf Minuten dauern, bis hier Einträge erscheinen. Außerdem werden keine Einträge angezeigt, die älter als 30 Tage sind.'), ((!isset($_GET['show']) || $_GET['show'] == 'unread') ? _(' ungelesenen') : '')).'
 			</p>
 			<script type="text/javascript">
 				window.setTimeout(function(){
-						$("#wrap").append("<p class=\"reload\"><a href=\'javascript:location.reload();\'>Neu laden</a></p>");
+						$("#wrap").append("<p class=\"reload\"><a href=\'javascript:location.reload();\'>'._('Neu laden').'</a></p>");
 					}, 120000);
 			</script>';
 	}
 	while ($row = mysql_fetch_assoc($all_qry)) {
 		echo '<div id="article_'.$row["article_id"].'"'.($row["read_status"] == 0 ? ' class="unreadarticle"' : ' class="readarticle'.(($row["sticky"] == 1) ? ' sticky' : '').'"').'>';
 		echo '<a href="'. $row["articleurl"]. '" class="titlelink" target="_blank">'. utf_correct($row["title"]). '</a><br />';
-		echo '<em>'. date("d.m.Y". " - ". "H:i", $row["timestamp"]). ': '. $row["feedtitle"]. '</em>';
-		if($row["sticky"] == 1) echo ' &middot; <a href="javascript:unsticky('.$row["article_id"].');" class="stickylink">nicht merken</a>';
-		else echo ' &middot; <a href="javascript:sticky('.$row["article_id"].');" class="stickylink">merken</a>';
+		echo '<em>'. date(_("d.m.Y - H:i"), $row["timestamp"]). ': '. $row["feedtitle"]. '</em>';
+		if($row["sticky"] == 1) echo ' &middot; <a href="javascript:unsticky('.$row["article_id"].');" class="stickylink">'._('nicht merken').'</a>';
+		else echo ' &middot; <a href="javascript:sticky('.$row["article_id"].');" class="stickylink">'._('merken').'</a>';
 		echo '<br /><div class="sum">'. utf_correct(gzuncompress($row["summary"])). '</div><div class="clear"></div></div>';
 	}      
 	

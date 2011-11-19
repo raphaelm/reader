@@ -14,13 +14,13 @@ if (isset($_SESSION['loggedin_as'])) {
 		if (mysql_num_rows($is_sub) == 1) {
 			$feed = mysql_fetch_assoc($is_sub);
 			echo '<h2>'.utf_correct(($feed['alias']) ? $feed['alias'] : $feed['name']).'</h2><p>';
-			if(!isset($_GET['show']) || $_GET['show'] == 'unread') echo '<strong>Ungelesene Einträge</strong> &middot; '; else echo '<a href="?feedid='.intval($_GET['feedid']).'&amp;show=unread">Ungelesene Einträge</a> &middot; ';
-			if(isset($_GET['show']) && $_GET['show'] == 'all') echo '<strong>Alle Einträge</strong> &middot; '; else echo '<a href="?feedid='.intval($_GET['feedid']).'&amp;show=all">Alle Einträge</a> &middot; ';
-			echo '<a href="markasread.php?feedid='.intval($_GET['feedid']).'">Alles in diesem Feed als gelesen markieren</a>
+			if(!isset($_GET['show']) || $_GET['show'] == 'unread') echo '<strong>'._('Ungelesene Einträge').'</strong> &middot; '; else echo '<a href="?feedid='.intval($_GET['feedid']).'&amp;show=unread">'._('Ungelesene Einträge').'</a> &middot; ';
+			if(isset($_GET['show']) && $_GET['show'] == 'all') echo '<strong>'._('Alle Einträge').'</strong> &middot; '; else echo '<a href="?feedid='.intval($_GET['feedid']).'&amp;show=all">'._('Alle Einträge').'</a> &middot; ';
+			echo '<a href="markasread.php?feedid='.intval($_GET['feedid']).'">'._('Alles in diesem Feed als gelesen markieren').'</a>
 			</p>';
 			if($feed['lastupdate'] < time()-1000)
 				echo '<p class="error">
-				Das Abrufen dieses Feeds schlug leider kürzlich fehl. Stelle sicher, dass die Feed-Adresse noch aktuell ist. Wenn alles stimmt, sollte in wenigen Minuten auch alles wieder gehen.
+				'._('Das Abrufen dieses Feeds schlug leider kürzlich fehl. Stelle sicher, dass die Feed-Adresse noch aktuell ist. Wenn alles stimmt, sollte in wenigen Minuten auch alles wieder gehen.').'
 				</p>';
 
 			$lasttimestamp = mysql_query("SELECT 
@@ -91,24 +91,24 @@ if (isset($_SESSION['loggedin_as'])) {
 				</script>';
 			if(mysql_num_rows($entries_qry) == 0){
 				echo '<p class="info">
-					Dieser Feed besitzt keine '.((!isset($_GET['show']) || $_GET['show'] == 'unread') ? 'ungelesenen ' : '').'Einträge. Wenn du ihn gerade erst aboniert hast, kann es bis zu fünf Minuten dauern, bis hier Einträge erscheinen. Außerdem werden keine Einträge angezeigt, die älter als 30 Tage sind.
+					'.sprintf(_('Dieser Feed besitzt keine%s Einträge. Wenn du ihn gerade erst aboniert hast, kann es bis zu fünf Minuten dauern, bis hier Einträge erscheinen. Außerdem werden keine Einträge angezeigt, die älter als 30 Tage sind.'), ((!isset($_GET['show']) || $_GET['show'] == 'unread') ? _(' ungelesenen') : '')).'
 					</p>
 					<script type="text/javascript">
 						window.setTimeout(function(){
-								$("#wrap").append("<p class=\"reload\"><a href=\'javascript:location.reload();\'>Neu laden</a></p>");
+								$("#wrap").append("<p class=\"reload\"><a href=\'javascript:location.reload();\'>'._('Neu laden').'</a></p>");
 							}, 120000);
 					</script>';
 			}
 			while ($row = mysql_fetch_assoc($entries_qry)) {
 				echo '<div id="article_'.$row["article_id"].'"'.($row["read_status"] == 0 ? ' class="unreadarticle"' : ' class="readarticle'.(($row["sticky"] == 1) ? ' sticky' : '').'"').'>';
 				echo '<a href="'. $row["url"]. '" class="titlelink" target="_blank">'. utf_correct($row["title"]). '</a><br />';
-				echo '<em>'. date("d.m.Y". " - ". "H:i", $row["timestamp"]). '</em>';
-				if($row["sticky"] == 1) echo ' &middot; <a href="javascript:unsticky('.$row["article_id"].');" class="stickylink">nicht merken</a>';
-				else echo ' &middot; <a href="javascript:sticky('.$row["article_id"].');" class="stickylink">merken</a>';
+				echo '<em>'. date(_("d.m.Y - H:i"), $row["timestamp"]). '</em>';
+				if($row["sticky"] == 1) echo ' &middot; <a href="javascript:unsticky('.$row["article_id"].');" class="stickylink">'._('nicht merken').'</a>';
+				else echo ' &middot; <a href="javascript:sticky('.$row["article_id"].');" class="stickylink">'._('merken').'</a>';
 				echo '<br /><div class="sum">'. utf_correct(gzuncompress($row["summary"])). '</div><div class="clear"></div></div>';
 			} 
 		} else {
-			echo '<p class="error">Du abonnierst diesen Feed nicht.</p>';
+			echo '<p class="error">'._('Du abonnierst diesen Feed nicht.').'</p>';
 		}   
 	}
 	echo '</div></div>

@@ -55,7 +55,7 @@ function selarea($actual){
 	}        
 	$unread["all"] = array_sum($unread);
 	
-	echo "<li><a href=\"m_all.php\">Alle Feeds <span id='unreadcount_all'>".($unread["all"] > 0 ? '('.$unread["all"].')': '')."</span></a></li>";
+	echo "<li><a href=\"m_all.php\">"._("Alle Feeds")." <span id='unreadcount_all'>".($unread["all"] > 0 ? '('.$unread["all"].')': '')."</span></a></li>";
 		  
 	$feeds_qry = mysql_query("SELECT `feedid`, `feedname` FROM `view_feed_subscriptions` WHERE `userid` =". $_SESSION['loggedin_as']. " AND feedid > 0 ORDER by `feedname` asc");
 	if(mysql_num_rows($feeds_qry) == 0){
@@ -66,7 +66,7 @@ function selarea($actual){
 			echo ' <span id="unreadcount_'.$row["feedid"].'">'.($unread[$row["feedid"]] > 0 ? '('.$unread[$row["feedid"]].')': '').'</span></a></li>';
 		}
 	}
-	echo '</ul></div> <a href="logout.php?mobile=true" id="logout"><img src="images/logout.gif" alt="Ausloggen" /></a>';
+	echo '</ul></div> <a href="logout.php?mobile=true" id="logout"><img src="images/logout.gif" alt="'._('Ausloggen').'" /></a>';
 }
 
 ?>

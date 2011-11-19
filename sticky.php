@@ -5,8 +5,8 @@ if (isset($_SESSION['loggedin_as'])) {
 	include('headeri.php');
 	include('navi.inc.php');
 	echo '<div id="right-col">';
-	echo '<div id="wrap" class="reader-field"><h2>Gemerkte Artikel</h2><p>';
-	echo '<a href="sticky_ajax.php?unsticky=all">Alle entfernen</a>';
+	echo '<div id="wrap" class="reader-field"><h2>'._('Gemerkte Artikel').'</h2><p>';
+	echo '<a href="sticky_ajax.php?unsticky=all">'._('Alle entfernen').'</a>';
 	echo '</p>';
 	
 	$all_qry = mysql_query("SELECT
@@ -65,14 +65,14 @@ if (isset($_SESSION['loggedin_as'])) {
 					
 	if(mysql_num_rows($all_qry) == 0){
 		echo '<p class="info">
-				Du hast dir keine Einträge gemerkt!
+				'._('Du hast dir keine Einträge gemerkt!').'
 			</p>';
 	}
 	while ($row = mysql_fetch_assoc($all_qry)) {
 		echo '<div id="article_'.$row["article_id"].'" class="sticky">';
 		echo '<a href="'. $row["articleurl"]. '" class="titlelink" target="_blank">'. utf_correct($row["title"]). '</a><br />';
-		echo '<em>'. date("d.m.Y". " - ". "H:i", $row["timestamp"]). ': '. $row["feedtitle"]. '</em>';
-		echo ' &middot; <a href="javascript:unstickyremove('.$row["article_id"].');">aus Merkliste entfernen</a>';
+		echo '<em>'. date(_("d.m.Y - H:i"), $row["timestamp"]). ': '. $row["feedtitle"]. '</em>';
+		echo ' &middot; <a href="javascript:unstickyremove('.$row["article_id"].');">'._('aus Merkliste entfernen').'</a>';
 		echo '<br />';
 		echo '<div class="sum">'. utf_correct(gzuncompress($row["summary"])). '</div><div class="clear"></div></div>';
 	}      

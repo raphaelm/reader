@@ -14,7 +14,7 @@ if (isset($_POST['password'])) {
 		header('Location: '.(is_mobile() ? 'm_' : '').'all.php'); exit;            
 	} else {
 		require_once('headerl.php');
-		echo "<div style='text-align: center' class='wrongpw'>Nutzer nicht gefunden oder Passwort falsch.</div>";
+		echo "<div style='text-align: center' class='wrongpw'>"._("Nutzer nicht gefunden oder Passwort falsch.")."</div>";
 		require_once('login.php');
 		require_once('footl.php'); 
 	}
