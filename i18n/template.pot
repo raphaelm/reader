@@ -1,0 +1,411 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR raphael@geeksfactory.de
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: gfreader\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-11-19 22:19+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: all.php:8 headerm.php:58 m_all.php:11 navi.inc.php:72
+msgid "Alle Feeds"
+msgstr ""
+
+#: all.php:9 feeds.php:17 m_all.php:14 m_feeds.php:21
+msgid "Ungelesene Einträge"
+msgstr ""
+
+#: all.php:10 feeds.php:18 m_all.php:15 m_feeds.php:22
+msgid "Alle Einträge"
+msgstr ""
+
+#: all.php:11 m_all.php:17
+msgid "Alles als gelesen markieren"
+msgstr ""
+
+#: all.php:18
+msgid ""
+"Wir leiden derzeit leider unter einem technischen Problem und hoffen, dass "
+"dieses bald behoben werden kann."
+msgstr ""
+
+#: all.php:121 feeds.php:94 m_all.php:118 m_feeds.php:93
+#, php-format
+msgid ""
+"Dieser Feed besitzt keine%s Einträge. Wenn du ihn gerade erst aboniert hast, "
+"kann es bis zu fünf Minuten dauern, bis hier Einträge erscheinen. Außerdem "
+"werden keine Einträge angezeigt, die älter als 30 Tage sind."
+msgstr ""
+
+#: all.php:121 feeds.php:94 m_all.php:118 m_feeds.php:93
+msgid " ungelesenen"
+msgstr ""
+
+#: all.php:125 feeds.php:98
+msgid "Neu laden"
+msgstr ""
+
+#: all.php:132 all_ajax.php:113 feeds.php:105 feeds_ajax.php:87 m_all.php:124
+#: m_feeds.php:99 sticky.php:74
+msgid "d.m.Y - H:i"
+msgstr ""
+
+#: all.php:133 all_ajax.php:114 feeds.php:106 feeds_ajax.php:88 m_all.php:125
+#: m_feeds.php:100
+msgid "nicht merken"
+msgstr ""
+
+#: all.php:134 all_ajax.php:115 feeds.php:107 feeds_ajax.php:89 m_all.php:126
+#: m_feeds.php:101
+msgid "merken"
+msgstr ""
+
+#: all_ajax.php:117 feeds_ajax.php:90 m_all.php:128 m_feeds.php:102
+msgid "zum Originalbeitrag"
+msgstr ""
+
+#: all_ajax.php:121
+msgid "not logged in"
+msgstr ""
+
+#: feeds.php:19 m_feeds.php:24
+msgid "Alles in diesem Feed als gelesen markieren"
+msgstr ""
+
+#: feeds.php:23
+msgid ""
+"Das Abrufen dieses Feeds schlug leider kürzlich fehl. Stelle sicher, dass "
+"die Feed-Adresse noch aktuell ist. Wenn alles stimmt, sollte in wenigen "
+"Minuten auch alles wieder gehen."
+msgstr ""
+
+#: feeds.php:111 feeds_ajax.php:94 m_feeds.php:106
+msgid "Du abonnierst diesen Feed nicht."
+msgstr ""
+
+#: footl.php:4 footm.php:2
+msgid "Zur Desktop-Version"
+msgstr ""
+
+#: footl.php:9
+msgid "Zur mobilen Version"
+msgstr ""
+
+#: headerm.php:69 navi.inc.php:75
+msgid "Ausloggen"
+msgstr ""
+
+#: index.php:17
+msgid "Nutzer nicht gefunden oder Passwort falsch."
+msgstr ""
+
+#: login.php:6 login.php:20 login.php:31 reg.php:4 reg.php:27
+msgid "Nutzername"
+msgstr ""
+
+#: login.php:8 login.php:21 login.php:39 reg.php:5 reg.php:28
+msgid "Passwort"
+msgstr ""
+
+#: login.php:10 login.php:22
+msgid "Anmelden"
+msgstr ""
+
+#: login.php:12 login.php:24 reg.php:31
+msgid "Registrieren"
+msgstr ""
+
+#: login.php:44 lostpw.php:37
+msgid "Passwort vergessen?"
+msgstr ""
+
+#: lostpw.php:14
+msgid "Neues Passwort"
+msgstr ""
+
+#: lostpw.php:14
+#, php-format
+msgid ""
+"Hallo!\n"
+"Hier ist dein neues Passwort für den %s!\n"
+"\n"
+"%s\n"
+"\n"
+"%s"
+msgstr ""
+
+#: lostpw.php:20
+msgid "Du hast eine weitere E-Mail mit einem neuen Passwort!"
+msgstr ""
+
+#: lostpw.php:26
+msgid "Das ist leider schiefgegangen! War der Link schon abgelaufen?"
+msgstr ""
+
+#: lostpw.php:36
+msgid "Du hast per E-Mail weitere Anweisungen erhalten!"
+msgstr ""
+
+#: lostpw.php:37
+#, php-format
+msgid ""
+"Hallo!\n"
+"du hast im %s ein neues Passwort angefordert!\n"
+"Wenn du das wirklich selbst warst, klicke auf untenstehenden Link. Wenn das\n"
+"jemand anderes gewesen sein muss, brauchst du diese E-Mail nur zu "
+"ignorieren.\n"
+"Achtung! Der Link gilt nur bis heute abend, 23:59!\n"
+"\n"
+"%s"
+msgstr ""
+
+#: lostpw.php:46
+msgid "Es tut uns leid, aber diesen Nutzer haben wir leider nicht im System!"
+msgstr ""
+
+#: lostpw.php:54
+msgid "Nutzername oder E-Mail"
+msgstr ""
+
+#: lostpw.php:55
+msgid "Abschicken"
+msgstr ""
+
+#: lostpw.php:57 reg.php:22
+msgid "Zurück"
+msgstr ""
+
+#: m_all.php:130 m_feeds.php:109
+msgid "Mehr laden"
+msgstr ""
+
+#: navi.inc.php:73
+msgid "Merkliste"
+msgstr ""
+
+#: navi.inc.php:74 settings.php:10
+msgid "Einstellungen"
+msgstr ""
+
+#: navi.inc.php:87 settings.php:137
+msgid "Fehler"
+msgstr ""
+
+#: navi.inc.php:87 settings.php:137
+msgid "Dieser Feed konnte kürzlich nicht erfolgreich abgerufen werden."
+msgstr ""
+
+#: navi.inc.php:93
+msgid "Entwickler und Betreiber:"
+msgstr ""
+
+#: navi.inc.php:93
+msgid "Icons von"
+msgstr ""
+
+#: new_ajax.php:75
+msgid "Nicht eingeloggt!"
+msgstr ""
+
+#: reg.php:6 reg.php:29
+msgid "name@domain.tld"
+msgstr ""
+
+#: reg.php:8
+msgid "Registrieren."
+msgstr ""
+
+#: reg.php:20
+msgid "Registrierung erfolgreich!"
+msgstr ""
+
+#: reg.php:20
+msgid "Zur Hauptseite"
+msgstr ""
+
+#: reg.php:22
+msgid ""
+"Registrierung fehlgeschlagen! Eventuell ist dieser Nutzername bereits "
+"vergeben!"
+msgstr ""
+
+#: reg.php:33
+msgid "Abbrechen"
+msgstr ""
+
+#: settings.php:23
+msgid "Deine E-Mail-Adresse wurde erfolgreich geändert."
+msgstr ""
+
+#: settings.php:28
+msgid "Es werden nur http:// und https://-URLs akzeptiert."
+msgstr ""
+
+#: settings.php:31
+msgid ""
+"Dein Feed wurde erfolgreich hinzugefügt. Nach dem nächsten Feed-Update (in "
+"spätestens 5 Minuten) wird dann links in der Leiste auch sein korrekter "
+"Titel angezeigt."
+msgstr ""
+
+#: settings.php:34
+msgid "Du hast diesen Feed bereits abonniert."
+msgstr ""
+
+#: settings.php:43
+msgid "Dein Abonnement des Feeds wurde erfolgreich entfernt."
+msgstr ""
+
+#: settings.php:56
+msgid "Das neue Passwort muss zweimal gleich eingegeben werden."
+msgstr ""
+
+#: settings.php:61
+msgid "Das Passwort wurde geändert."
+msgstr ""
+
+#: settings.php:68
+#, php-format
+msgid ""
+"„%s“ ist keine gültige E-Mail-Adresse. Wenn du das anders siehst, "
+"kontaktiere uns bitte."
+msgstr ""
+
+#: settings.php:71
+msgid "Bestätigung der Änderung der E-Mail-Adresse"
+msgstr ""
+
+#: settings.php:71
+#, php-format
+msgid ""
+"Hallo!\n"
+"jemand möchte seine im %s angegebene E-Mailadresse zu dieser ändern.\n"
+"Wenn du das warst, klicke bitte untenstehenden Link an. Wenn nicht,\n"
+"ignoriere diese E-Mail einfach.\n"
+"\n"
+"%s"
+msgstr ""
+
+#: settings.php:78
+#, php-format
+msgid "Es wurde eine Bestätigung zur Änderung der Mailadresse an %s versandt."
+msgstr ""
+
+#: settings.php:84
+msgid "Das aktuelle Passwort wurde nicht korrekt eingegeben!"
+msgstr ""
+
+#: settings.php:89
+msgid "Persönliche Einstellungen"
+msgstr ""
+
+#: settings.php:94
+msgid "Aktuelles Passwort:"
+msgstr ""
+
+#: settings.php:98
+msgid "Neues Passwort:"
+msgstr ""
+
+#: settings.php:102
+msgid "Neues Passwort wiederholen:"
+msgstr ""
+
+#: settings.php:106
+msgid "E-Mail-Adresse:"
+msgstr ""
+
+#: settings.php:108
+msgid ""
+"Nicht wundern: Nachdem du deine E-Mail-Adresse geändert hast, wird hier "
+"weiterhin deine alte Adresse stehen, <br />bis du einen Link in einer E-"
+"Mail, die wir an deine neue Adresse senden, angeklickt hast!"
+msgstr ""
+
+#: settings.php:112 settings.php:183
+msgid "Speichern"
+msgstr ""
+
+#: settings.php:117
+msgid "Feed abonnieren"
+msgstr ""
+
+#: settings.php:120
+msgid "Abonnieren"
+msgstr ""
+
+#: settings.php:123
+msgid "Abos"
+msgstr ""
+
+#: settings.php:126
+msgid "Keine Feeds gefunden."
+msgstr ""
+
+#: settings.php:130
+msgid "Name"
+msgstr ""
+
+#: settings.php:131
+msgid "Alias"
+msgstr ""
+
+#: settings.php:132 settings.php:139
+msgid "Löschen"
+msgstr ""
+
+#: settings.php:139
+msgid "Alias setzen"
+msgstr ""
+
+#: settings.php:147
+msgid "Desktop Notifications"
+msgstr ""
+
+#: settings.php:149
+msgid ""
+"Nicht wundern: Einstellung wird nur für diesen Computer gespeichert (als "
+"Cookie)."
+msgstr ""
+
+#: settings.php:151
+msgid "Desktop Notifications aktivieren"
+msgstr ""
+
+#: settings.php:152
+msgid "Desktop Notifications deaktivieren"
+msgstr ""
+
+#: settings.php:165
+msgid "Test"
+msgstr ""
+
+#: settings.php:165
+msgid "erfolgreich"
+msgstr ""
+
+#: sticky.php:8
+msgid "Gemerkte Artikel"
+msgstr ""
+
+#: sticky.php:9
+msgid "Alle entfernen"
+msgstr ""
+
+#: sticky.php:68
+msgid "Du hast dir keine Einträge gemerkt!"
+msgstr ""
+
+#: sticky.php:75
+msgid "aus Merkliste entfernen"
+msgstr ""
