@@ -14,3 +14,14 @@ REQUIREMENTS
 * Python 2.x (at least 2.6)
 * Python feedparser 4.x (debian: python-feedparser, http://code.google.com/p/feedparser/ )
 * Python MySQL driver (debian: python-mysqldb, http://mysql-python.sourceforge.net/ )
+
+HELP TRANSLATING
+----------------
+If you want to translate geek's factory reader into your language, just create a *.po file
+from the following catalog template using your favourite gettext editor (we use poEdit which is
+available for nearly all systems):
+
+i18n/template.pot
+( http://git.geeksfactory.de/reader.git/blob_plain/HEAD:/i18n/template.pot )
+
+Please send your translation to raphael@geeksfactory.de so I can make it available to everyone.
