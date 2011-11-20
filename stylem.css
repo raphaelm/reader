@@ -129,6 +129,9 @@ a:hover
 	top: -10px;
 	left: 0;
 }
+#selarea span {
+	color: #000 !important;
+}
 #subnav {
 	margin: 0;
 	padding: 5px;
