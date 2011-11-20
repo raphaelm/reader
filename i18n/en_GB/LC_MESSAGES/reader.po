@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfreader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-19 22:19+0100\n"
-"PO-Revision-Date: 2011-11-19 23:29+0100\n"
+"POT-Creation-Date: 2011-11-20 12:13+0100\n"
+"PO-Revision-Date: 2011-11-20 12:13+0100\n"
 "Last-Translator: Raphael <raphael@geeksfactory.de>\n"
 "Language-Team: Raphael Michel <raphael@geeksfactory.de>\n"
 "Language: \n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Poedit-SourceCharset: iso-8859-1\n"
 
 #: all.php:8
-#: headerm.php:58
+#: headerm.php:61
 #: m_all.php:11
 #: navi.inc.php:72
 msgid "Alle Feeds"
@@ -83,6 +83,7 @@ msgstr "d-m-Y - H:i"
 #: all_ajax.php:114
 #: feeds.php:106
 #: feeds_ajax.php:88
+#: jslocale.php:6
 #: m_all.php:125
 #: m_feeds.php:100
 msgid "nicht merken"
@@ -92,6 +93,7 @@ msgstr "remove bookmark"
 #: all_ajax.php:115
 #: feeds.php:107
 #: feeds_ajax.php:89
+#: jslocale.php:7
 #: m_all.php:126
 #: m_feeds.php:101
 msgid "merken"
@@ -132,7 +134,7 @@ msgstr "Use desktop version"
 msgid "Zur mobilen Version"
 msgstr "Use mobile version"
 
-#: headerm.php:69
+#: headerm.php:72
 #: navi.inc.php:75
 msgid "Ausloggen"
 msgstr "Log Out"
@@ -141,6 +143,25 @@ msgstr "Log Out"
 #, fuzzy
 msgid "Nutzer nicht gefunden oder Passwort falsch."
 msgstr "User not found or password is wrong."
+
+#: jslocale.php:2
+msgid "Es ist ein Fehler aufgetreten! Bitte laden die Seite neu ;-)"
+msgstr "An error occurred. Please reload this page ;-)"
+
+#: jslocale.php:4
+#, php-format
+msgid "%d neue Nachrichten"
+msgstr "%d new posts"
+
+#: jslocale.php:5
+msgid "Fehler!"
+msgstr "Error!"
+
+#: jslocale.php:8
+#: m_all.php:130
+#: m_feeds.php:109
+msgid "Mehr laden"
+msgstr "Load more posts"
 
 #: login.php:6
 #: login.php:20
@@ -242,11 +263,6 @@ msgstr "Send"
 #: reg.php:22
 msgid "Zurück"
 msgstr "Back"
-
-#: m_all.php:130
-#: m_feeds.php:109
-msgid "Mehr laden"
-msgstr "Load more posts"
 
 #: navi.inc.php:73
 msgid "Merkliste"

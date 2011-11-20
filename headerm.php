@@ -7,6 +7,8 @@ require_once('setlocale.php'); ?>
       <meta http-equiv="content-type" content="text/html;charset=utf-8" />
       <link rel="stylesheet" type="text/css" href="stylem.css" />
       <meta http-equiv="Content-Style-Type" content="text/css" />
+      <?php require_once 'jslocale.php'; ?>
+	  <script type="text/javascript" src="phpjs.js"></script>
 	  <script type="text/javascript" src="jquery.js"></script>
 	  <script type="text/javascript" src="readerm.js"></script>
 	  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />

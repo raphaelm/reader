@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfreader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-19 22:19+0100\n"
+"POT-Creation-Date: 2011-11-20 12:13+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: all.php:8 headerm.php:58 m_all.php:11 navi.inc.php:72
+#: all.php:8 headerm.php:61 m_all.php:11 navi.inc.php:72
 msgid "Alle Feeds"
 msgstr ""
 
@@ -60,13 +60,13 @@ msgstr ""
 msgid "d.m.Y - H:i"
 msgstr ""
 
-#: all.php:133 all_ajax.php:114 feeds.php:106 feeds_ajax.php:88 m_all.php:125
-#: m_feeds.php:100
+#: all.php:133 all_ajax.php:114 feeds.php:106 feeds_ajax.php:88 jslocale.php:6
+#: m_all.php:125 m_feeds.php:100
 msgid "nicht merken"
 msgstr ""
 
-#: all.php:134 all_ajax.php:115 feeds.php:107 feeds_ajax.php:89 m_all.php:126
-#: m_feeds.php:101
+#: all.php:134 all_ajax.php:115 feeds.php:107 feeds_ajax.php:89 jslocale.php:7
+#: m_all.php:126 m_feeds.php:101
 msgid "merken"
 msgstr ""
 
@@ -101,12 +101,29 @@ msgstr ""
 msgid "Zur mobilen Version"
 msgstr ""
 
-#: headerm.php:69 navi.inc.php:75
+#: headerm.php:72 navi.inc.php:75
 msgid "Ausloggen"
 msgstr ""
 
 #: index.php:17
 msgid "Nutzer nicht gefunden oder Passwort falsch."
+msgstr ""
+
+#: jslocale.php:2
+msgid "Es ist ein Fehler aufgetreten! Bitte laden die Seite neu ;-)"
+msgstr ""
+
+#: jslocale.php:4
+#, php-format
+msgid "%d neue Nachrichten"
+msgstr ""
+
+#: jslocale.php:5
+msgid "Fehler!"
+msgstr ""
+
+#: jslocale.php:8 m_all.php:130 m_feeds.php:109
+msgid "Mehr laden"
 msgstr ""
 
 #: login.php:6 login.php:20 login.php:31 reg.php:4 reg.php:27
@@ -183,10 +200,6 @@ msgstr ""
 
 #: lostpw.php:57 reg.php:22
 msgid "Zurück"
-msgstr ""
-
-#: m_all.php:130 m_feeds.php:109
-msgid "Mehr laden"
 msgstr ""
 
 #: navi.inc.php:73
