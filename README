@@ -11,6 +11,7 @@ SETUP
 REQUIREMENTS
 ------------
 * PHP 5.2
+* PHP with gettext enabled (debian: php-gettext)
 * Python 2.x (at least 2.6)
 * Python feedparser 4.x (debian: python-feedparser, http://code.google.com/p/feedparser/ )
 * Python MySQL driver (debian: python-mysqldb, http://mysql-python.sourceforge.net/ )
