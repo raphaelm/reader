@@ -14,6 +14,15 @@ if(isset($l) and in_array($l, $locales)){
 	setcookie('locale', $locale, time()+3600*24*365);
 }elseif(isset($_COOKIE['locale']) and in_array($_COOKIE['locale'], $locales)){
 	$locale = $_COOKIE['locale'];
+}elseif(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])){
+	$firstfive = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 5);
+	$firsttwo = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+	if(in_array($firstfive, $locales))
+		$locale = $firstfive;
+	elseif(in_array($firsttwo, $locales))
+		$locale = $firsttwo;
+	elseif(isset($localemappings[$firsttwo]))
+		$locale = $localemappings[$firsttwo];
 }
 
 putenv('LC_ALL='.$locale);

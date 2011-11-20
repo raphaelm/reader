@@ -10,6 +10,7 @@ $mailsender = '"geek\'s factory reader" <reader@geeksfactory.de>';
 $mainurl = "http://reader.geeksfactory.de/";
 $locale = 'de_DE';
 $locales = array('de_DE', 'en_GB', 'eo');
+$localemappings = array('de' => 'de_DE', 'en' => 'en_GB');
 
 date_default_timezone_set('Europe/Berlin');
 
