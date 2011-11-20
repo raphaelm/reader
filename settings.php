@@ -85,6 +85,28 @@ ignoriere diese E-Mail einfach.
 			</p>';
 		}
 	}
+	if(isset($_POST['locale'])){
+		if(in_array($_POST['locale'], $locales)){
+			mysql_query("UPDATE user SET locale = '".mysql_real_escape_string($_POST['locale'])."' WHERE `id` = ". $_SESSION['loggedin_as']);
+			$locale = $_POST['locale'];
+			putenv('LC_ALL='.$locale);
+			setlocale(LC_ALL, $locale);
+			echo '<p class="okay">';
+			printf(_('Deine Sprache wurde auf %s umgestellt.'), $locale);
+			echo '</p>';
+			$me->locale = $locale;
+		}
+	}
+	
+	echo '<h3>'._('Lokalisierung').'</h3>';
+	echo '<form action="settings.php" method="post">
+			<select name="locale">';
+	foreach ($locales as $loc) {
+		echo '<option'.($loc == $me->locale ? ' selected="selected"' : '').'>'.$loc.'</option>';
+	}
+	echo '</select>
+			<input type="submit" value="'._('Speichern').'" />
+	</form>';
 	
 	echo '<h3>'._('Persönliche Einstellungen').'</h3>';
 	

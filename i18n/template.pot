@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfreader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-20 12:13+0100\n"
+"POT-Creation-Date: 2011-11-20 12:37+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -60,12 +60,12 @@ msgstr ""
 msgid "d.m.Y - H:i"
 msgstr ""
 
-#: all.php:133 all_ajax.php:114 feeds.php:106 feeds_ajax.php:88 jslocale.php:6
+#: all.php:133 all_ajax.php:114 feeds.php:106 feeds_ajax.php:88 jslocale.php:7
 #: m_all.php:125 m_feeds.php:100
 msgid "nicht merken"
 msgstr ""
 
-#: all.php:134 all_ajax.php:115 feeds.php:107 feeds_ajax.php:89 jslocale.php:7
+#: all.php:134 all_ajax.php:115 feeds.php:107 feeds_ajax.php:89 jslocale.php:8
 #: m_all.php:126 m_feeds.php:101
 msgid "merken"
 msgstr ""
@@ -109,20 +109,20 @@ msgstr ""
 msgid "Nutzer nicht gefunden oder Passwort falsch."
 msgstr ""
 
-#: jslocale.php:2
+#: jslocale.php:3
 msgid "Es ist ein Fehler aufgetreten! Bitte laden die Seite neu ;-)"
 msgstr ""
 
-#: jslocale.php:4
+#: jslocale.php:5
 #, php-format
 msgid "%d neue Nachrichten"
 msgstr ""
 
-#: jslocale.php:5
+#: jslocale.php:6
 msgid "Fehler!"
 msgstr ""
 
-#: jslocale.php:8 m_all.php:130 m_feeds.php:109
+#: jslocale.php:9 m_all.php:130 m_feeds.php:109
 msgid "Mehr laden"
 msgstr ""
 
@@ -210,11 +210,11 @@ msgstr ""
 msgid "Einstellungen"
 msgstr ""
 
-#: navi.inc.php:87 settings.php:137
+#: navi.inc.php:87 settings.php:159
 msgid "Fehler"
 msgstr ""
 
-#: navi.inc.php:87 settings.php:137
+#: navi.inc.php:87 settings.php:159
 msgid "Dieser Feed konnte kürzlich nicht erfolgreich abgerufen werden."
 msgstr ""
 
@@ -318,92 +318,101 @@ msgstr ""
 msgid "Das aktuelle Passwort wurde nicht korrekt eingegeben!"
 msgstr ""
 
-#: settings.php:89
+#: settings.php:95
+#, php-format
+msgid "Deine Sprache wurde auf %s umgestellt."
+msgstr ""
+
+#: settings.php:101
+msgid "Lokalisierung"
+msgstr ""
+
+#: settings.php:108 settings.php:134 settings.php:205
+msgid "Speichern"
+msgstr ""
+
+#: settings.php:111
 msgid "Persönliche Einstellungen"
 msgstr ""
 
-#: settings.php:94
+#: settings.php:116
 msgid "Aktuelles Passwort:"
 msgstr ""
 
-#: settings.php:98
+#: settings.php:120
 msgid "Neues Passwort:"
 msgstr ""
 
-#: settings.php:102
+#: settings.php:124
 msgid "Neues Passwort wiederholen:"
 msgstr ""
 
-#: settings.php:106
+#: settings.php:128
 msgid "E-Mail-Adresse:"
 msgstr ""
 
-#: settings.php:108
+#: settings.php:130
 msgid ""
 "Nicht wundern: Nachdem du deine E-Mail-Adresse geändert hast, wird hier "
 "weiterhin deine alte Adresse stehen, <br />bis du einen Link in einer E-"
 "Mail, die wir an deine neue Adresse senden, angeklickt hast!"
 msgstr ""
 
-#: settings.php:112 settings.php:183
-msgid "Speichern"
-msgstr ""
-
-#: settings.php:117
+#: settings.php:139
 msgid "Feed abonnieren"
 msgstr ""
 
-#: settings.php:120
+#: settings.php:142
 msgid "Abonnieren"
 msgstr ""
 
-#: settings.php:123
+#: settings.php:145
 msgid "Abos"
 msgstr ""
 
-#: settings.php:126
+#: settings.php:148
 msgid "Keine Feeds gefunden."
 msgstr ""
 
-#: settings.php:130
+#: settings.php:152
 msgid "Name"
 msgstr ""
 
-#: settings.php:131
+#: settings.php:153
 msgid "Alias"
 msgstr ""
 
-#: settings.php:132 settings.php:139
+#: settings.php:154 settings.php:161
 msgid "Löschen"
 msgstr ""
 
-#: settings.php:139
+#: settings.php:161
 msgid "Alias setzen"
 msgstr ""
 
-#: settings.php:147
+#: settings.php:169
 msgid "Desktop Notifications"
 msgstr ""
 
-#: settings.php:149
+#: settings.php:171
 msgid ""
 "Nicht wundern: Einstellung wird nur für diesen Computer gespeichert (als "
 "Cookie)."
 msgstr ""
 
-#: settings.php:151
+#: settings.php:173
 msgid "Desktop Notifications aktivieren"
 msgstr ""
 
-#: settings.php:152
+#: settings.php:174
 msgid "Desktop Notifications deaktivieren"
 msgstr ""
 
-#: settings.php:165
+#: settings.php:187
 msgid "Test"
 msgstr ""
 
-#: settings.php:165
+#: settings.php:187
 msgid "erfolgreich"
 msgstr ""
 

@@ -18,3 +18,16 @@ require_once('setlocale.php');
       <meta http-equiv="Content-Style-Type" content="text/css" />
   </head>
   <body>
+	<div class="langselect">
+		<?php
+		if(is_mobile()){
+			foreach ($locales as $loc) {
+				echo '<a href="?locale='.$loc.'"><img src="i18n/flags/'.$loc.'.gif" alt="'.$loc.'" /></a> ';
+			}
+		}else{
+			foreach ($locales as $loc) {
+				echo '<a href="?locale='.$loc.'"><img src="i18n/flags/'.$loc.'.gif" alt="'.$loc.'" /></a> ';
+			}
+		}
+		?>
+	</div>
