@@ -8,4 +8,10 @@ $secret = "ds#äpirauzfclödizgvuzdskfjggfdsfgdfgjfgzh"; // Salz für Hashsicher
 $title = "geek's factory reader"; // Name des Readers
 $mailsender = '"geek\'s factory reader" <reader@geeksfactory.de>';
 $mainurl = "http://reader.geeksfactory.de/";
+$locale = 'de_DE';
+$locales = array('de_DE', 'en_GB', 'eo');
+
 date_default_timezone_set('Europe/Berlin');
+
+require_once('setlocale.php');
+

@@ -1,0 +1,493 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR raphael@geeksfactory.de
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gfreader\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-11-20 12:37+0100\n"
+"PO-Revision-Date: 2011-11-20 14:23+0100\n"
+"Last-Translator: Nils Martin Klünder <Webmaster@nomoketo.de>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: all.php:8
+#: headerm.php:61
+#: m_all.php:11
+#: navi.inc.php:72
+msgid "Alle Feeds"
+msgstr "Ĉiuj fluoj"
+
+#: all.php:9
+#: feeds.php:17
+#: m_all.php:14
+#: m_feeds.php:21
+msgid "Ungelesene Einträge"
+msgstr "Nelegitaj artikoloj"
+
+#: all.php:10
+#: feeds.php:18
+#: m_all.php:15
+#: m_feeds.php:22
+msgid "Alle Einträge"
+msgstr "Ĉiuj artikoloj"
+
+#: all.php:11
+#: m_all.php:17
+msgid "Alles als gelesen markieren"
+msgstr "Marki ĉion kiel legita"
+
+#: all.php:18
+msgid "Wir leiden derzeit leider unter einem technischen Problem und hoffen, dass dieses bald behoben werden kann."
+msgstr "Ni momente suferas pro teknika problemo kaj esperas, ke ni baldaŭ povas solvi ĝin."
+
+#: all.php:121
+#: feeds.php:94
+#: m_all.php:118
+#: m_feeds.php:93
+#, php-format
+msgid "Dieser Feed besitzt keine%s Einträge. Wenn du ihn gerade erst aboniert hast, kann es bis zu fünf Minuten dauern, bis hier Einträge erscheinen. Außerdem werden keine Einträge angezeigt, die älter als 30 Tage sind."
+msgstr "Tiu-ĉi fluo ne havas%s artikolojn. Se vi ĵus abonis ĝin, povas daŭri ĝis kvin minutoj, ĝis artikoloj aperas ĉi-tie. Krome nur videblas artikoloj kiuj aĝas malpli ol 30 tagoj."
+
+#: all.php:121
+#: feeds.php:94
+#: m_all.php:118
+#: m_feeds.php:93
+msgid " ungelesenen"
+msgstr " nelegitajn"
+
+#: all.php:125
+#: feeds.php:98
+msgid "Neu laden"
+msgstr "Reŝarĝi"
+
+#: all.php:132
+#: all_ajax.php:113
+#: feeds.php:105
+#: feeds_ajax.php:87
+#: m_all.php:124
+#: m_feeds.php:99
+#: sticky.php:74
+msgid "d.m.Y - H:i"
+msgstr "d.m.Y - H:i"
+
+#: all.php:133
+#: all_ajax.php:114
+#: feeds.php:106
+#: feeds_ajax.php:88
+#: jslocale.php:7
+#: m_all.php:125
+#: m_feeds.php:100
+msgid "nicht merken"
+msgstr "malmemorigi"
+
+#: all.php:134
+#: all_ajax.php:115
+#: feeds.php:107
+#: feeds_ajax.php:89
+#: jslocale.php:8
+#: m_all.php:126
+#: m_feeds.php:101
+msgid "merken"
+msgstr "memorigi"
+
+#: all_ajax.php:117
+#: feeds_ajax.php:90
+#: m_all.php:128
+#: m_feeds.php:102
+msgid "zum Originalbeitrag"
+msgstr "al la origina artikolo"
+
+#: all_ajax.php:121
+msgid "not logged in"
+msgstr "ne ansalutita"
+
+#: feeds.php:19
+#: m_feeds.php:24
+msgid "Alles in diesem Feed als gelesen markieren"
+msgstr "Marki ĉion en tiu-ĉi fluo kiel legita"
+
+#: feeds.php:23
+msgid "Das Abrufen dieses Feeds schlug leider kürzlich fehl. Stelle sicher, dass die Feed-Adresse noch aktuell ist. Wenn alles stimmt, sollte in wenigen Minuten auch alles wieder gehen."
+msgstr "La ŝarĝado de tiu-ĉi fluo antaŭ ne longe fiaskis. Bonvolu certiĝi ke la fluo-adreso ankoraŭ estas aktuala. Se ĉio ĝustas, ĉio funkciu post kelkaj minutoj denove."
+
+#: feeds.php:111
+#: feeds_ajax.php:94
+#: m_feeds.php:106
+msgid "Du abonnierst diesen Feed nicht."
+msgstr "Vi ne abonis tiun fluon."
+
+#: footl.php:4
+#: footm.php:2
+msgid "Zur Desktop-Version"
+msgstr "Al la labortabla versio"
+
+#: footl.php:9
+msgid "Zur mobilen Version"
+msgstr "Al la mobila versio"
+
+#: headerm.php:72
+#: navi.inc.php:75
+msgid "Ausloggen"
+msgstr "Elsaluti"
+
+#: index.php:17
+msgid "Nutzer nicht gefunden oder Passwort falsch."
+msgstr "Uzanto ne trovita aŭ malĝusta pasvorto."
+
+#: jslocale.php:3
+msgid "Es ist ein Fehler aufgetreten! Bitte laden die Seite neu ;-)"
+msgstr "Eraro okazis! Bonvolu reŝarĝi la paĝon ;-)"
+
+#: jslocale.php:5
+#, php-format
+msgid "%d neue Nachrichten"
+msgstr "%d novaj mesaĝoj"
+
+#: jslocale.php:6
+msgid "Fehler!"
+msgstr "Eraro!"
+
+#: jslocale.php:9
+#: m_all.php:130
+#: m_feeds.php:109
+msgid "Mehr laden"
+msgstr "Ŝarĝi pli"
+
+#: login.php:6
+#: login.php:20
+#: login.php:31
+#: reg.php:4
+#: reg.php:27
+msgid "Nutzername"
+msgstr "Salutnomo"
+
+#: login.php:8
+#: login.php:21
+#: login.php:39
+#: reg.php:5
+#: reg.php:28
+msgid "Passwort"
+msgstr "Pasvorto"
+
+#: login.php:10
+#: login.php:22
+msgid "Anmelden"
+msgstr "Ensaluti"
+
+#: login.php:12
+#: login.php:24
+#: reg.php:31
+msgid "Registrieren"
+msgstr "Registriĝi"
+
+#: login.php:44
+#: lostpw.php:37
+msgid "Passwort vergessen?"
+msgstr "Pasvorto forgesita?"
+
+#: lostpw.php:14
+msgid "Neues Passwort"
+msgstr "Nova pasvorto"
+
+#: lostpw.php:14
+#, php-format
+msgid ""
+"Hallo!\n"
+"Hier ist dein neues Passwort für den %s!\n"
+"\n"
+"%s\n"
+"\n"
+"%s"
+msgstr ""
+"Saluton!\n"
+"Jen estas via nova pasvorto por la %s!\n"
+"\n"
+"%s\n"
+"\n"
+"%s"
+
+#: lostpw.php:20
+msgid "Du hast eine weitere E-Mail mit einem neuen Passwort!"
+msgstr "Vi havas kroman retleteron kun nova pasvorto!"
+
+#: lostpw.php:26
+msgid "Das ist leider schiefgegangen! War der Link schon abgelaufen?"
+msgstr "Tio bedaŭrinde ne funkciis. Ĉu la ligilo ne plu validis?"
+
+#: lostpw.php:36
+msgid "Du hast per E-Mail weitere Anweisungen erhalten!"
+msgstr "Vi ricevis retleteron kun kromaj instrukcioj!"
+
+#: lostpw.php:37
+#, php-format
+msgid ""
+"Hallo!\n"
+"du hast im %s ein neues Passwort angefordert!\n"
+"Wenn du das wirklich selbst warst, klicke auf untenstehenden Link. Wenn das\n"
+"jemand anderes gewesen sein muss, brauchst du diese E-Mail nur zu ignorieren.\n"
+"Achtung! Der Link gilt nur bis heute abend, 23:59!\n"
+"\n"
+"%s"
+msgstr ""
+"Saluton!\n"
+"vi demandis ĉe la %s novan pasvorton!\n"
+"Se tio vere estis vi mem, alklaku la suban ligilon. Se tio evidente\n"
+"estis iu alia, vi simple povas ignori tiun-ĉi mesaĝon.\n"
+"Atentu! La ligilo nur validas ĝis hodiaŭ vespere, 23:59!\n"
+"\n"
+"%s"
+
+#: lostpw.php:46
+msgid "Es tut uns leid, aber diesen Nutzer haben wir leider nicht im System!"
+msgstr "Ni pardonpetas, sed tiun-ĉi uzanton ni ne havas en la sistemo!"
+
+#: lostpw.php:54
+msgid "Nutzername oder E-Mail"
+msgstr "Salutnomo aŭ retpoŝtadreso"
+
+#: lostpw.php:55
+msgid "Abschicken"
+msgstr "Sendi"
+
+#: lostpw.php:57
+#: reg.php:22
+msgid "Zurück"
+msgstr "Reiri"
+
+#: navi.inc.php:73
+msgid "Merkliste"
+msgstr "Memorlisto"
+
+#: navi.inc.php:74
+#: settings.php:10
+msgid "Einstellungen"
+msgstr "Agordoj"
+
+#: navi.inc.php:87
+#: settings.php:159
+msgid "Fehler"
+msgstr "Eraro"
+
+#: navi.inc.php:87
+#: settings.php:159
+msgid "Dieser Feed konnte kürzlich nicht erfolgreich abgerufen werden."
+msgstr "Tiu-ĉi fluo antaŭ nelonge ne povis esti ŝarĝita."
+
+#: navi.inc.php:93
+msgid "Entwickler und Betreiber:"
+msgstr "Kreanto kaj tenanto:"
+
+#: navi.inc.php:93
+msgid "Icons von"
+msgstr "Piktogramoj de"
+
+#: new_ajax.php:75
+msgid "Nicht eingeloggt!"
+msgstr "Ne ensalutita!"
+
+#: reg.php:6
+#: reg.php:29
+msgid "name@domain.tld"
+msgstr "nomo@domajno.tld"
+
+#: reg.php:8
+msgid "Registrieren."
+msgstr "Registriĝi."
+
+#: reg.php:20
+msgid "Registrierung erfolgreich!"
+msgstr "Registriĝo sukcesa!"
+
+#: reg.php:20
+msgid "Zur Hauptseite"
+msgstr "Al la ĉefpaĝo"
+
+#: reg.php:22
+msgid "Registrierung fehlgeschlagen! Eventuell ist dieser Nutzername bereits vergeben!"
+msgstr "Registriĝo fiaskis! Eble la uzantnomo jam estas okupita!"
+
+#: reg.php:33
+msgid "Abbrechen"
+msgstr "Nuligi"
+
+#: settings.php:23
+msgid "Deine E-Mail-Adresse wurde erfolgreich geändert."
+msgstr "Via retpoŝtadreso estis sukcese ŝanĝita."
+
+#: settings.php:28
+msgid "Es werden nur http:// und https://-URLs akzeptiert."
+msgstr "Nur http:// kaj https://-URL-j estas akzeptitaj."
+
+#: settings.php:31
+msgid "Dein Feed wurde erfolgreich hinzugefügt. Nach dem nächsten Feed-Update (in spätestens 5 Minuten) wird dann links in der Leiste auch sein korrekter Titel angezeigt."
+msgstr "Via fluo estis sukcese aldonita. Post la venonta Fluo-aktualigo (post maksimume 5 minutoj) maldekstre ankaŭ aperas ĝia ĝusta nomo."
+
+#: settings.php:34
+msgid "Du hast diesen Feed bereits abonniert."
+msgstr "Vi jam abonis tiun-ĉi fluon."
+
+#: settings.php:43
+msgid "Dein Abonnement des Feeds wurde erfolgreich entfernt."
+msgstr "Via abono de tiu-ĉi fluo estis sukcese forigita."
+
+#: settings.php:56
+msgid "Das neue Passwort muss zweimal gleich eingegeben werden."
+msgstr "La nova pasvorto devas esti entajpita dufoje same."
+
+#: settings.php:61
+msgid "Das Passwort wurde geändert."
+msgstr "Via pasvorto estis ŝanĝita."
+
+#: settings.php:68
+#, php-format
+msgid "„%s“ ist keine gültige E-Mail-Adresse. Wenn du das anders siehst, kontaktiere uns bitte."
+msgstr "«%s» ne estas valida retpoŝtadreso. Se vi ne konsentas, bonvolu kontakti nin."
+
+#: settings.php:71
+msgid "Bestätigung der Änderung der E-Mail-Adresse"
+msgstr "Konfirmo de sânĝo de la retpoŝtadreso."
+
+#: settings.php:71
+#, php-format
+msgid ""
+"Hallo!\n"
+"jemand möchte seine im %s angegebene E-Mailadresse zu dieser ändern.\n"
+"Wenn du das warst, klicke bitte untenstehenden Link an. Wenn nicht,\n"
+"ignoriere diese E-Mail einfach.\n"
+"\n"
+"%s"
+msgstr ""
+"Saluton!\n"
+"Iu volas ŝanĝi ĉe %s sian retleteradreson al tiu-ĉi.\n"
+"Se tio estis vi, bonvolu alklaki la suban libilon. Se ne,\n"
+"bonvolu simple ignori tiun retleteron.\n"
+"\n"
+"%s"
+
+#: settings.php:78
+#, php-format
+msgid "Es wurde eine Bestätigung zur Änderung der Mailadresse an %s versandt."
+msgstr "Konfirmo por ŝanĝi la retpoŝtadreson estis sendita al %s."
+
+#: settings.php:84
+msgid "Das aktuelle Passwort wurde nicht korrekt eingegeben!"
+msgstr "Via aktuala pasvorto ne estis ĝuste antajpita."
+
+#: settings.php:95
+#, php-format
+msgid "Deine Sprache wurde auf %s umgestellt."
+msgstr "Via lingvo estias ŝanĝita al %s."
+
+#: settings.php:101
+msgid "Lokalisierung"
+msgstr "Allokigo"
+
+#: settings.php:108
+#: settings.php:134
+#: settings.php:205
+msgid "Speichern"
+msgstr "Savi"
+
+#: settings.php:111
+msgid "Persönliche Einstellungen"
+msgstr "Personaj agordoj"
+
+#: settings.php:116
+msgid "Aktuelles Passwort:"
+msgstr "Aktuala pasvorto:"
+
+#: settings.php:120
+msgid "Neues Passwort:"
+msgstr "Nova pasvorto:"
+
+#: settings.php:124
+msgid "Neues Passwort wiederholen:"
+msgstr "Ripeti novan pasvorton:"
+
+#: settings.php:128
+msgid "E-Mail-Adresse:"
+msgstr "Retpoŝtadreso:"
+
+#: settings.php:130
+msgid "Nicht wundern: Nachdem du deine E-Mail-Adresse geändert hast, wird hier weiterhin deine alte Adresse stehen, <br />bis du einen Link in einer E-Mail, die wir an deine neue Adresse senden, angeklickt hast!"
+msgstr "Ne miru: Post vi ŝanĝis vian repoŝtadreson, tamen la malnova restos ĉi-tie, <br />ĝis vi alklakis ligilon en retmesaĝo, kiun ni sendas al via nova adreso!"
+
+#: settings.php:139
+msgid "Feed abonnieren"
+msgstr "Aboni fluon"
+
+#: settings.php:142
+msgid "Abonnieren"
+msgstr "Aboni"
+
+#: settings.php:145
+msgid "Abos"
+msgstr "Abonoj"
+
+#: settings.php:148
+msgid "Keine Feeds gefunden."
+msgstr "Neniuj fluoj trovitaj."
+
+#: settings.php:152
+msgid "Name"
+msgstr "Nomo"
+
+#: settings.php:153
+msgid "Alias"
+msgstr "Alinomo"
+
+#: settings.php:154
+#: settings.php:161
+msgid "Löschen"
+msgstr "Forviŝi"
+
+#: settings.php:161
+msgid "Alias setzen"
+msgstr "Meti alinomon."
+
+#: settings.php:169
+msgid "Desktop Notifications"
+msgstr "Desktop Notifikado"
+
+#: settings.php:171
+msgid "Nicht wundern: Einstellung wird nur für diesen Computer gespeichert (als Cookie)."
+msgstr "Ni miru: Agordo ne estas savita por tiu-ĉi komputilo (per kuketo)."
+
+#: settings.php:173
+msgid "Desktop Notifications aktivieren"
+msgstr "Aktivigi Desktop Notifikadon"
+
+#: settings.php:174
+msgid "Desktop Notifications deaktivieren"
+msgstr "Malaktivigi Desktop Notifikadon"
+
+#: settings.php:187
+msgid "Test"
+msgstr "Testo"
+
+#: settings.php:187
+msgid "erfolgreich"
+msgstr "sukcesa"
+
+#: sticky.php:8
+msgid "Gemerkte Artikel"
+msgstr "Memorigitaj artikoloj"
+
+#: sticky.php:9
+msgid "Alle entfernen"
+msgstr "Forigi ĉiujn"
+
+#: sticky.php:68
+msgid "Du hast dir keine Einträge gemerkt!"
+msgstr "Vi ne memorigis artikolojn!"
+
+#: sticky.php:75
+msgid "aus Merkliste entfernen"
+msgstr "malmemorigi"
+
