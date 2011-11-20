@@ -1,4 +1,5 @@
 <?php
+require_once('config.inc.php');
 if (isset($_SESSION['loggedin_as']) and isset($dbhostname)) {
 	require('dbconnect.php');
 	$q = mysql_query('SELECT locale FROM user WHERE id = '.intval($_SESSION['loggedin_as']));
