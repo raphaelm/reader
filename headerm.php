@@ -16,9 +16,18 @@ require_once('setlocale.php'); ?>
   <body>
 <?php
 function selarea($actual){
-	if(strlen($actual) > 14)
-		$actual = substr($actual, 0, 11)."…";
-	echo "<div id=\"selarea\"><strong onclick='$(\"#selarea ul\").toggle();'>$actual</strong><ul>";
+	global $locale, $locales;
+	/*if(strlen($actual) > 14)
+		$actual = substr($actual, 0, 11)."…";*/
+	echo '<a href="logout.php?mobile=true" id="logout"><img src="images/door_out.png" alt="'._('Ausloggen').'" /></a>';
+	/*echo '<div class="select"><strong><img src="i18n/flags/'.$locale.'.gif" alt="'.$locale.'" /></strong><ul>';
+	foreach ($locales as $loc) {
+		$_GET['locale'] = $loc;
+		
+		echo '<li><a href="?'.http_build_query($_GET).'"><img src="i18n/flags/'.$loc.'.gif" alt="'.$loc.'" /></a></li>';
+	}
+	echo '</ul></div>';*/
+	echo "<div class=\"select\"><strong>$actual</strong><ul>";
 	$all_qry = mysql_query("SELECT
 			COUNT(`feed_id`) as c,
 			`feed_id`
@@ -96,7 +105,7 @@ function selarea($actual){
 			echo ' <span id="unreadcount_'.$row["feedid"].'">'.($unread[$row["feedid"]] > 0 ? '('.$unread[$row["feedid"]].')': '').'</span></a></li>';
 		}
 	}
-	echo '</ul></div> <a href="logout.php?mobile=true" id="logout"><img src="images/logout.gif" alt="'._('Ausloggen').'" /></a>';
+	echo '</ul></div>';
 }
 
 ?>

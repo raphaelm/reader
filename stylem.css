@@ -94,54 +94,55 @@ a:hover
 	width: 100%;
 	height: 30px;
 }
-#selarea ul {
+.select ul li {
+	margin-left: 7px;
+}
+.select ul li a {
+	display: block;
+	font-size: 14px;
+	padding: 3px 0 3px 0;
+}
+.select {
+	display: inline-block;
+	position: relative;
+	top: -10px;
+	left: 0;
+}
+.select span {
+	color: #000 !important;
+}
+.select strong {
+	display: inline-block;
+	padding: 2px;
+	background: url('images/bullet_arrow_down.png') no-repeat right;
+	font-size: 15px;
+	padding: 3px;
+	cursor: pointer;
+	padding-right: 20px;
+}
+.select ul {
 	display: none;
 	position: absolute;
 	border: 1px solid #40B3FF;
 	background: #fff no-repeat right;
-	top: 13px;
+	top: 15px;
 	left: 0;
 	z-index: 1000;
 	width: 206px;
 	list-style-type: none;
 	padding: 5px 0 5px 0;
 }
-#selarea ul li {
-	margin-left: 7px;
-	font-size: 12px;
-}
-#selarea ul li a {
-	display: block;
-}
-#selarea strong {
-	display: inline-block;
-	padding: 2px;
-	border: 1px solid #40B3FF;
-	background: #fff url('images/arr_down.gif') no-repeat right;
-	font-size: 15px;
-	padding: 3px;
-	width: 200px;
-	cursor: pointer;
-}
-#selarea {
-	display: inline-block;
-	position: relative;
-	top: -10px;
-	left: 0;
-}
-#selarea span {
-	color: #000 !important;
-}
+
 #subnav {
 	margin: 0;
 	padding: 5px;
 	text-align: center;
 }
 #logout {
-	display: inline-block;
-	position: relative;
-	left: 0;
-	top: -2px;
+	z-index: 10000;
+	position: absolute;
+	top: 6px;
+	right: 5px;
 }
 
 .wrongpw {

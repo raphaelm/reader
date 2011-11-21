@@ -98,4 +98,7 @@ function unstickyremove(id){
 $(document).ready(function(){	
 	title = $("title").html();
 	$(".sum").hide()
+	$(".select strong").bind("click", function(){
+		$(this).parent().children("ul").toggle();		
+	});
 });
