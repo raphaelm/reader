@@ -108,6 +108,11 @@ a:hover
 	top: -10px;
 	left: 0;
 }
+.feedselect {
+	position: absolute;
+	left: 50px;
+	top: 4px;
+}
 .select span {
 	color: #000 !important;
 }

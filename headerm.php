@@ -27,7 +27,7 @@ function selarea($actual){
 		echo '<li><a href="?'.http_build_query($_GET).'"><img src="i18n/flags/'.$loc.'.gif" alt="'.$loc.'" /></a></li>';
 	}
 	echo '</ul></div>';*/
-	echo "<div class=\"select\"><strong>$actual</strong><ul>";
+	echo "<div class=\"select feedselect\"><strong>$actual</strong><ul>";
 	$all_qry = mysql_query("SELECT
 			COUNT(`feed_id`) as c,
 			`feed_id`
