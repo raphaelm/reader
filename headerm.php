@@ -57,8 +57,35 @@ function selarea($actual){
 		$unread[$row['feed_id']] = intval($row['c']);
 	}        
 	$unread["all"] = array_sum($unread);
+	$sticky_qry = mysql_query("SELECT
+				COUNT(`feed_id`) as c
+			FROM
+				`feeds_entries`
+			WHERE
+				1 = (SELECT
+						COUNT(`article_id`)
+					FROM
+						`sticky`
+					WHERE
+						`user_id` = ". $_SESSION['loggedin_as']. "
+						AND
+						`sticky`.`article_id` = `feeds_entries`.`article_id`
+				)
+				AND
+				1 = (SELECT
+						COUNT(`feedid`)
+					FROM
+						`feeds_subscription`
+					WHERE
+						`userid` =". $_SESSION['loggedin_as']. "
+						AND
+						`feeds_subscription`.`feedid` = `feeds_entries`.`feed_id`
+					)");
+	$sticky = mysql_fetch_object($sticky_qry);
+	$sticky = $sticky->c;
 	
 	echo "<li><a href=\"m_all.php\">"._("Alle Feeds")." <span id='unreadcount_all'>".($unread["all"] > 0 ? '('.$unread["all"].')': '')."</span></a></li>";
+	echo "<li><a href=\"m_sticky.php\">"._("Merkliste")." <span id='unreadcount_sticky'>".($sticky > 0 ? '('.$sticky.')': '')."</span></a></li>";
 		  
 	$feeds_qry = mysql_query("SELECT `feedid`, `feedname` FROM `view_feed_subscriptions` WHERE `userid` =". $_SESSION['loggedin_as']. " AND feedid > 0 ORDER by `feedname` asc");
 	if(mysql_num_rows($feeds_qry) == 0){

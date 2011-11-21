@@ -8,7 +8,10 @@ if (isset($_SESSION['loggedin_as'])) {
 	}elseif(isset($_GET['unsticky'])){
 		if($_GET['unsticky'] == 'all'){
 			mysql_query('DELETE FROM sticky WHERE user_id = '.$_SESSION['loggedin_as']);
-			header('Location: sticky.php');
+			if(isset($_GET['mobile']))
+				header('Location: m_sticky.php');
+			else
+				header('Location: sticky.php');
 			exit;
 		}
 		mysql_query('DELETE FROM sticky WHERE user_id = '.$_SESSION['loggedin_as'].' and article_id = '.intval($_GET['unsticky']));
