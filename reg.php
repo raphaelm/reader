@@ -1,13 +1,5 @@
 <?php
-if (!empty($_POST['website'])) {
-	echo '<div id="content2"><form id="login" action="register.php" method="POST">
-		<input class="inputl" type="text" name="regusername" value="'._('Nutzername').'" />
-		<input class="inputl" type="password" name="regpassword" value="'._('Passwort').'" />
-		<input class="inputl" type="text" name="regmail" value="'._('name@domain.tld').'" />
-		<input class="inputl" type="text" name="website" value="" style="display:none;"/>
-		<input class="buttonl" type="submit" value="'._('Registrieren.').'" /> 
-	</form></div>';      
-} elseif (!empty($_POST['regusername']) && !empty($_POST['regpassword']) && !empty($_POST['regmail'])) {
+if (!empty($_POST['regusername']) && !empty($_POST['regpassword']) && !empty($_POST['regmail'])) {
 	require_once('dbconnect.php');
 	$username = mysql_real_escape_string($_POST["regusername"]);
 	$password = sha1($_POST["regpassword"]. $salt);
@@ -21,7 +13,16 @@ if (!empty($_POST['website'])) {
 	} else {
 		echo "<p class='error'>"._("Registrierung fehlgeschlagen! Eventuell ist dieser Nutzername bereits vergeben!")." <a href='javascript:history.back()'>"._("Zurück")."</a></p>";
 	}
-} else {
+}
+if (!empty($_POST['website'])) {
+	echo '<div id="content2"><form id="login" action="register.php" method="POST">
+		<input class="inputl" type="text" name="regusername" value="'._('Nutzername').'" />
+		<input class="inputl" type="password" name="regpassword" value="'._('Passwort').'" />
+		<input class="inputl" type="text" name="regmail" value="'._('name@domain.tld').'" />
+		<input class="inputl" type="text" name="website" value="" style="display:none;"/>
+		<input class="buttonl" type="submit" value="'._('Registrieren.').'" /> 
+	</form></div>';      
+}else{
 	echo '<div id="header"></div><div id="content2">
 		<form id="login" action="register.php" method="POST">
 		  <input class="inputl" type="text" name="regusername" value="'._('Nutzername').'" />
@@ -34,3 +35,6 @@ if (!empty($_POST['website'])) {
 	  <div class="clear"></div></div>';
 }
 ?>
+<div id="footer">
+	<p>geek's factory reader &ndash; &copy; 2011 <a href="http://www.geeksfactory.de">geek's factory</a></p>
+</div>

@@ -117,7 +117,7 @@ a.buttonl:hover, a.buttonl
 {
 	clear: both;
 }
-.wrongpw {
+.wrongpw, .error {
 	width: 340px;
 	padding: 10px;
 	background: #FFAEAE;

@@ -58,7 +58,7 @@ Achtung! Der Link gilt nur bis heute abend, 23:59!
 	<div class="clear"></div>
 </div>
 <div id="footer">
-	<p>geek's factory reader - on geeksfactory.de</p>
+	<p>geek's factory reader &ndash; &copy; 2011 <a href="http://www.geeksfactory.de">geek's factory</a></p>
 </div>
 	
 <?php
