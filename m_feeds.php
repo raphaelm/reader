@@ -9,7 +9,7 @@ if (isset($_SESSION['loggedin_as'])) {
 	require_once("functions.inc.php");
 	include('headerm.php');
 	if (!empty($_GET["feedid"])) {
-		$is_sub = mysql_query("SELECT `feeds`.`name` FROM `feeds_subscription` INNER JOIN `feeds` ON `feeds`.`id` = `feeds_subscription`.`feedid` WHERE `feedid` = ". intval(($_GET["feedid"])). " AND `userid` =". $_SESSION['loggedin_as']); 
+		$is_sub = mysql_query("SELECT `feeds`.`name`, alias FROM `feeds_subscription` INNER JOIN `feeds` ON `feeds`.`id` = `feeds_subscription`.`feedid` WHERE `feedid` = ". intval(($_GET["feedid"])). " AND `userid` =". $_SESSION['loggedin_as']); 
 		if (mysql_num_rows($is_sub) == 1) {
 			$feed = mysql_fetch_assoc($is_sub);
 			?>
