@@ -42,7 +42,8 @@ if(is_mobile()){
 	</script>
 	<div id="footer">
 		<p><a href="lostpw.php"><?php echo _('Passwort vergessen?') ?></a></p>
-		<p>geek's factory reader &ndash; &copy; 2011 <a href="http://www.geeksfactory.de">geek's factory</a></p>
+		<p>geek's factory reader &ndash; &copy; 2011 <a href="http://www.geeksfactory.de">geek's factory</a><br />
+		<a href="http://git.geeksfactory.de/reader.git" target="_blank">get the source!</a></p>
 	</div>
 	<?php
 }
