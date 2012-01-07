@@ -66,7 +66,7 @@ function fetch_feedurl($url) {
 	else
 		$fp = @fsockopen($ip, ((intval($uri['port']) > 0) ? $uri['port'] : 80), $err, $errn, 20);
 	if (!$fp) {
-		return false;
+		return -7;
 	} else {
 		$path = "";
 		if(isset($uri['path']) && !empty($uri['path'])) $path .= $uri['path'];

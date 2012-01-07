@@ -167,7 +167,7 @@ function dashboardAddFeed(){
 		("#inputfeedurl").focus();
 		return false;
 	}
-	$(".dashboardbox.addfeed").html("<form action='settings.php' method='POST'><input type='text' name='feedurl' id='inputfeedurl' value='http://' /><input type='hidden' name='submit' value='true' /></form>");
+	$(".dashboardbox.addfeed").html("<form action='settings.php' method='POST'><input type='text' name='feedurl' id='inputfeedurl' value='http://' /><input type='hidden' name='submit' value='true' /><input type='hidden' name='hash' value='"+$(this).attr("rel")+"' /></form>");
 	$("#inputfeedurl").focus();
 	dashboardAddFeedActive = true;
 }
@@ -188,3 +188,6 @@ $(document).ready(function(){
 	window.setTimeout('loadUnreadCount()', 60000);
 	markasread();
 });
+if (top.location != self.location) {
+	top.location = self.location;
+}

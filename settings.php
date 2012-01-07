@@ -11,8 +11,8 @@ if (isset($_SESSION['loggedin_as'])) {
 	
 	function add_feed($url){
 		$url = fetch_feedurl(trim($url));
-		if(!$url){
-			return false;
+		if($url === -7){
+			return -7;
 		}
 		$feedname = fetch_feedtitle($url);
 		if($feedname == '') $feedname = htmlspecialchars($url);
@@ -22,16 +22,21 @@ if (isset($_SESSION['loggedin_as'])) {
 		echo mysql_error();
 	}
 	
+	if(!isset($_SESSION['add_csrf_hashes'])) $_SESSION['add_csrf_hashes'] = array();
+	$s = sha1(mt_rand());
+	$_SESSION['add_csrf_hashes'][] = $s;
+	
 	if(isset($_GET['mailchange']) and $_GET['mailchange'] == 'success')
 			echo '<p class="okay">'._('Deine E-Mail-Adresse wurde erfolgreich geändert.').'</p>';
 	
 	if (isset($_POST['feedurl']) && !empty($_POST['feedurl'])) {
+		if(!in_array($_REQUEST['hash'], $_SESSION['add_csrf_hashes'])) die("Error.");
 		if(mysql_num_rows(mysql_query('SELECT * FROM feeds_subscription a WHERE a.userid = '.$_SESSION['loggedin_as'].' and 1 = (SELECT COUNT(*) FROM feeds f WHERE f.id = a.feedid AND f.url = "'.mysql_real_escape_string($_POST['feedurl']).'")')) == 0){
 			if(strpos($_POST['feedurl'], 'http') !== 0){
 				echo '<p class="error">'._('Es werden nur http:// und https://-URLs akzeptiert.').'</p>';
 			}else{
 				$add = add_feed($_POST['feedurl']);
-				if(!$add)
+				if($add === -7)
 					echo '<p class="error">'._('Der Server, auf dem sich der Feed befindet, konnte nicht erreicht werden. Versuche es später erneut.').'</p>';
 				else
 					echo '<p class="okay">'._('Dein Feed wurde erfolgreich hinzugefügt. Nach dem nächsten Feed-Update (in spätestens 5 Minuten) wird dann links in der Leiste auch sein korrekter Titel angezeigt.').'</p>';
@@ -40,6 +45,7 @@ if (isset($_SESSION['loggedin_as'])) {
 			echo '<p class="error">'._('Du hast diesen Feed bereits abonniert.').'</p>';
 	}
 	if (!empty($_GET["del"])) {
+		if(!in_array($_GET['hash'], $_SESSION['add_csrf_hashes'])) die("Error.");
 		mysql_query("DELETE FROM `feeds_subscription` WHERE `feedid` ='". intval($_GET["del"]). "' AND `userid` =". $_SESSION['loggedin_as']);
 		$abo_del_qry = mysql_query("SELECT 0 FROM `feeds_subscription` WHERE `feedid` = ". intval(($_GET["del"]))); 
 		if (mysql_num_rows($abo_del_qry) == 0) {
@@ -145,6 +151,7 @@ ignoriere diese E-Mail einfach.
 	<h3><?php echo _('Feed abonnieren'); ?></h3>
 	<form id="addsub" action="settings.php" method="POST">
 	  <input type="text" name="feedurl" value="http://" />
+	  <input type="hidden" name="hash" value="<?php echo $s; ?>" />
 	  <input type="submit" value="<?php echo _('Abonnieren'); ?>" /> 
 	</form>
 	<?php
@@ -164,7 +171,7 @@ ignoriere diese E-Mail einfach.
 			if(time()-$row["lastupdate"] > 1000){
 				echo '<img src="images/error.png" class="erroricon" alt="'._('Fehler').'" title="'._('Dieser Feed konnte kürzlich nicht erfolgreich abgerufen werden.').'" /> ';
 			}
-			echo '<a href="'.$row['feedurl'].'" class="feedlink" target="_blank">'.utf_correct($row["origname"]). '</a></td><td id="alias_'.$row["feedid"].'">'. utf_correct($row["alias"]). '</td><td><a href="settings.php?del='. $row["feedid"]. '">'._('Löschen').'</a> | <a href="javascript:editalias('.$row["feedid"].')" id="editaliaslink_'.$row["feedid"].'">'._('Alias setzen').'</a></td></tr>';
+			echo '<a href="'.$row['feedurl'].'" class="feedlink" target="_blank">'.utf_correct($row["origname"]). '</a></td><td id="alias_'.$row["feedid"].'">'. utf_correct($row["alias"]). '</td><td><a href="settings.php?del='. $row["feedid"]. '&hash='.$s.'">'._('Löschen').'</a> | <a href="javascript:editalias('.$row["feedid"].')" id="editaliaslink_'.$row["feedid"].'">'._('Alias setzen').'</a></td></tr>';
 		}
 		echo '</table>';
 	}   
