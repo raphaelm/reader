@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfreader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-20 12:37+0100\n"
-"PO-Revision-Date: 2011-11-20 14:23+0100\n"
-"Last-Translator: Nils Martin Klünder <Webmaster@nomoketo.de>\n"
+"POT-Creation-Date: 2012-01-07 12:15+0100\n"
+"PO-Revision-Date: 2012-01-07 12:16+0100\n"
+"Last-Translator: Raphael <raphael@geeksfactory.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: all.php:8
-#: headerm.php:61
+#: headerm.php:96
 #: m_all.php:11
 #: navi.inc.php:72
 msgid "Alle Feeds"
@@ -72,6 +72,7 @@ msgstr "Reŝarĝi"
 #: feeds_ajax.php:87
 #: m_all.php:124
 #: m_feeds.php:99
+#: m_sticky.php:79
 #: sticky.php:74
 msgid "d.m.Y - H:i"
 msgstr "d.m.Y - H:i"
@@ -100,12 +101,32 @@ msgstr "memorigi"
 #: feeds_ajax.php:90
 #: m_all.php:128
 #: m_feeds.php:102
+#: m_sticky.php:82
 msgid "zum Originalbeitrag"
 msgstr "al la origina artikolo"
 
 #: all_ajax.php:121
 msgid "not logged in"
 msgstr "ne ansalutita"
+
+#: dashboard.php:8
+msgid "Startseite"
+msgstr "Hejmpaĝo"
+
+#: dashboard.php:10
+#, php-format
+msgid "%s neue Beiträge in deinen Feeds"
+msgstr "%s novaj Artikoloj en viaj fluoj"
+
+#: dashboard.php:11
+#, php-format
+msgid "%s Beiträge auf deiner Merkliste"
+msgstr "%s Artikoloj en via Memorlisto"
+
+#: dashboard.php:12
+#, fuzzy
+msgid "Neuen Feed abonnieren"
+msgstr "Aboni fluon"
 
 #: feeds.php:19
 #: m_feeds.php:24
@@ -131,12 +152,17 @@ msgstr "Al la labortabla versio"
 msgid "Zur mobilen Version"
 msgstr "Al la mobila versio"
 
-#: headerm.php:72
+#: headerm.php:22
 #: navi.inc.php:75
 msgid "Ausloggen"
 msgstr "Elsaluti"
 
-#: index.php:17
+#: headerm.php:97
+#: navi.inc.php:73
+msgid "Merkliste"
+msgstr "Memorlisto"
+
+#: index.php:21
 msgid "Nutzer nicht gefunden oder Passwort falsch."
 msgstr "Uzanto ne trovita aŭ malĝusta pasvorto."
 
@@ -162,16 +188,16 @@ msgstr "Ŝarĝi pli"
 #: login.php:6
 #: login.php:20
 #: login.php:31
-#: reg.php:4
-#: reg.php:27
+#: reg.php:19
+#: reg.php:28
 msgid "Nutzername"
 msgstr "Salutnomo"
 
 #: login.php:8
 #: login.php:21
 #: login.php:39
-#: reg.php:5
-#: reg.php:28
+#: reg.php:20
+#: reg.php:29
 msgid "Passwort"
 msgstr "Pasvorto"
 
@@ -182,7 +208,7 @@ msgstr "Ensaluti"
 
 #: login.php:12
 #: login.php:24
-#: reg.php:31
+#: reg.php:32
 msgid "Registrieren"
 msgstr "Registriĝi"
 
@@ -256,13 +282,29 @@ msgid "Abschicken"
 msgstr "Sendi"
 
 #: lostpw.php:57
-#: reg.php:22
+#: reg.php:14
 msgid "Zurück"
 msgstr "Reiri"
 
-#: navi.inc.php:73
-msgid "Merkliste"
-msgstr "Memorlisto"
+#: m_sticky.php:11
+#: sticky.php:8
+msgid "Gemerkte Artikel"
+msgstr "Memorigitaj artikoloj"
+
+#: m_sticky.php:14
+#: sticky.php:9
+msgid "Alle entfernen"
+msgstr "Forigi ĉiujn"
+
+#: m_sticky.php:73
+#: sticky.php:68
+msgid "Du hast dir keine Einträge gemerkt!"
+msgstr "Vi ne memorigis artikolojn!"
+
+#: m_sticky.php:80
+#: sticky.php:75
+msgid "aus Merkliste entfernen"
+msgstr "malmemorigi"
 
 #: navi.inc.php:74
 #: settings.php:10
@@ -270,12 +312,12 @@ msgid "Einstellungen"
 msgstr "Agordoj"
 
 #: navi.inc.php:87
-#: settings.php:159
+#: settings.php:165
 msgid "Fehler"
 msgstr "Eraro"
 
 #: navi.inc.php:87
-#: settings.php:159
+#: settings.php:165
 msgid "Dieser Feed konnte kürzlich nicht erfolgreich abgerufen werden."
 msgstr "Tiu-ĉi fluo antaŭ nelonge ne povis esti ŝarĝita."
 
@@ -291,69 +333,73 @@ msgstr "Piktogramoj de"
 msgid "Nicht eingeloggt!"
 msgstr "Ne ensalutita!"
 
-#: reg.php:6
-#: reg.php:29
-msgid "name@domain.tld"
-msgstr "nomo@domajno.tld"
-
-#: reg.php:8
-msgid "Registrieren."
-msgstr "Registriĝi."
-
-#: reg.php:20
+#: reg.php:12
 msgid "Registrierung erfolgreich!"
 msgstr "Registriĝo sukcesa!"
 
-#: reg.php:20
+#: reg.php:12
 msgid "Zur Hauptseite"
 msgstr "Al la ĉefpaĝo"
 
-#: reg.php:22
+#: reg.php:14
 msgid "Registrierung fehlgeschlagen! Eventuell ist dieser Nutzername bereits vergeben!"
 msgstr "Registriĝo fiaskis! Eble la uzantnomo jam estas okupita!"
 
-#: reg.php:33
+#: reg.php:21
+#: reg.php:30
+msgid "name@domain.tld"
+msgstr "nomo@domajno.tld"
+
+#: reg.php:23
+msgid "Registrieren."
+msgstr "Registriĝi."
+
+#: reg.php:34
 msgid "Abbrechen"
 msgstr "Nuligi"
 
-#: settings.php:23
+#: settings.php:26
 msgid "Deine E-Mail-Adresse wurde erfolgreich geändert."
 msgstr "Via retpoŝtadreso estis sukcese ŝanĝita."
 
-#: settings.php:28
+#: settings.php:31
 msgid "Es werden nur http:// und https://-URLs akzeptiert."
 msgstr "Nur http:// kaj https://-URL-j estas akzeptitaj."
 
-#: settings.php:31
+#: settings.php:35
+msgid "Der Server, auf dem sich der Feed befindet, konnte nicht erreicht werden. Versuche es später erneut."
+msgstr "La Servilo, sur kiu via fluo situas, ne posiv esti atingita. Bonvolu provi denove poste."
+
+#: settings.php:37
 msgid "Dein Feed wurde erfolgreich hinzugefügt. Nach dem nächsten Feed-Update (in spätestens 5 Minuten) wird dann links in der Leiste auch sein korrekter Titel angezeigt."
 msgstr "Via fluo estis sukcese aldonita. Post la venonta Fluo-aktualigo (post maksimume 5 minutoj) maldekstre ankaŭ aperas ĝia ĝusta nomo."
 
-#: settings.php:34
+#: settings.php:40
 msgid "Du hast diesen Feed bereits abonniert."
 msgstr "Vi jam abonis tiun-ĉi fluon."
 
-#: settings.php:43
+#: settings.php:49
 msgid "Dein Abonnement des Feeds wurde erfolgreich entfernt."
 msgstr "Via abono de tiu-ĉi fluo estis sukcese forigita."
 
-#: settings.php:56
+#: settings.php:62
 msgid "Das neue Passwort muss zweimal gleich eingegeben werden."
 msgstr "La nova pasvorto devas esti entajpita dufoje same."
 
-#: settings.php:61
+#: settings.php:67
 msgid "Das Passwort wurde geändert."
 msgstr "Via pasvorto estis ŝanĝita."
 
-#: settings.php:68
+#: settings.php:74
 #, php-format
 msgid "„%s“ ist keine gültige E-Mail-Adresse. Wenn du das anders siehst, kontaktiere uns bitte."
 msgstr "«%s» ne estas valida retpoŝtadreso. Se vi ne konsentas, bonvolu kontakti nin."
 
-#: settings.php:71
+#: settings.php:77
 msgid "Bestätigung der Änderung der E-Mail-Adresse"
 msgstr "Konfirmo de sânĝo de la retpoŝtadreso."
 
-#: settings.php:71
+#: settings.php:77
 #, php-format
 msgid ""
 "Hallo!\n"
@@ -370,124 +416,108 @@ msgstr ""
 "\n"
 "%s"
 
-#: settings.php:78
+#: settings.php:84
 #, php-format
 msgid "Es wurde eine Bestätigung zur Änderung der Mailadresse an %s versandt."
 msgstr "Konfirmo por ŝanĝi la retpoŝtadreson estis sendita al %s."
 
-#: settings.php:84
+#: settings.php:90
 msgid "Das aktuelle Passwort wurde nicht korrekt eingegeben!"
 msgstr "Via aktuala pasvorto ne estis ĝuste antajpita."
 
-#: settings.php:95
+#: settings.php:101
 #, php-format
 msgid "Deine Sprache wurde auf %s umgestellt."
 msgstr "Via lingvo estias ŝanĝita al %s."
 
-#: settings.php:101
+#: settings.php:107
 msgid "Lokalisierung"
 msgstr "Allokigo"
 
-#: settings.php:108
-#: settings.php:134
-#: settings.php:205
+#: settings.php:114
+#: settings.php:140
+#: settings.php:211
 msgid "Speichern"
 msgstr "Savi"
 
-#: settings.php:111
+#: settings.php:117
 msgid "Persönliche Einstellungen"
 msgstr "Personaj agordoj"
 
-#: settings.php:116
+#: settings.php:122
 msgid "Aktuelles Passwort:"
 msgstr "Aktuala pasvorto:"
 
-#: settings.php:120
+#: settings.php:126
 msgid "Neues Passwort:"
 msgstr "Nova pasvorto:"
 
-#: settings.php:124
+#: settings.php:130
 msgid "Neues Passwort wiederholen:"
 msgstr "Ripeti novan pasvorton:"
 
-#: settings.php:128
+#: settings.php:134
 msgid "E-Mail-Adresse:"
 msgstr "Retpoŝtadreso:"
 
-#: settings.php:130
+#: settings.php:136
 msgid "Nicht wundern: Nachdem du deine E-Mail-Adresse geändert hast, wird hier weiterhin deine alte Adresse stehen, <br />bis du einen Link in einer E-Mail, die wir an deine neue Adresse senden, angeklickt hast!"
 msgstr "Ne miru: Post vi ŝanĝis vian repoŝtadreson, tamen la malnova restos ĉi-tie, <br />ĝis vi alklakis ligilon en retmesaĝo, kiun ni sendas al via nova adreso!"
 
-#: settings.php:139
+#: settings.php:145
 msgid "Feed abonnieren"
 msgstr "Aboni fluon"
 
-#: settings.php:142
+#: settings.php:148
 msgid "Abonnieren"
 msgstr "Aboni"
 
-#: settings.php:145
+#: settings.php:151
 msgid "Abos"
 msgstr "Abonoj"
 
-#: settings.php:148
+#: settings.php:154
 msgid "Keine Feeds gefunden."
 msgstr "Neniuj fluoj trovitaj."
 
-#: settings.php:152
+#: settings.php:158
 msgid "Name"
 msgstr "Nomo"
 
-#: settings.php:153
+#: settings.php:159
 msgid "Alias"
 msgstr "Alinomo"
 
-#: settings.php:154
-#: settings.php:161
+#: settings.php:160
+#: settings.php:167
 msgid "Löschen"
 msgstr "Forviŝi"
 
-#: settings.php:161
+#: settings.php:167
 msgid "Alias setzen"
 msgstr "Meti alinomon."
 
-#: settings.php:169
+#: settings.php:175
 msgid "Desktop Notifications"
 msgstr "Desktop Notifikado"
 
-#: settings.php:171
+#: settings.php:177
 msgid "Nicht wundern: Einstellung wird nur für diesen Computer gespeichert (als Cookie)."
 msgstr "Ni miru: Agordo ne estas savita por tiu-ĉi komputilo (per kuketo)."
 
-#: settings.php:173
+#: settings.php:179
 msgid "Desktop Notifications aktivieren"
 msgstr "Aktivigi Desktop Notifikadon"
 
-#: settings.php:174
+#: settings.php:180
 msgid "Desktop Notifications deaktivieren"
 msgstr "Malaktivigi Desktop Notifikadon"
 
-#: settings.php:187
+#: settings.php:193
 msgid "Test"
 msgstr "Testo"
 
-#: settings.php:187
+#: settings.php:193
 msgid "erfolgreich"
 msgstr "sukcesa"
-
-#: sticky.php:8
-msgid "Gemerkte Artikel"
-msgstr "Memorigitaj artikoloj"
-
-#: sticky.php:9
-msgid "Alle entfernen"
-msgstr "Forigi ĉiujn"
-
-#: sticky.php:68
-msgid "Du hast dir keine Einträge gemerkt!"
-msgstr "Vi ne memorigis artikolojn!"
-
-#: sticky.php:75
-msgid "aus Merkliste entfernen"
-msgstr "malmemorigi"
 
