@@ -62,11 +62,11 @@ function fetch_feedurl($url) {
 		if(strpos($nsl, 'NXDOMAIN') !== false) return false;
 	}
 	if($uri['scheme'] == 'https')
-		$fp = fsockopen('ssl://'.$ip, ((intval($uri['port']) > 0) ? $uri['port'] : 443), $err, $errn, 20);
+		$fp = @fsockopen('ssl://'.$ip, ((intval($uri['port']) > 0) ? $uri['port'] : 443), $err, $errn, 20);
 	else
-		$fp = fsockopen($ip, ((intval($uri['port']) > 0) ? $uri['port'] : 80), $err, $errn, 20);
+		$fp = @fsockopen($ip, ((intval($uri['port']) > 0) ? $uri['port'] : 80), $err, $errn, 20);
 	if (!$fp) {
-		return $url;
+		return false;
 	} else {
 		$path = "";
 		if(isset($uri['path']) && !empty($uri['path'])) $path .= $uri['path'];
