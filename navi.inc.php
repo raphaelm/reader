@@ -69,11 +69,11 @@ if (isset($_SESSION['loggedin_as'])) {
 		  <a href="index.php"><img src="images/logo.png" id="logo" /></a>
 		  <div id="navi">
 		  <ul>
-		  <li id="feednavi_all"><a href="all.php"><img src="images/newspaper.png" class="favicon" alt="" /> <span class="text">'._('Alle Feeds').' <span class="unread unreadcount_all" id="unreadcount_all">'.($unread["all"] > 0 ? '('.$unread["all"].')': '').'</span></span></a></li>
-		  <li><a href="sticky.php"><img src="images/star.png" class="favicon" alt="" /> <span class="text">'._('Merkliste').' <span class="unread unreadcount_sticky" id="unreadcount_sticky">'.($sticky > 0 ? '('.$sticky.')': '').'</span></span></a></li>
-		  <li><a href="settings.php"><img src="images/wrench.png" class="favicon" alt="" /> <span class="text">'._('Einstellungen').'</span></a></li>
-		  <li><a href="logout.php"><img src="images/door_out.png" class="favicon" alt="" /> <span class="text">'._('Ausloggen').'</span></a></li>
-		  <li class="feednavi_hr"></li>
+		  <li id="feednavi_all" class="donthide"><a href="all.php"><img src="images/newspaper.png" class="favicon" alt="" /> <span class="text">'._('Alle Feeds').' <span class="unread unreadcount_all" id="unreadcount_all">'.($unread["all"] > 0 ? '('.$unread["all"].')': '').'</span></span></a></li>
+		  <li class="donthide"><a href="sticky.php"><img src="images/star.png" class="favicon" alt="" /> <span class="text">'._('Merkliste').' <span class="unread unreadcount_sticky" id="unreadcount_sticky">'.($sticky > 0 ? '('.$sticky.')': '').'</span></span></a></li>
+		  <li class="donthide"><a href="settings.php"><img src="images/wrench.png" class="favicon" alt="" /> <span class="text">'._('Einstellungen').'</span></a></li>
+		  <li class="donthide"><a href="logout.php"><img src="images/door_out.png" class="favicon" alt="" /> <span class="text">'._('Ausloggen').'</span></a></li>
+		  <li class="feednavi_hr donthide"></li>
 		  ';
 		  
 	$feeds_qry = mysql_query("SELECT `feedid`, `feedname`, `lastupdate` FROM `view_feed_subscriptions` WHERE `userid` =". $_SESSION['loggedin_as']. " AND feedid > 0 ORDER by `feedname` asc");
@@ -89,8 +89,10 @@ if (isset($_SESSION['loggedin_as'])) {
 			echo '</span></a></li>';
 		}
 	}
-	echo '<li class="feednavi_hr"></li>
-		  <li id="infoline">'._('Entwickler und Betreiber:').' <a href="http://geeksfactory.de" target="_blank">geek\'s factory</a><br /><a href="http://git.geeksfactory.de/reader.git" target="_blank">get the source!</a><br />'._('Icons von').' <a href="http://famfamfam.com" target="_blank">famfamfam.com</a></li></ul>
+	echo '<li class="collapse"><a href="#">'._('Zeige nur Ungelesenes').'</a></li>';
+	echo '<li class="uncollapse"><a href="#">'._('Zeige alle Feeds').'</a></li>';
+	echo '<li class="feednavi_hr donthide"></li>
+		  <li id="infoline" class="donthide">'._('Entwickler und Betreiber:').' <a href="http://geeksfactory.de" target="_blank">geek\'s factory</a><br /><a href="http://git.geeksfactory.de/reader.git" target="_blank">get the source!</a><br />'._('Icons von').' <a href="http://famfamfam.com" target="_blank">famfamfam.com</a></li></ul>
 		  </div>
 		  </div>';
 }

@@ -101,6 +101,10 @@ a img, a:hover img, a:visited img
 		margin-top: 4px;
 		margin-bottom: 4px;
 }
+.collapse, .uncollapse {
+	text-align: center;
+	font-size: 11px;
+}
 a, 
 a:link, 
 a:active, 

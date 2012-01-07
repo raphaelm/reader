@@ -5,7 +5,7 @@ var title = '';
 var unread = 0;
 var focused = true;
 var noti = false;
-	
+
 	
 function createCookie(name,value,days) {
 	if (days) {
@@ -171,6 +171,22 @@ function dashboardAddFeed(){
 	$("#inputfeedurl").focus();
 	dashboardAddFeedActive = true;
 }
+function collapsing(){
+	$(".uncollapse").show();
+	$(".collapse").hide();
+	$("#navi li").each(function(key, value){
+		if(!$(value).hasClass("donthide")){
+			span = $(value).children("a").children("span.text").children("span.unread");
+			if(span.length == 1){
+				if(span.html() == ""){
+					$(value).hide();
+				}else{
+					$(value).show();
+				}
+			}
+		}
+	});
+}
 $(document).ready(function(){
 			
 	$('#right-col').scroll(function () { 
@@ -183,6 +199,25 @@ $(document).ready(function(){
 	
 	$(".dashboardbox.addfeed").bind("click", dashboardAddFeed);
 	
+	if(readCookie("collapse") == "auto"){
+		collapsing();
+	}else{
+		$(".collapse").show();
+		$(".uncollapse").hide();
+	}
+	$(".collapse").bind("click", function(){
+		createCookie("collapse", "auto", 365);
+		collapsing();
+		$(".uncollapse").show();
+		$(".collapse").hide();
+	});
+	$(".uncollapse").bind("click", function(){
+		eraseCookie("collapse");
+		$("#navi li").show();
+		$(".collapse").show();
+		$(".uncollapse").hide();
+	});
+		
 	title = $("title").html();
 	loadUnreadCount();
 	window.setTimeout('loadUnreadCount()', 60000);

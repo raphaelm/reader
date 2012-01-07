@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfreader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-07 12:23+0100\n"
+"POT-Creation-Date: 2012-01-07 18:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,7 +33,7 @@ msgstr ""
 msgid "Alles als gelesen markieren"
 msgstr ""
 
-#: all.php:18
+#: all.php:18 dashboard.php:14
 msgid ""
 "Wir leiden derzeit leider unter einem technischen Problem und hoffen, dass "
 "dieses bald behoben werden kann."
@@ -83,17 +83,17 @@ msgstr ""
 msgid "Startseite"
 msgstr ""
 
-#: dashboard.php:10
+#: dashboard.php:21
 #, php-format
 msgid "%s neue Beiträge in deinen Feeds"
 msgstr ""
 
-#: dashboard.php:11
+#: dashboard.php:22
 #, php-format
 msgid "%s Beiträge auf deiner Merkliste"
 msgstr ""
 
-#: dashboard.php:12
+#: dashboard.php:23
 msgid "Neuen Feed abonnieren"
 msgstr ""
 
@@ -245,19 +245,27 @@ msgstr ""
 msgid "Einstellungen"
 msgstr ""
 
-#: navi.inc.php:87 settings.php:165
+#: navi.inc.php:87 settings.php:172
 msgid "Fehler"
 msgstr ""
 
-#: navi.inc.php:87 settings.php:165
+#: navi.inc.php:87 settings.php:172
 msgid "Dieser Feed konnte kürzlich nicht erfolgreich abgerufen werden."
 msgstr ""
 
-#: navi.inc.php:93
-msgid "Entwickler und Betreiber:"
+#: navi.inc.php:92
+msgid "Zeige nur Ungelesenes"
 msgstr ""
 
 #: navi.inc.php:93
+msgid "Zeige alle Feeds"
+msgstr ""
+
+#: navi.inc.php:95
+msgid "Entwickler und Betreiber:"
+msgstr ""
+
+#: navi.inc.php:95
 msgid "Icons von"
 msgstr ""
 
@@ -291,55 +299,55 @@ msgstr ""
 msgid "Abbrechen"
 msgstr ""
 
-#: settings.php:26
+#: settings.php:30
 msgid "Deine E-Mail-Adresse wurde erfolgreich geändert."
 msgstr ""
 
-#: settings.php:31
+#: settings.php:36
 msgid "Es werden nur http:// und https://-URLs akzeptiert."
 msgstr ""
 
-#: settings.php:35
+#: settings.php:40
 msgid ""
 "Der Server, auf dem sich der Feed befindet, konnte nicht erreicht werden. "
 "Versuche es später erneut."
 msgstr ""
 
-#: settings.php:37
+#: settings.php:42
 msgid ""
 "Dein Feed wurde erfolgreich hinzugefügt. Nach dem nächsten Feed-Update (in "
 "spätestens 5 Minuten) wird dann links in der Leiste auch sein korrekter "
 "Titel angezeigt."
 msgstr ""
 
-#: settings.php:40
+#: settings.php:45
 msgid "Du hast diesen Feed bereits abonniert."
 msgstr ""
 
-#: settings.php:49
+#: settings.php:55
 msgid "Dein Abonnement des Feeds wurde erfolgreich entfernt."
 msgstr ""
 
-#: settings.php:62
+#: settings.php:68
 msgid "Das neue Passwort muss zweimal gleich eingegeben werden."
 msgstr ""
 
-#: settings.php:67
+#: settings.php:73
 msgid "Das Passwort wurde geändert."
 msgstr ""
 
-#: settings.php:74
+#: settings.php:80
 #, php-format
 msgid ""
 "„%s“ ist keine gültige E-Mail-Adresse. Wenn du das anders siehst, "
 "kontaktiere uns bitte."
 msgstr ""
 
-#: settings.php:77
+#: settings.php:83
 msgid "Bestätigung der Änderung der E-Mail-Adresse"
 msgstr ""
 
-#: settings.php:77
+#: settings.php:83
 #, php-format
 msgid ""
 "Hallo!\n"
@@ -350,109 +358,109 @@ msgid ""
 "%s"
 msgstr ""
 
-#: settings.php:84
+#: settings.php:90
 #, php-format
 msgid "Es wurde eine Bestätigung zur Änderung der Mailadresse an %s versandt."
 msgstr ""
 
-#: settings.php:90
+#: settings.php:96
 msgid "Das aktuelle Passwort wurde nicht korrekt eingegeben!"
 msgstr ""
 
-#: settings.php:101
+#: settings.php:107
 #, php-format
 msgid "Deine Sprache wurde auf %s umgestellt."
 msgstr ""
 
-#: settings.php:107
+#: settings.php:113
 msgid "Lokalisierung"
 msgstr ""
 
-#: settings.php:114 settings.php:140 settings.php:211
+#: settings.php:120 settings.php:146 settings.php:218
 msgid "Speichern"
 msgstr ""
 
-#: settings.php:117
+#: settings.php:123
 msgid "Persönliche Einstellungen"
 msgstr ""
 
-#: settings.php:122
+#: settings.php:128
 msgid "Aktuelles Passwort:"
 msgstr ""
 
-#: settings.php:126
+#: settings.php:132
 msgid "Neues Passwort:"
 msgstr ""
 
-#: settings.php:130
+#: settings.php:136
 msgid "Neues Passwort wiederholen:"
 msgstr ""
 
-#: settings.php:134
+#: settings.php:140
 msgid "E-Mail-Adresse:"
 msgstr ""
 
-#: settings.php:136
+#: settings.php:142
 msgid ""
 "Nicht wundern: Nachdem du deine E-Mail-Adresse geändert hast, wird hier "
 "weiterhin deine alte Adresse stehen, <br />bis du einen Link in einer E-"
 "Mail, die wir an deine neue Adresse senden, angeklickt hast!"
 msgstr ""
 
-#: settings.php:145
+#: settings.php:151
 msgid "Feed abonnieren"
 msgstr ""
 
-#: settings.php:148
+#: settings.php:155
 msgid "Abonnieren"
 msgstr ""
 
-#: settings.php:151
+#: settings.php:158
 msgid "Abos"
 msgstr ""
 
-#: settings.php:154
+#: settings.php:161
 msgid "Keine Feeds gefunden."
 msgstr ""
 
-#: settings.php:158
+#: settings.php:165
 msgid "Name"
 msgstr ""
 
-#: settings.php:159
+#: settings.php:166
 msgid "Alias"
 msgstr ""
 
-#: settings.php:160 settings.php:167
+#: settings.php:167 settings.php:174
 msgid "Löschen"
 msgstr ""
 
-#: settings.php:167
+#: settings.php:174
 msgid "Alias setzen"
 msgstr ""
 
-#: settings.php:175
+#: settings.php:182
 msgid "Desktop Notifications"
 msgstr ""
 
-#: settings.php:177
+#: settings.php:184
 msgid ""
 "Nicht wundern: Einstellung wird nur für diesen Computer gespeichert (als "
 "Cookie)."
 msgstr ""
 
-#: settings.php:179
+#: settings.php:186
 msgid "Desktop Notifications aktivieren"
 msgstr ""
 
-#: settings.php:180
+#: settings.php:187
 msgid "Desktop Notifications deaktivieren"
 msgstr ""
 
-#: settings.php:193
+#: settings.php:200
 msgid "Test"
 msgstr ""
 
-#: settings.php:193
+#: settings.php:200
 msgid "erfolgreich"
 msgstr ""
