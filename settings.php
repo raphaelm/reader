@@ -11,6 +11,9 @@ if (isset($_SESSION['loggedin_as'])) {
 	
 	function add_feed($url){
 		$url = fetch_feedurl(trim($url));
+		if(!$url){
+			return false;
+		}
 		$feedname = fetch_feedtitle($url);
 		if($feedname == '') $feedname = htmlspecialchars($url);
 		mysql_query("INSERT IGNORE INTO `feeds` (`name`, `url`, `lastupdate`) VALUES ('". mysql_real_escape_string($feedname). "', '". mysql_real_escape_string($url)."', ".time().")");
@@ -28,7 +31,10 @@ if (isset($_SESSION['loggedin_as'])) {
 				echo '<p class="error">'._('Es werden nur http:// und https://-URLs akzeptiert.').'</p>';
 			}else{
 				$add = add_feed($_POST['feedurl']);
-				echo '<p class="okay">'._('Dein Feed wurde erfolgreich hinzugefügt. Nach dem nächsten Feed-Update (in spätestens 5 Minuten) wird dann links in der Leiste auch sein korrekter Titel angezeigt.').'</p>';
+				if(!$add)
+					echo '<p class="error">'._('Der Server, auf dem sich der Feed befindet, konnte nicht erreicht werden. Versuche es später erneut.').'</p>';
+				else
+					echo '<p class="okay">'._('Dein Feed wurde erfolgreich hinzugefügt. Nach dem nächsten Feed-Update (in spätestens 5 Minuten) wird dann links in der Leiste auch sein korrekter Titel angezeigt.').'</p>';
 			}
 		}else
 			echo '<p class="error">'._('Du hast diesen Feed bereits abonniert.').'</p>';
