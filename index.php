@@ -11,7 +11,11 @@ if (isset($_POST['password'])) {
 	if ((mysql_num_rows($login_qry) == 1) or isset($_SESSION['loggedin_as'])) {
 		$userid = mysql_fetch_assoc($login_qry);
 		$_SESSION['loggedin_as'] = $userid["id"];
-		header('Location: '.(is_mobile() ? 'm_' : '').'all.php'); exit;            
+		if(is_mobile()){
+			header('Location: m_all.php'); exit;  
+		}else{
+			header('Location: dashboard.php'); exit;  
+		}
 	} else {
 		require_once('headerl.php');
 		echo "<div style='text-align: center' class='wrongpw'>"._("Nutzer nicht gefunden oder Passwort falsch.")."</div>";
@@ -19,7 +23,11 @@ if (isset($_POST['password'])) {
 		require_once('footl.php'); 
 	}
 } elseif(isset($_SESSION['loggedin_as'])) {
-	header('Location: '.(isset($_REQUEST['mobile']) ? 'm_' : '').'all.php'); exit;  
+	if(isset($_REQUEST['mobile'])){
+		header('Location: m_all.php'); exit;  
+	}else{
+		header('Location: dashboard.php'); exit;  
+	}
 } else {
 	require_once('headerl.php');
 	require_once('login.php');

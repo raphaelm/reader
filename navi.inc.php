@@ -69,8 +69,8 @@ if (isset($_SESSION['loggedin_as'])) {
 		  <a href="index.php"><img src="images/logo.png" id="logo" /></a>
 		  <div id="navi">
 		  <ul>
-		  <li id="feednavi_all"><a href="all.php"><img src="images/newspaper.png" class="favicon" alt="" /> <span class="text">'._('Alle Feeds').' <span class="unread" id="unreadcount_all">'.($unread["all"] > 0 ? '('.$unread["all"].')': '').'</span></span></a></li>
-		  <li><a href="sticky.php"><img src="images/star.png" class="favicon" alt="" /> <span class="text">'._('Merkliste').' <span class="unread" id="unreadcount_sticky">'.($sticky > 0 ? '('.$sticky.')': '').'</span></span></a></li>
+		  <li id="feednavi_all"><a href="all.php"><img src="images/newspaper.png" class="favicon" alt="" /> <span class="text">'._('Alle Feeds').' <span class="unread unreadcount_all" id="unreadcount_all">'.($unread["all"] > 0 ? '('.$unread["all"].')': '').'</span></span></a></li>
+		  <li><a href="sticky.php"><img src="images/star.png" class="favicon" alt="" /> <span class="text">'._('Merkliste').' <span class="unread unreadcount_sticky" id="unreadcount_sticky">'.($sticky > 0 ? '('.$sticky.')': '').'</span></span></a></li>
 		  <li><a href="settings.php"><img src="images/wrench.png" class="favicon" alt="" /> <span class="text">'._('Einstellungen').'</span></a></li>
 		  <li><a href="logout.php"><img src="images/door_out.png" class="favicon" alt="" /> <span class="text">'._('Ausloggen').'</span></a></li>
 		  <li class="feednavi_hr"></li>
@@ -82,7 +82,7 @@ if (isset($_SESSION['loggedin_as'])) {
 	} else {
 		while ($row = mysql_fetch_assoc($feeds_qry)) {
 			echo '<li id="feednavi_'.$row["feedid"].'"><a href="feeds.php?feedid='. $row["feedid"]. '">';
-			echo '<img class="favicon" src="favicons/'. $row["feedid"]. '.png" alt="" /> <span class="text">'. utf_correct($row["feedname"]).' <span id="unreadcount_'.$row["feedid"].'" class="unread">'.($unread[$row["feedid"]] > 0 ? '('.$unread[$row["feedid"]].')': '').'</span>';
+			echo '<img class="favicon" src="favicons/'. $row["feedid"]. '.png" alt="" /> <span class="text">'. utf_correct($row["feedname"]).' <span id="unreadcount_'.$row["feedid"].'" class="unread unreadcount_'.$row["feedid"].'">'.($unread[$row["feedid"]] > 0 ? '('.$unread[$row["feedid"]].')': '').'</span>';
 			if(time()-$row["lastupdate"] > 1000){
 				echo ' <img src="images/error.png" class="erroricon" alt="'._('Fehler').'" title="'._('Dieser Feed konnte kürzlich nicht erfolgreich abgerufen werden.').'" />';
 			}
