@@ -1,3 +1,4 @@
+var collapse = false;
 var start = 0;
 var limit = 30;
 var scrollandloadmore = true;
@@ -56,6 +57,8 @@ function parseunreadcount(data){
 		unread = data.unread.all;
 		window.setTimeout('loadUnreadCount()', 30000);
 	}
+	if(collapse)
+		collapsing();
 }
 
 function loadUnreadCount(){
@@ -201,17 +204,20 @@ $(document).ready(function(){
 	
 	if(readCookie("collapse") == "auto"){
 		collapsing();
+		collapse = true;
 	}else{
 		$(".collapse").show();
 		$(".uncollapse").hide();
 	}
 	$(".collapse").bind("click", function(){
+		collapse = true;
 		createCookie("collapse", "auto", 365);
 		collapsing();
 		$(".uncollapse").show();
 		$(".collapse").hide();
 	});
 	$(".uncollapse").bind("click", function(){
+		collapse = false;
 		eraseCookie("collapse");
 		$("#navi li").show();
 		$(".collapse").show();
