@@ -29,6 +29,7 @@ CREATE TABLE IF NOT EXISTS `feeds_entries` (
   `title` varchar(255) NOT NULL,
   `url` varchar(255) NOT NULL,
   `guid` varchar(255) NOT NULL,
+  `contenthash` varchar(255) NULL,
   `timestamp` int(11) NOT NULL,
   `summary` longtext NOT NULL COMMENT 'zlib compressed',
   PRIMARY KEY (`article_id`),
