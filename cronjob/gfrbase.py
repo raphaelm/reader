@@ -13,6 +13,7 @@ import os, sys
 import urlparse 
 import urllib
 import socket
+import threading
 
 class GFR:
 	def __init__(self):
@@ -41,25 +42,63 @@ class GFR:
 			ret2.append(r[1])
 		return (tuple(ret), tuple(ret2))
 		
-	def getFeeds(self):
+	def getFeeds(self, threads=1):
 		(self.guids, self.hashs) = self.getEntryGuids()
-		for feed in self.feedlist:
-			feed_id = int(feed[0])
-			try:
-				feed_title = feed[1].encode("utf-8", "ignore")
-			except UnicodeDecodeError:
-				feed_title = feed[1]
-			except UnicodeError:
-				feed_title = feed[1]
-			feed_url = feed[2]
-			try:
-				self.getFeed(feed_id, feed_title, feed_url)
-			except KeyboardInterrupt:
-				sys.exit(0)
-			except:
-				print "error on parsing feed %s" % feed_id
+		
+		if threads == 1:
+			for feed in self.feedlist:
+				self.doAFeed(feed)
+		else:
+			self.todo = self.feedlist
+			self.threads = []
+			self.todo_lock = threading.Lock()
+			for i in xrange(threads):
+				t = threading.Thread(target=self.worker)
+				t.start()
+				self.threads.append(t)
+				
+			for t in self.threads:
+				t.join()
+				
+	def worker(self):
+		
+		conn = MySQLdb.connect(host = config.dbhostname,
+						   user = config.dbusername,
+						   passwd = config.dbpassword,
+						   db = config.database)
+		cursor = conn.cursor()
+		
+		while True:
+			self.todo_lock.acquire()
+			if len(self.todo) == 0:
+				self.todo_lock.release()
+				return True
+			feed = self.todo[0]
+			self.todo = self.todo[1:]
+			self.todo_lock.release()
+			self.doAFeed(feed, cursor)
+		
+	def doAFeed(self, feed, cursor = None):
+		feed_id = int(feed[0])
+		try:
+			feed_title = feed[1].encode("utf-8", "ignore")
+		except UnicodeDecodeError:
+			feed_title = feed[1]
+		except UnicodeError:
+			feed_title = feed[1]
+		feed_url = feed[2]
+		try:
+			self.getFeed(feed_id, feed_title, feed_url, cursor)
+		except KeyboardInterrupt:
+			sys.exit(0)
+		except:
+			print "Error parsing feed %s" % feed_url
 			
-	def getFeed(self, feed_id, feed_title, feed_url):
+	def getFeed(self, feed_id, feed_title, feed_url, cursor = None):
+		
+		if cursor is None:
+			cursor = self.cursor
+		
 		start = time.time()
 	
 		try:
@@ -79,14 +118,14 @@ class GFR:
 		if f.version == '':
 			return False
 		else:
-			self.cursor.execute("UPDATE `feeds` Set `lastupdate` = %s WHERE `id` = %s", (time.time(), feed_id))
+			cursor.execute("UPDATE `feeds` Set `lastupdate` = %s WHERE `id` = %s", (time.time(), feed_id))
 			
 		try:
 			if f.feed.title.encode("utf-8") != feed_title and not f.feed.title.startswith("http://"): # feed_title ist anders als letztes Mal
 				feed_title = f.feed.title
 				if feed_title.strip() == '':
 					feed_title = feed_url
-				self.cursor.execute("UPDATE `feeds` Set `name` = %s WHERE `id` = %s", (feed_title, feed_id))
+				cursor.execute("UPDATE `feeds` Set `name` = %s WHERE `id` = %s", (feed_title, feed_id))
 		except:
 			#print "Error parsing title for feed %s" % feed_url
 			pass
@@ -145,18 +184,18 @@ class GFR:
 				
 				if entry_guid not in self.guids: # no duplicates
 					try:
-						self.cursor.execute("INSERT INTO `feeds_entries` (`feed_id`, `title`, `url`, `guid`, `contenthash`, `timestamp`, `summary`) VALUES (%s, %s, %s, %s, %s, %s, %s)", qp)
+						cursor.execute("INSERT INTO `feeds_entries` (`feed_id`, `title`, `url`, `guid`, `contenthash`, `timestamp`, `summary`) VALUES (%s, %s, %s, %s, %s, %s, %s)", qp)
 					finally:
 						pass
 				elif entry_contenthash not in self.hashs:
 					try:
-						self.cursor.execute("REPLACE INTO `feeds_entries` (`feed_id`, `title`, `url`, `guid`, `contenthash`, `timestamp`, `summary`) VALUES (%s, %s, %s, %s, %s, %s, %s)", qp)
+						cursor.execute("REPLACE INTO `feeds_entries` (`feed_id`, `title`, `url`, `guid`, `contenthash`, `timestamp`, `summary`) VALUES (%s, %s, %s, %s, %s, %s, %s)", qp)
 					finally:
 						pass
 						
 		end = time.time()
 		d = end-start
 		if d > 5:
-			self.cursor.execute("UPDATE `feeds` Set `slower` = 1 WHERE `id` = %s", (feed_id))
+			cursor.execute("UPDATE `feeds` Set `slower` = 1 WHERE `id` = %s", (feed_id))
 		else:
-			self.cursor.execute("UPDATE `feeds` Set `slower` = 0 WHERE `id` = %s", (feed_id))
+			cursor.execute("UPDATE `feeds` Set `slower` = 0 WHERE `id` = %s", (feed_id))
