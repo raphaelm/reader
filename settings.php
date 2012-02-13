@@ -125,19 +125,19 @@ ignoriere diese E-Mail einfach.
 	echo '<form action="settings.php" method="post">
 		<table>
 			<tr>
-				<td valign="top">'._('Aktuelles Passwort:').'</td>
+				<td class="top">'._('Aktuelles Passwort:').'</td>
 				<td><input type="password" name="oldpw" value="" id="" /></td>
 			</tr>
 			<tr>
-				<td valign="top">'._('Neues Passwort:').'</td>
+				<td class="top">'._('Neues Passwort:').'</td>
 				<td><input type="password" name="newpw" value="" id="" /></td>
 			</tr>
 			<tr>
-				<td valign="top">'._('Neues Passwort wiederholen:').'</td>
+				<td class="top">'._('Neues Passwort wiederholen:').'</td>
 				<td><input type="password" name="newpw2" value="" id="" /></td>
 			</tr>
 			<tr>
-				<td valign="top">'._('E-Mail-Adresse:').'</td>
+				<td class="top">'._('E-Mail-Adresse:').'</td>
 				<td><input type="text" name="mail" value="'.$me->mail.'" id="" />
 				<p class="info"><small>'._('Nicht wundern: Nachdem du deine E-Mail-Adresse geändert hast, wird hier weiterhin deine alte Adresse stehen, <br />bis du einen Link in einer E-Mail, die wir an deine neue Adresse senden, angeklickt hast!').'</small></p></td>
 			</tr>
@@ -160,11 +160,11 @@ ignoriere diese E-Mail einfach.
 	if(mysql_num_rows($feeds_qry) == 0){
 		echo "<p>"._("Keine Feeds gefunden.")."</p>";
 	} else {
-		echo '<table border="0">
+		echo '<table class="abos">
 				<tr>
 				  <th>'._('Name').'</th>
 				  <th>'._('Alias').'</th>
-				  <th>'._('Löschen').'</th>
+				  <th></th>
 				</tr>';
 		while ($row = mysql_fetch_assoc($feeds_qry)) {
 			echo '<tr><td id="title_'.$row["feedid"].'">';
@@ -183,8 +183,8 @@ ignoriere diese E-Mail einfach.
 		<p class="info">
 			<?php echo _('Nicht wundern: Einstellung wird nur für diesen Computer gespeichert (als Cookie).'); ?>
 		</p>
-		<p><a href="javascript:void(0)" id="actnot"><?php echo _('Desktop Notifications aktivieren'); ?></a>
-		<a href="javascript:void(0)" id="deanot"><?php echo _('Desktop Notifications deaktivieren'); ?></a></p>
+		<p><input type="button" id="actnot" class="biggerbtn" value="<?php echo _('Desktop Notifications aktivieren'); ?>" />
+		<input type="button" id="deanot" class="biggerbtn" value="<?php echo _('Desktop Notifications deaktivieren'); ?>" /></p>
 	</div>	  
 	<script type="text/javascript">
 		if (window.webkitNotifications) {
