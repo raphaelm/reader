@@ -174,6 +174,8 @@ class GFR:
 					entry_timestamp = time.mktime(entry_date.timetuple())
 				except KeyError:
 					entry_timestamp = time.time()
+				except TypeError:
+					entry_timestamp = time.time()
 					
 				if entry_timestamp < time.time() - 2592000:
 					continue
