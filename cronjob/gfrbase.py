@@ -54,6 +54,8 @@ class GFR:
 			feed_url = feed[2]
 			try:
 				self.getFeed(feed_id, feed_title, feed_url)
+			except KeyboardInterrupt:
+				sys.exit(0)
 			except:
 				print "error on parsing feed %s" % feed_id
 			
