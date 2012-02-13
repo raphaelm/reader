@@ -32,15 +32,17 @@ class GFR:
 		return self.cursor.fetchall()
 	
 	def getEntryGuids(self):
-		self.cursor.execute("SELECT `guid` FROM `feeds_entries`")
+		self.cursor.execute("SELECT `guid`, `contenthash` FROM `feeds_entries`")
 		res = self.cursor.fetchall()
 		ret = []
+		ret2 = []
 		for r in res:
 			ret.append(r[0])
-		return ret
+			ret2.append(r[1])
+		return (tuple(ret), tuple(ret2))
 		
 	def getFeeds(self):
-		self.guids = self.getEntryGuids()
+		(self.guids, self.hashs) = self.getEntryGuids()
 		for feed in self.feedlist:
 			feed_id = int(feed[0])
 			try:
@@ -109,9 +111,19 @@ class GFR:
 					entry_link = entry['link'].encode("utf-8")
 				except KeyError:
 					entry_link = 'http://example.org/?invalid'
-						
-				entry_guid = hashlib.sha1(entry_link+entry_title+str(feed_id)).hexdigest()
 					
+				entry_contenthash = hashlib.sha1(entry_summary).hexdigest()
+				
+				# Create a unique identifier for the post
+				entry_guid = None
+				try:
+					# The feed provides one? Awesome!
+					entry_guid = entry['id'].encode("utf-8")
+				finally:
+					# The feed doesn't? We choose.
+					if entry_guid is None or len(entry_guid) < 10:
+						entry_guid = hashlib.sha1(entry_link+entry_title+str(feed_id)).hexdigest()
+						
 				try:
 					entry_updated = entry['updated_parsed']
 					entry_date = datetime.datetime(entry_updated[0], entry_updated[1], 
@@ -127,12 +139,19 @@ class GFR:
 				
 				entry_summary = zlib.compress(entry_summary, 9)
 				
-				qp = (feed_id, entry_title, entry_link, entry_guid, int(entry_timestamp), entry_summary)
-				if entry_guid not in self.guids:
+				qp = (feed_id, entry_title, entry_link, entry_guid, entry_contenthash, int(entry_timestamp), entry_summary)
+				
+				if entry_guid not in self.guids: # no duplicates
 					try:
-						self.cursor.execute("INSERT INTO `feeds_entries` (`feed_id`, `title`, `url`, `guid`, `timestamp`, `summary`) VALUES (%s, %s, %s, %s, %s, %s)", qp)
+						self.cursor.execute("INSERT INTO `feeds_entries` (`feed_id`, `title`, `url`, `guid`, `contenthash`, `timestamp`, `summary`) VALUES (%s, %s, %s, %s, %s, %s, %s)", qp)
 					finally:
 						pass
+				elif entry_contenthash not in self.hashs:
+					try:
+						self.cursor.execute("REPLACE INTO `feeds_entries` (`feed_id`, `title`, `url`, `guid`, `contenthash`, `timestamp`, `summary`) VALUES (%s, %s, %s, %s, %s, %s, %s)", qp)
+					finally:
+						pass
+						
 		end = time.time()
 		d = end-start
 		if d > 5:
