@@ -51,7 +51,7 @@ Achtung! Der Link gilt nur bis heute abend, 23:59!
 <div id="header"></div>
 <div id="content">
 	<form id="login" action="lostpw.php" method="POST">
-		<input class="inputl" type="text" name="username" value="<?php echo _('Nutzername oder E-Mail'); ?>" onfocus="if(this.value == '<?php echo _('Nutzername oder E-Mail'); ?>') this.value = ''" onblur="if(this.value == '') this.value = '<?php echo _('Nutzername oder E-Mail'); ?>'" />
+		<input class="inputl" type="text" name="username" value="" placeholder="<?php echo _('Nutzername oder E-Mail'); ?>" />
 		<input class="buttonl" type="submit" value="<?php echo _('Abschicken'); ?>" /> 
 	</form>
 	<a href="index.php" class="buttonl"><?php echo _('Zurück'); ?></a>

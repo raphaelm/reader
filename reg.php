@@ -16,19 +16,19 @@ if (!empty($_POST['regusername']) && !empty($_POST['regpassword']) && !empty($_P
 }
 if (!empty($_POST['website'])) {
 	echo '<div id="content2"><form id="login" action="register.php" method="POST">
-		<input class="inputl" type="text" name="regusername" value="'._('Nutzername').'" />
-		<input class="inputl" type="password" name="regpassword" value="'._('Passwort').'" />
-		<input class="inputl" type="text" name="regmail" value="'._('name@domain.tld').'" />
+		<input class="inputl" type="text" name="regusername" placeholder="'._('Nutzername').'" />
+		<input class="inputl" type="password" name="regpassword" placeholder="'._('Passwort').'" />
+		<input class="inputl" type="text" name="regmail" placeholder="'._('name@domain.tld').'" />
 		<input class="inputl" type="text" name="website" value="" style="display:none;"/>
 		<input class="buttonl" type="submit" value="'._('Registrieren.').'" /> 
 	</form></div>';      
 }else{
 	echo '<div id="header"></div><div id="content2">
 		<form id="login" action="register.php" method="POST">
-		  <input class="inputl" type="text" name="regusername" value="'._('Nutzername').'" />
-		  <input class="inputl" type="password" name="regpassword" value="'._('Passwort').'" />
-		  <input class="inputl" type="text" name="regmail" value="'._('name@domain.tld').'" />
-		  <input class="inputl" type="text" name="website" value="" style="display:none;"/>
+		  <input class="inputl" type="text" name="regusername" placeholder="'._('Nutzername').'" />
+		  <input class="inputl" type="password" name="regpassword" placeholder="'._('Passwort').'" />
+		  <input class="inputl" type="text" name="regmail" placeholder="'._('name@domain.tld').'" />
+		  <input class="inputl" type="text" name="website" placeholder="" style="display:none;"/>
 		  <input class="buttonl" type="submit" value="'._('Registrieren').'" /> 
 		</form>
 	  <a href="index.php" class="buttonl">'._('Abbrechen').'</a>
