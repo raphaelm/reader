@@ -15,6 +15,12 @@ require_once('setlocale.php');
 				echo '<link rel="stylesheet" type="text/css" href="style.css" />';
 		?>
 	  <script type="text/javascript" src="jquery.js"></script>
+	  <script type="text/javascript" src="jquery.placeholder.min.js"></script>
+	  <script type="text/javascript">
+		$(document).ready(function(){
+			$('input, textarea').placeholder();
+		});
+	  </script>
       <meta http-equiv="Content-Style-Type" content="text/css" />
   </head>
   <body>
