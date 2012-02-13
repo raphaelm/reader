@@ -177,11 +177,11 @@ a.feedlink {
 	text-align: center;
 	font-size: 16px;
 }
-#navi ul li#infoline {
+#navi ul li#infoline, p.about {
 	text-align: center;
 	font-size: 10px;
 }
-#navi ul li#infoline a {
+#navi ul li#infoline a, p.about {
 	display: inline;
 	padding: 0;
 	margin: 0;
