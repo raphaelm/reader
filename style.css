@@ -82,6 +82,8 @@ a
 	border: 0; 
 	border-style: none;
 	margin-bottom: 20px;
+	box-shadow: 0 0 6px 1px #888;
+	outline: none;
 }
 .buttonl
 {
@@ -114,6 +116,10 @@ a.buttonl, a.buttonl:hover
 	font-weight: none;
 	text-decoration: none;
 	margin-left: 20px;
+}
+.buttonl:active, .buttonl:focus {
+	box-shadow: 0 0 6px 1px #888;
+	outline: none;
 }
 #login
 {
