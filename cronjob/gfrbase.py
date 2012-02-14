@@ -192,7 +192,6 @@ class GFR:
 				except KeyError:
 					try:
 						entry_summary = entry['summary'].encode("utf-8")
-						
 					except KeyError:
 						entry_summary = ''
 					
@@ -201,13 +200,16 @@ class GFR:
 				except KeyError:
 					entry_link = 'http://example.org/?invalid'
 					
-				entry_contenthash = hashlib.sha1(entry_summary).hexdigest()
+				if entry_summary != '':
+					entry_contenthash = hashlib.sha1(entry_summary).hexdigest()
+				else:
+					entry_contenthash = hashlib.sha1(entry_title).hexdigest()
 				
 				# Create a unique identifier for the post
 				entry_guid = None
 				try:
 					# The feed provides one? Awesome!
-					entry_guid = hashlib.sha1(entry['id'].encode("utf-8")).hexdigest()
+					entry_guid = hashlib.sha1(str(feed_id)+entry['id'].encode("utf-8")).hexdigest()
 				finally:
 					# The feed doesn't? We choose.
 					if entry_guid is None or len(entry_guid) < 10:
@@ -228,9 +230,9 @@ class GFR:
 				if entry_timestamp < time.time() - 2592000:
 					continue
 				
-				entry_summary = zlib.compress(entry_summary, 9)
+				entry_summary_zipped = zlib.compress(entry_summary, 9)
 				
-				qp = (feed_id, entry_title, entry_link, entry_guid, entry_contenthash, int(entry_timestamp), entry_summary)
+				qp = (feed_id, entry_title, entry_link, entry_guid, entry_contenthash, int(entry_timestamp), entry_summary_zipped)
 				if entry_guid not in self.guids: # no duplicates
 					try:
 						self._threaded_sql_exec("INSERT INTO `feeds_entries` (`feed_id`, `title`, `url`, `guid`, `contenthash`, `timestamp`, `summary`) VALUES (%s, %s, %s, %s, %s, %s, %s)", qp)
