@@ -15,7 +15,7 @@ if(is_mobile()){
 }else{
 	?>
 	<div id="header"></div>
-	<div id="content">
+	<div id="content" class="gradient">
 		<form id="login" action="index.php" method="POST">
 			<input class="inputl" type="text" name="username" id="username" value="" placeholder="<?php echo _('Nutzername') ?>" />
 			<input class="inputl" type="password" name="password" id="password" value="" placeholder="<?php echo _('Passwort') ?>" />

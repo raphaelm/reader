@@ -5,8 +5,8 @@ require_once('setlocale.php');
 <!DOCTYPE html>
 <html>
   <head>
-      <title><?php echo $title ?></title>
-      <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+		<title><?php echo $title ?></title>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 		<?php
 			if(is_mobile())
 				echo '<link rel="stylesheet" type="text/css" href="stylelm.css" />
@@ -14,13 +14,20 @@ require_once('setlocale.php');
 			else
 				echo '<link rel="stylesheet" type="text/css" href="style.css" />';
 		?>
-	  <script type="text/javascript" src="jquery.js"></script>
-	  <script type="text/javascript" src="jquery.placeholder.min.js"></script>
-	  <script type="text/javascript">
-		$(document).ready(function(){
-			$('input, textarea').placeholder();
-		});
-	  </script>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="jquery.placeholder.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('input, textarea').placeholder();
+			});
+		</script>
+		<!--[if gte IE 9]>
+			<style type="text/css">
+				.gradient {
+					filter: none;
+				}
+			</style>
+		<![endif]-->
       <meta http-equiv="Content-Style-Type" content="text/css" />
   </head>
   <body>
