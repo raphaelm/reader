@@ -214,8 +214,13 @@ ignoriere diese E-Mail einfach.
 		
 		function editalias(id){
 			alias = $("#alias_"+id).html();
-			if(alias == '') alias = $("#title_"+id+" a").html();
-			$("#alias_"+id).html('<form action="" id="editalias_'+id+'"><input type="text" class="alias" value="'+alias+'" /><input type="submit" value="<?php echo _('Speichern'); ?>" /></form>');
+			if(alias == ''){
+				alias = $("#title_"+id+" a").html();
+				orig = '';
+			}else{
+				orig = alias;
+			}
+			$("#alias_"+id).html('<form action="" id="editalias_'+id+'"><input type="text" class="alias" value="'+alias+'" /><input type="submit" value="<?php echo _('Speichern'); ?>" /><input type="button" onclick="$(\'#alias_'+id+'\').html(\''+orig+'\');$(\'#editaliaslink_'+id+'\').fadeIn();" value="<?php echo _('Abbrechen'); ?>" /></form>');
 			$("#editaliaslink_"+id).hide();
 			$("#editalias_"+id).bind('submit', function(){
 				newa = $("#alias_"+id+" input.alias").val();
