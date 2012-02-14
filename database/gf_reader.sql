@@ -13,9 +13,10 @@ CREATE TABLE IF NOT EXISTS `feeds` (
   `name` varchar(255) NOT NULL,
   `url` varchar(255) NOT NULL,
   `lastupdate` int(11) NOT NULL,
+  `slower` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `url` (`url`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=112 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=137 ;
 
 -- --------------------------------------------------------
 
@@ -29,12 +30,12 @@ CREATE TABLE IF NOT EXISTS `feeds_entries` (
   `title` varchar(255) NOT NULL,
   `url` varchar(255) NOT NULL,
   `guid` varchar(255) NOT NULL,
-  `contenthash` varchar(255) NULL,
+  `contenthash` varchar(255) DEFAULT NULL,
   `timestamp` int(11) NOT NULL,
   `summary` longtext NOT NULL COMMENT 'zlib compressed',
   PRIMARY KEY (`article_id`),
   UNIQUE KEY `guid` (`guid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=152646 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=169808 ;
 
 -- --------------------------------------------------------
 
@@ -87,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `locale` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
 
 -- --------------------------------------------------------
 
@@ -111,4 +112,3 @@ CREATE TABLE IF NOT EXISTS `view_feed_subscriptions` (
 DROP TABLE IF EXISTS `view_feed_subscriptions`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_feed_subscriptions` AS select `s`.`feedid` AS `feedid`,`f`.`lastupdate` AS `lastupdate`,`s`.`userid` AS `userid`,if((`s`.`alias` <> ''),`s`.`alias`,`f`.`name`) AS `feedname`,`s`.`alias` AS `alias`,`f`.`name` AS `origname`,`f`.`url` AS `feedurl` from (`feeds_subscription` `s` join `feeds` `f` on((`f`.`id` = `s`.`feedid`)));
-
