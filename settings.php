@@ -138,7 +138,7 @@ ignoriere diese E-Mail einfach.
 			</tr>
 			<tr>
 				<td class="top">'._('E-Mail-Adresse:').'</td>
-				<td><input type="text" name="mail" value="'.$me->mail.'" id="" />
+				<td><input type="text" name="mail" placeholder="'._('name@domain.tld').'" value="'.$me->mail.'" id="" />
 				<p class="info"><small>'._('Nicht wundern: Nachdem du deine E-Mail-Adresse geändert hast, wird hier weiterhin deine alte Adresse stehen, <br />bis du einen Link in einer E-Mail, die wir an deine neue Adresse senden, angeklickt hast!').'</small></p></td>
 			</tr>
 			<tr>
@@ -150,7 +150,7 @@ ignoriere diese E-Mail einfach.
 	?>
 	<h3><?php echo _('Feed abonnieren'); ?></h3>
 	<form id="addsub" action="settings.php" method="POST">
-	  <input type="text" name="feedurl" value="http://" />
+	  <input type="text" name="feedurl" placeholder="http://example.com/feed.rss" value="" />
 	  <input type="hidden" name="hash" value="<?php echo $s; ?>" />
 	  <input type="submit" value="<?php echo _('Abonnieren'); ?>" /> 
 	</form>
@@ -220,7 +220,7 @@ ignoriere diese E-Mail einfach.
 			}else{
 				orig = alias;
 			}
-			$("#alias_"+id).html('<form action="" id="editalias_'+id+'"><input type="text" class="alias" value="'+alias+'" /><input type="submit" value="<?php echo _('Speichern'); ?>" /><input type="button" onclick="$(\'#alias_'+id+'\').html(\''+orig+'\');$(\'#editaliaslink_'+id+'\').fadeIn();" value="<?php echo _('Abbrechen'); ?>" /></form>');
+			$("#alias_"+id).html('<form action="" id="editalias_'+id+'"><input type="text" class="alias" value="'+alias+'" /> <input type="submit" value="<?php echo _('Speichern'); ?>" /><input type="button" onclick="$(\'#alias_'+id+'\').html(\''+orig+'\');$(\'#editaliaslink_'+id+'\').fadeIn();" value="<?php echo _('Abbrechen'); ?>" /></form>');
 			$("#editaliaslink_"+id).hide();
 			$("#editalias_"+id).bind('submit', function(){
 				newa = $("#alias_"+id+" input.alias").val();
