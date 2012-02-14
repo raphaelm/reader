@@ -7,3 +7,4 @@ dbpassword = "testfoo";
 database = "gf_reader";
 icondir = "/var/www/reader.geeksfactory.de/html/favicons"
 maindir = "/var/www/reader.geeksfactory.de/html"
+checkforupdates = True

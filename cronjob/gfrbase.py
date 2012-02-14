@@ -38,8 +38,8 @@ class GFR:
 		except MySQLdb.Error, e:
 			print "Error %d: %s" % (e.args[0], e.args[1])
 			sys.exit(1)
-		
-		self.checkForUpdates()
+		if config.checkforupdates:
+			self.checkForUpdates()
 				
 	def checkForUpdates(self):
 		updateurl = "http://reader.geeksfactory.de/latest.txt"
