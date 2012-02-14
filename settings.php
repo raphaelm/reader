@@ -1,10 +1,10 @@
 <?php
 session_start();
 if (isset($_SESSION['loggedin_as'])) {
-	require_once("dbconnect.php"); 
-	require_once("functions.inc.php");
-	include('headeri.php');
-	include('navi.inc.php');
+	require_once 'includes/dbconnect.php';
+	require_once 'includes/functions.php';
+	require 'includes/application_header.php';
+	require 'includes/application_navi.php';
 	
 	echo '<div id="right-col">
 		  <div id="wrap"><h2>'._('Einstellungen').'</h2>';
@@ -237,7 +237,7 @@ ignoriere diese E-Mail einfach.
 	  <div id="right-gap"></div>
 	  <div class="clear"></div>
 	<?php
-	include('footl.php');
+	require 'includes/application_footer.php';
 } else {
 	header('Location: index.php'); exit;       
 }

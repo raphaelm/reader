@@ -1,6 +1,7 @@
 <?php 
-require_once('setlocale.php');
-include_once('functions.inc.php'); 
+require 'includes/setlocale.php';
+require_once 'config.inc.php';
+require_once 'includes/functions.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -9,13 +10,13 @@ include_once('functions.inc.php');
 		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 		<?php
 			if(is_mobile())
-				echo '<link rel="stylesheet" type="text/css" href="stylelm.css" />
+				echo '<link rel="stylesheet" type="text/css" href="style_mobile_login.css" />
 				  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />';
 			else
-				echo '<link rel="stylesheet" type="text/css" href="style.css" />';
+				echo '<link rel="stylesheet" type="text/css" href="style_login.css" />';
 		?>
-		<script type="text/javascript" src="jquery.js"></script>
-		<script type="text/javascript" src="jquery.placeholder.min.js"></script>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/jquery.placeholder.min.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function(){
 				$('input, textarea').placeholder();

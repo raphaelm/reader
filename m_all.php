@@ -2,9 +2,9 @@
 define('IS_MOBILE', true);
 session_start();
 if (isset($_SESSION['loggedin_as'])) {
-	require_once("dbconnect.php");
-	require_once("functions.inc.php");
-	include('headerm.php');
+	require_once 'includes/dbconnect.php';
+	require_once 'includes/functions.php';
+	require 'includes/mobile_header.php';
 	?>
 	<div id="wrap">
 	<div id="topbar">
@@ -129,7 +129,7 @@ if (isset($_SESSION['loggedin_as'])) {
 	}      
 	echo "<a href='javascript:loadmore();' class='loadmore'>"._('Mehr laden')."</a>";
 	echo '</div>';
-	include('footm.php');
+	require 'includes/mobile_footer.php';
 }
 else {
 	header('Location: index.php'); exit;       

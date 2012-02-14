@@ -5,9 +5,9 @@ if (isset($_SESSION['loggedin_as'])) {
 	if (empty($_GET["feedid"])) {
 		header('Location: m_all.php?mobile=true'); exit;
 	}
-	require_once("dbconnect.php");
-	require_once("functions.inc.php");
-	include('headerm.php');
+	require_once 'includes/dbconnect.php';
+	require_once 'includes/functions.php';
+	require 'includes/mobile_header.php';
 	if (!empty($_GET["feedid"])) {
 		$is_sub = mysql_query("SELECT `feeds`.`name`, alias FROM `feeds_subscription` INNER JOIN `feeds` ON `feeds`.`id` = `feeds_subscription`.`feedid` WHERE `feedid` = ". intval(($_GET["feedid"])). " AND `userid` =". $_SESSION['loggedin_as']); 
 		if (mysql_num_rows($is_sub) == 1) {
@@ -108,7 +108,7 @@ if (isset($_SESSION['loggedin_as'])) {
 	}
 	echo "<a href='javascript:loadmore();' class='loadmore'>"._('Mehr laden')."</a>";
 	echo '</div>';
-	include('footl.php');
+	require 'includes/application_footer.php';
 } else {
 	header('Location: index.php'); exit;       
 }

@@ -1,8 +1,8 @@
 <?php
 session_start();
 if (isset($_POST['password'])) {
-	require_once('dbconnect.php');
-	require_once('functions.inc.php');
+	require_once 'includes/dbconnect.php';
+	require_once 'includes/functions.php';
 	
 	$username = mysql_real_escape_string($_POST["username"]);
 	$password = sha1($_POST["password"]. $salt);
@@ -17,10 +17,10 @@ if (isset($_POST['password'])) {
 			header('Location: dashboard.php'); exit;  
 		}
 	} else {
-		require_once('headerl.php');
+		require_once 'includes/login_header.php';
 		echo "<div style='text-align: center' class='wrongpw'>"._("Nutzer nicht gefunden oder Passwort falsch.")."</div>";
-		require_once('login.php');
-		require_once('footl.php'); 
+		require_once 'login.php';
+		require_once 'includes/login_footer.php'; 
 	}
 } elseif(isset($_SESSION['loggedin_as'])) {
 	if(isset($_REQUEST['mobile'])){
@@ -29,8 +29,8 @@ if (isset($_POST['password'])) {
 		header('Location: dashboard.php'); exit;  
 	}
 } else {
-	require_once('headerl.php');
-	require_once('login.php');
-	require_once('footl.php'); 
+	require_once 'includes/login_header.php';
+	require_once 'login.php';
+	require_once 'includes/login_footer.php'; 
 }
 ?>

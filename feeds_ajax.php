@@ -4,8 +4,8 @@ if (isset($_SESSION['loggedin_as'])) {
 	if (empty($_GET["feedid"])) {
 		exit;
 	}
-	require_once("dbconnect.php");
-	include_once('functions.inc.php');
+	require_once 'includes/dbconnect.php';
+	require_once 'includes/functions.php';
 	
 	if (!empty($_GET["feedid"])) {
 		$is_sub = mysql_query("SELECT `feeds`.`name` FROM `feeds_subscription` INNER JOIN `feeds` ON `feeds`.`id` = `feeds_subscription`.`feedid` WHERE `feedid` = ". intval(($_GET["feedid"])). " AND `userid` =". $_SESSION['loggedin_as']); 

@@ -1,9 +1,9 @@
 <?php
 session_start();
 if (isset($_SESSION['loggedin_as'])) {
-	require_once("dbconnect.php");
-	include('headeri.php');
-	include('navi.inc.php');
+	require_once 'includes/dbconnect.php';
+	require 'includes/application_header.php';
+	require 'includes/application_navi.php';
 	echo '<div id="right-col">';
 	echo '<div id="wrap" class="reader-field"><h2>'._('Alle Feeds').'</h2><p>';
 	if(!isset($_GET['show']) || $_GET['show'] == 'unread') echo '<strong>'._('Ungelesene Einträge').'</strong> &middot; '; else echo '<a href="?show=unread">'._('Ungelesene Einträge').'</a> &middot; ';
@@ -139,7 +139,7 @@ if (isset($_SESSION['loggedin_as'])) {
 		<div id="right-gap"></div>
 		<div class="clear"></div>'; 
 		
-	include('footl.php');
+	require 'includes/application_footer.php';
 	
 } else {
 	header('Location: index.php');

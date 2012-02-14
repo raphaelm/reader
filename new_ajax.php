@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['loggedin_as'])) {
-	require_once("dbconnect.php");
+	require_once 'includes/dbconnect.php';
 
 	$all_qry = mysql_query("SELECT
 				COUNT(`feed_id`) as c,

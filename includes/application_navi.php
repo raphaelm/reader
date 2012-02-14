@@ -1,5 +1,5 @@
 <?php
-include_once('functions.inc.php');
+require_once 'includes/functions.php';
 if (isset($_SESSION['loggedin_as'])) {
 	/* New? */
 		$all_qry = mysql_query("SELECT

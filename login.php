@@ -26,5 +26,5 @@ if(is_mobile()){
 	</div>
 	<p class="footer"><a href="lostpw.php"><?php echo _('Passwort vergessen?') ?></a></p>
 	<?php
-	require 'footl.php';
+	require 'includes/login_footer.php';
 }

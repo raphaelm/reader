@@ -1,4 +1,8 @@
 <?php
+if(function_exists('utf_correct')){
+	return false;
+}
+	
 function utf_correct($str) {
 	if (mb_detect_encoding($str, 'UTF-8, ISO-8859-1') != 'UTF-8') { 
 		$str = utf8_encode($str);
@@ -142,6 +146,6 @@ function is_mobile(){
 	}
 	if(defined('IS_MOBILE')) return true;
 	if(isset($_GET['mobile'])) return true;
-	require_once('lib/mobile_device_detect.php');
+	require_once 'lib/mobile_device_detect.php';
 	return mobile_device_detect(true,false,true,true,true,true,true,false,false);
 }

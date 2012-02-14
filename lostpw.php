@@ -1,6 +1,6 @@
 <?php
-require_once('dbconnect.php');
-require_once('headerl.php');
+require_once 'includes/dbconnect.php';
+require_once 'includes/login_header.php';
 
 if(isset($_GET['hash'])){
 	if($_GET['hash'] == sha1($_GET['user'].$secret."NEWPW".date("d.m.Y"))){
@@ -60,4 +60,4 @@ Achtung! Der Link gilt nur bis heute abend, 23:59!
 </div>
 	
 <?php
-require 'footl.php'; 
+require 'includes/login_footer.php'; 

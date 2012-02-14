@@ -1,16 +1,17 @@
-<?php require_once("config.inc.php");
-require_once('setlocale.php'); ?>
+<?php 
+require_once 'config.inc.php';
+require 'includes/setlocale.php'; ?>
 <!DOCTYPE html>
 <html>
   <head>
       <title><?php echo $title ?></title>
       <meta http-equiv="content-type" content="text/html;charset=utf-8" />
-      <link rel="stylesheet" type="text/css" href="stylem.css" />
+      <link rel="stylesheet" type="text/css" href="style_mobile.css" />
       <meta http-equiv="Content-Style-Type" content="text/css" />
-      <?php require_once 'jslocale.php'; ?>
-	  <script type="text/javascript" src="phpjs.js"></script>
-	  <script type="text/javascript" src="jquery.js"></script>
-	  <script type="text/javascript" src="readerm.js"></script>
+      <?php require_once 'includes/jslocale.php'; ?>
+	  <script type="text/javascript" src="js/phpjs.js"></script>
+	  <script type="text/javascript" src="js/jquery.js"></script>
+	  <script type="text/javascript" src="js/reader_mobile.js"></script>
 	  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
   </head>
   <body>

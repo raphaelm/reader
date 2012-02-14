@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['loggedin_as'])) {
-	require_once("dbconnect.php");
+	require_once 'includes/dbconnect.php';
 	
 	if(isset($_GET['sticky'])){
 		mysql_query('REPLACE INTO sticky (user_id, article_id) VALUES ('.$_SESSION['loggedin_as'].', '.intval($_GET['sticky']).')');

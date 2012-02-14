@@ -1,9 +1,9 @@
 <?php
 session_start();
 if (isset($_SESSION['loggedin_as'])) {
-	require_once("dbconnect.php");
-	include('headeri.php');
-	include('navi.inc.php');
+	require_once 'includes/dbconnect.php';
+	require 'includes/application_header.php';
+	require 'includes/application_navi.php';
 	echo '<div id="right-col">';
 	echo '<div id="wrap" class="reader-field"><h2>'._('Startseite').'</h2>';
 	
@@ -28,7 +28,7 @@ if (isset($_SESSION['loggedin_as'])) {
 	echo '</div></div>
 		<div id="right-gap"></div>
 		<div class="clear"></div>'; 
-	include('footl.php');
+	require 'includes/application_footer.php';
 	
 } else {
 	header('Location: index.php');

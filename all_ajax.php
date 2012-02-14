@@ -1,8 +1,8 @@
 <?php
 session_start();
 if (isset($_SESSION['loggedin_as'])) {
-	require_once("dbconnect.php");
-	include_once('functions.inc.php');
+	require_once 'includes/dbconnect.php';
+	require_once 'includes/functions.php';
 
 	$lasttimestamp = mysql_query("SELECT 
 				`timestamp`

@@ -4,9 +4,9 @@ if (isset($_SESSION['loggedin_as'])) {
 	if (empty($_GET["feedid"])) {
 		header('Location: dashboard.php'); exit;
 	}
-	require_once("dbconnect.php");
-	include('headeri.php');
-	include('navi.inc.php');
+	require_once 'includes/dbconnect.php';
+	require 'includes/application_header.php';
+	require 'includes/application_navi.php';
 	
 	echo '<div id="right-col"><div id="wrap">';
 	if (!empty($_GET["feedid"])) {
@@ -114,7 +114,7 @@ if (isset($_SESSION['loggedin_as'])) {
 	echo '</div></div>
 		<div id="right-gap"></div>
 		<div class="clear"></div>'; 
-	include('footl.php');
+	require 'includes/application_footer.php';
 } else {
 	header('Location: index.php'); 
 	exit;       
