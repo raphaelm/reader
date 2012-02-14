@@ -1,6 +1,6 @@
 <?php 
 require_once('setlocale.php');
-	include_once('functions.inc.php'); 
+include_once('functions.inc.php'); 
 ?>
 <!DOCTYPE html>
 <html>

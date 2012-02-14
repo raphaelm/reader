@@ -4,7 +4,7 @@ if (!empty($_POST['regusername']) && !empty($_POST['regpassword']) && !empty($_P
 	$username = mysql_real_escape_string($_POST["regusername"]);
 	$password = sha1($_POST["regpassword"]. $salt);
 	$mail = mysql_real_escape_string($_POST['regmail']);
-	$reg_qry = mysql_query("INSERT INTO `user` (`name`, `password`, `mail`) VALUES ('". $username. "', '". $password."', '". $mail."')");
+	$reg_qry = mysql_query("INSERT INTO `user` (`name`, `password`, `mail`, `locale`) VALUES ('". $username. "', '". $password."', '". $mail."', '".$locale."')");
 	if(mysql_num_rows(mysql_query("SELECT * FROM feeds WHERE id = 0")) == 1){
 		mysql_query("INSERT INTO feeds_subscription (feedid, userid) VALUES (0, ".mysql_insert_id().")");
 	}
@@ -34,8 +34,6 @@ if (!empty($_POST['website'])) {
 		</form>
 	  <a href="index.php" class="buttonl">'._('Abbrechen').'</a>
 	  <div class="clear"></div></div>';
+	  require 'footl.php';
 }
 ?>
-<div id="footer">
-	<p>geek's factory reader &ndash; &copy; 2011 <a href="http://www.geeksfactory.de">geek's factory</a></p>
-</div>

@@ -58,9 +58,6 @@ Achtung! Der Link gilt nur bis heute abend, 23:59!
 	<a href="index.php" class="buttonl"><?php echo _('Zurück'); ?></a>
 	<div class="clear"></div>
 </div>
-<div id="footer">
-	<p>geek's factory reader &ndash; &copy; 2011 <a href="http://www.geeksfactory.de">geek's factory</a></p>
-</div>
 	
 <?php
-require_once('footl.php'); 
+require 'footl.php'; 

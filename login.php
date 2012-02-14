@@ -24,10 +24,7 @@ if(is_mobile()){
 		<a href="register.php" class="buttonl"><?php echo _('Registrieren') ?></a>
 		<div class="clear"></div>
 	</div>
-	<div id="footer">
-		<p><a href="lostpw.php"><?php echo _('Passwort vergessen?') ?></a></p>
-		<p>geek's factory reader &ndash; &copy; 2011 <a href="http://www.geeksfactory.de">geek's factory</a><br />
-		<a href="http://git.geeksfactory.de/reader.git" target="_blank">get the source!</a></p>
-	</div>
+	<p class="footer"><a href="lostpw.php"><?php echo _('Passwort vergessen?') ?></a></p>
 	<?php
+	require 'footl.php';
 }
