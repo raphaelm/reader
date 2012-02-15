@@ -20,11 +20,11 @@ Hier ist dein neues Passwort für den %s!
 		echo "<div style='text-align: center' class='okay'>"._('Du hast eine weitere E-Mail mit einem neuen Passwort!')."</div>";
 		mysql_query("UPDATE user SET password = '".sha1($autopw. $salt)."' WHERE `id` = ". intval($_GET['user']));
 		
-		require_once('footl.php'); 
+		require 'includes/login_footer.php'; 
 		exit;
 	}else{
 		echo "<div style='text-align: center' class='wrongpw'>"._("Das ist leider schiefgegangen! War der Link schon abgelaufen?")."</div>";
-		require_once('footl.php'); 
+		require 'includes/login_footer.php'; 
 		exit;
 	}
 }
