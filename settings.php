@@ -7,7 +7,7 @@ if (isset($_SESSION['loggedin_as'])) {
 	require 'includes/application_navi.php';
 	
 	echo '<div id="right-col">
-		  <div id="wrap"><h2>'._('Einstellungen').'</h2>';
+		  <div id="wrap" class="settingspage"><h2>'._('Einstellungen').'</h2>';
 	
 	function add_feed($url){
 		$url = fetch_feedurl(trim($url));
