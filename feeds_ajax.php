@@ -88,7 +88,7 @@ if (isset($_SESSION['loggedin_as'])) {
 				if($row["sticky"] == 1) echo ' &middot; <a href="javascript:unsticky('.$row["article_id"].');" class="stickylink">'._('nicht merken').'</a>';
 				else echo ' &middot; <a href="javascript:sticky('.$row["article_id"].');" class="stickylink">'._('merken').'</a>';
 				echo '<br /><div class="sum"'.(isset($_GET['mobile']) ? ' style="display:none"><a href="'.$row["articleurl"].'" target="_blank">'._('zum Originalbeitrag').'</a><br />' : '>' );
-				echo utf_correct(gzuncompress($row["summary"])). '</div></div>';
+				echo utf_correct(gzuncompress($row["summary"])). '</div><div class="clear"></div></div>';
 			} 
 		} else {
 			echo '<p class="error">'._('Du abonnierst diesen Feed nicht.').'</p>';
