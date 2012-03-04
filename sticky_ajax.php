@@ -1,20 +1,19 @@
 <?php
-session_start();
-if (isset($_SESSION['loggedin_as'])) {
-	require_once 'includes/dbconnect.php';
+require_once 'includes/dbconnect.php';
+if ($user_id) {
 	
 	if(isset($_GET['sticky'])){
-		mysql_query('REPLACE INTO sticky (user_id, article_id) VALUES ('.$_SESSION['loggedin_as'].', '.intval($_GET['sticky']).')');
+		mysql_query('REPLACE INTO sticky (user_id, article_id) VALUES ('.$user_id.', '.intval($_GET['sticky']).')');
 	}elseif(isset($_GET['unsticky'])){
 		if($_GET['unsticky'] == 'all'){
-			mysql_query('DELETE FROM sticky WHERE user_id = '.$_SESSION['loggedin_as']);
+			mysql_query('DELETE FROM sticky WHERE user_id = '.$user_id);
 			if(isset($_GET['mobile']))
 				header('Location: m_sticky.php');
 			else
 				header('Location: sticky.php');
 			exit;
 		}
-		mysql_query('DELETE FROM sticky WHERE user_id = '.$_SESSION['loggedin_as'].' and article_id = '.intval($_GET['unsticky']));
+		mysql_query('DELETE FROM sticky WHERE user_id = '.$user_id.' and article_id = '.intval($_GET['unsticky']));
 	}
 	
 	$all_qry = mysql_query("SELECT
@@ -31,7 +30,7 @@ if (isset($_SESSION['loggedin_as'])) {
 				FROM
 					`feeds_read`
 				WHERE
-						`user_id` = ". $_SESSION['loggedin_as']. "
+						`user_id` = ". $user_id. "
 					AND
 						`feeds_read`.`article_id` = `feeds_entries`.`article_id`
 			)
@@ -41,7 +40,7 @@ if (isset($_SESSION['loggedin_as'])) {
 				FROM
 					`feeds_subscription`
 				WHERE
-						`userid` =". $_SESSION['loggedin_as']. "
+						`userid` =". $user_id. "
 					AND
 						`feeds_subscription`.`feedid` = `feeds_entries`.`feed_id`
 				)
@@ -66,7 +65,7 @@ if (isset($_SESSION['loggedin_as'])) {
 					FROM
 						`sticky`
 					WHERE
-						`user_id` = ". $_SESSION['loggedin_as']. "
+						`user_id` = ". $user_id. "
 						AND
 						`sticky`.`article_id` = `feeds_entries`.`article_id`
 				)
@@ -76,7 +75,7 @@ if (isset($_SESSION['loggedin_as'])) {
 					FROM
 						`feeds_subscription`
 					WHERE
-						`userid` =". $_SESSION['loggedin_as']. "
+						`userid` =". $user_id. "
 						AND
 						`feeds_subscription`.`feedid` = `feeds_entries`.`feed_id`
 					)");

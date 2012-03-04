@@ -1,13 +1,13 @@
 <?php
 session_start();
-if (isset($_SESSION['loggedin_as'])) {
-	require_once 'includes/dbconnect.php';
+require_once 'includes/dbconnect.php';
+if ($user_id) {
 	require 'includes/application_header.php';
 	require 'includes/application_navi.php';
 	echo '<div id="right-col">';
 	echo '<div id="wrap" class="reader-field"><h2>'._('Startseite').'</h2>';
 	
-	$dq = mysql_query("SELECT COUNT(`feedid`) as c, (SELECT COUNT(id) FROM feeds WHERE lastupdate < ".(time()-1000).") as c2 FROM `view_feed_subscriptions` WHERE `userid` =". $_SESSION['loggedin_as']. " AND lastupdate < ".(time()-1000));
+	$dq = mysql_query("SELECT COUNT(`feedid`) as c, (SELECT COUNT(id) FROM feeds WHERE lastupdate < ".(time()-1000).") as c2 FROM `view_feed_subscriptions` WHERE `userid` =". $user_id. " AND lastupdate < ".(time()-1000));
 	$d = mysql_fetch_object($dq);
 	if($d->c > 7 or $d->c2 > 13){
 		echo '<p class="error">

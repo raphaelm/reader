@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfreader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-07 18:24+0100\n"
-"PO-Revision-Date: 2012-01-07 18:25+0100\n"
+"POT-Creation-Date: 2012-03-04 00:56+0100\n"
+"PO-Revision-Date: 2012-03-04 01:13+0100\n"
 "Last-Translator: Raphael <raphael@geeksfactory.de>\n"
 "Language-Team: Raphael Michel <raphael@geeksfactory.de>\n"
 "Language: \n"
@@ -19,56 +19,65 @@ msgstr ""
 "X-Poedit-Country: GERMANY\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
 
-#: all.php:8
-#: headerm.php:96
-#: m_all.php:11
-#: navi.inc.php:72
+#: all.php:7
+#: m_all.php:10
 msgid "Alle Feeds"
 msgstr "All feeds"
+
+#: all.php:8
+#: feeds.php:16
+#: m_all.php:13
+#: m_feeds.php:20
+msgid "Ungelesene Einträge"
+msgstr "Unread posts"
 
 #: all.php:9
 #: feeds.php:17
 #: m_all.php:14
 #: m_feeds.php:21
-msgid "Ungelesene Einträge"
-msgstr "Unread posts"
-
-#: all.php:10
-#: feeds.php:18
-#: m_all.php:15
-#: m_feeds.php:22
 msgid "Alle Einträge"
 msgstr "All posts"
 
-#: all.php:11
-#: m_all.php:17
+#: all.php:10
+#: m_all.php:16
 msgid "Alles als gelesen markieren"
 msgstr "Mark all as read"
 
-#: all.php:18
+#: all.php:17
 #: dashboard.php:14
 msgid "Wir leiden derzeit leider unter einem technischen Problem und hoffen, dass dieses bald behoben werden kann."
 msgstr "We're sorry, but we are currently experiencing technical problems. We hope, they'll be fixed soon."
 
-#: all.php:121
-#: feeds.php:94
-#: m_all.php:118
-#: m_feeds.php:93
-#, fuzzy, php-format
+#: all.php:120
+#: feeds.php:93
+#: m_all.php:117
+#: m_feeds.php:92
+#, php-format
 msgid "Dieser Feed besitzt keine%s Einträge. Wenn du ihn gerade erst aboniert hast, kann es bis zu fünf Minuten dauern, bis hier Einträge erscheinen. Außerdem werden keine Einträge angezeigt, die älter als 30 Tage sind."
-msgstr "This feed doesn't have any%s posts. If you subscribed to it very recently it can take up to five minutes until the first posts appear. Additionally, no posts older than 30 days are shown."
+msgstr "This feed doesn't have any %s posts. If you subscribed to it very recently it can take up to five minutes until the first posts appear. Additionally, no posts older than 30 days are shown."
 
-#: all.php:121
-#: feeds.php:94
-#: m_all.php:118
-#: m_feeds.php:93
+#: all.php:120
+#: feeds.php:93
+#: m_all.php:117
+#: m_feeds.php:92
 msgid " ungelesenen"
 msgstr " unread"
 
-#: all.php:125
-#: feeds.php:98
+#: all.php:124
+#: feeds.php:97
 msgid "Neu laden"
 msgstr "Reload page"
+
+#: all.php:131
+#: all_ajax.php:112
+#: feeds.php:104
+#: feeds_ajax.php:86
+#: m_all.php:123
+#: m_feeds.php:98
+#: m_sticky.php:78
+#: sticky.php:73
+msgid "d.m.Y - H:i"
+msgstr "d-m-Y - H:i"
 
 #: all.php:132
 #: all_ajax.php:113
@@ -76,40 +85,27 @@ msgstr "Reload page"
 #: feeds_ajax.php:87
 #: m_all.php:124
 #: m_feeds.php:99
-#: m_sticky.php:79
-#: sticky.php:74
-msgid "d.m.Y - H:i"
-msgstr "d-m-Y - H:i"
+msgid "nicht merken"
+msgstr "remove bookmark"
 
 #: all.php:133
 #: all_ajax.php:114
 #: feeds.php:106
 #: feeds_ajax.php:88
-#: jslocale.php:7
 #: m_all.php:125
 #: m_feeds.php:100
-msgid "nicht merken"
-msgstr "remove bookmark"
-
-#: all.php:134
-#: all_ajax.php:115
-#: feeds.php:107
-#: feeds_ajax.php:89
-#: jslocale.php:8
-#: m_all.php:126
-#: m_feeds.php:101
 msgid "merken"
 msgstr "bookmark"
 
-#: all_ajax.php:117
-#: feeds_ajax.php:90
-#: m_all.php:128
-#: m_feeds.php:102
-#: m_sticky.php:82
+#: all_ajax.php:116
+#: feeds_ajax.php:89
+#: m_all.php:127
+#: m_feeds.php:101
+#: m_sticky.php:81
 msgid "zum Originalbeitrag"
 msgstr "visit original post"
 
-#: all_ajax.php:121
+#: all_ajax.php:120
 msgid "not logged in"
 msgstr "not logged in"
 
@@ -131,93 +127,58 @@ msgstr "%s bookmarked articles"
 msgid "Neuen Feed abonnieren"
 msgstr "Subscribe"
 
-#: feeds.php:19
-#: m_feeds.php:24
+#: feeds.php:18
+#: m_feeds.php:23
 msgid "Alles in diesem Feed als gelesen markieren"
 msgstr "Mark all posts from this feed as read"
 
-#: feeds.php:23
+#: feeds.php:22
 msgid "Das Abrufen dieses Feeds schlug leider kürzlich fehl. Stelle sicher, dass die Feed-Adresse noch aktuell ist. Wenn alles stimmt, sollte in wenigen Minuten auch alles wieder gehen."
 msgstr "While fetching this feed an error occurred. Make sure the feed URL is still correct. If everything is right, this message should be gone in a few minutes."
 
-#: feeds.php:111
-#: feeds_ajax.php:94
-#: m_feeds.php:106
+#: feeds.php:110
+#: feeds_ajax.php:93
+#: m_feeds.php:105
 msgid "Du abonnierst diesen Feed nicht."
 msgstr "You aren't a subscriber of this feed."
 
-#: footl.php:4
-#: footm.php:2
-msgid "Zur Desktop-Version"
-msgstr "Use desktop version"
-
-#: footl.php:9
-msgid "Zur mobilen Version"
-msgstr "Use mobile version"
-
-#: headerm.php:22
-#: navi.inc.php:75
-msgid "Ausloggen"
-msgstr "Log Out"
-
-#: headerm.php:97
-#: navi.inc.php:73
-msgid "Merkliste"
-msgstr "Bookmarks"
-
-#: index.php:21
-#, fuzzy
+#: index.php:32
 msgid "Nutzer nicht gefunden oder Passwort falsch."
-msgstr "User not found or password is wrong."
-
-#: jslocale.php:3
-msgid "Es ist ein Fehler aufgetreten! Bitte laden die Seite neu ;-)"
-msgstr "An error occurred. Please reload this page ;-)"
-
-#: jslocale.php:5
-#, php-format
-msgid "%d neue Nachrichten"
-msgstr "%d new posts"
-
-#: jslocale.php:6
-msgid "Fehler!"
-msgstr "Error!"
-
-#: jslocale.php:9
-#: m_all.php:130
-#: m_feeds.php:109
-msgid "Mehr laden"
-msgstr "Load more posts"
+msgstr "Invalid user or password."
 
 #: login.php:6
 #: login.php:20
-#: login.php:31
-#: reg.php:19
-#: reg.php:28
+#: register.php:21
+#: register.php:31
 msgid "Nutzername"
 msgstr "User"
 
 #: login.php:8
 #: login.php:21
-#: login.php:39
-#: reg.php:20
-#: reg.php:29
+#: register.php:22
+#: register.php:32
 msgid "Passwort"
 msgstr "Password"
 
 #: login.php:10
-#: login.php:22
+#: login.php:23
 msgid "Anmelden"
 msgstr "Log In"
 
 #: login.php:12
-#: login.php:24
-#: reg.php:32
+#: login.php:25
+#: register.php:29
+#: register.php:35
 msgid "Registrieren"
 msgstr "Sign Up"
 
-#: login.php:44
+#: login.php:22
+msgid "Eingeloggt bleiben"
+msgstr "Stay logged in"
+
+#: login.php:28
 #: lostpw.php:37
+#: lostpw.php:53
 msgid "Passwort vergessen?"
 msgstr "Lost password?"
 
@@ -226,7 +187,7 @@ msgid "Neues Passwort"
 msgstr "New password!"
 
 #: lostpw.php:14
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "Hallo!\n"
 "Hier ist dein neues Passwort für den %s!\n"
@@ -247,9 +208,8 @@ msgid "Du hast eine weitere E-Mail mit einem neuen Passwort!"
 msgstr "You have got another mail with a new password."
 
 #: lostpw.php:26
-#, fuzzy
 msgid "Das ist leider schiefgegangen! War der Link schon abgelaufen?"
-msgstr "We're sorry, this didn't work. Was the e-mail to old?"
+msgstr "We're sorry, this didn't work. Was the e-mail with the link to old?"
 
 #: lostpw.php:36
 msgid "Du hast per E-Mail weitere Anweisungen erhalten!"
@@ -277,142 +237,121 @@ msgstr ""
 msgid "Es tut uns leid, aber diesen Nutzer haben wir leider nicht im System!"
 msgstr "This user doesn't exist."
 
-#: lostpw.php:54
+#: lostpw.php:55
 msgid "Nutzername oder E-Mail"
 msgstr "User or e-mail address"
 
-#: lostpw.php:55
+#: lostpw.php:56
 msgid "Abschicken"
 msgstr "Send"
 
-#: lostpw.php:57
-#: reg.php:14
+#: lostpw.php:58
+#: register.php:16
 msgid "Zurück"
 msgstr "Back"
 
-#: m_sticky.php:11
-#: sticky.php:8
+#: m_all.php:129
+#: m_feeds.php:108
+msgid "Mehr laden"
+msgstr "Load more posts"
+
+#: m_sticky.php:10
+#: sticky.php:7
 msgid "Gemerkte Artikel"
 msgstr "Bookmarks"
 
-#: m_sticky.php:14
-#: sticky.php:9
+#: m_sticky.php:13
+#: sticky.php:8
 msgid "Alle entfernen"
 msgstr "Remove all"
 
-#: m_sticky.php:73
-#: sticky.php:68
+#: m_sticky.php:72
+#: sticky.php:67
 msgid "Du hast dir keine Einträge gemerkt!"
 msgstr "You don't have any bookmarks."
 
-#: m_sticky.php:80
-#: sticky.php:75
+#: m_sticky.php:79
+#: sticky.php:74
 msgid "aus Merkliste entfernen"
 msgstr "remove bookmark"
 
-#: navi.inc.php:74
+#: new_ajax.php:74
+msgid "Nicht eingeloggt!"
+msgstr "You are not logged in."
+
+#: register.php:14
+msgid "Registrierung erfolgreich!"
+msgstr "Your account was created successfully."
+
+#: register.php:14
+msgid "Zur Hauptseite"
+msgstr "Back"
+
+#: register.php:16
+msgid "Registrierung fehlgeschlagen! Eventuell ist dieser Nutzername bereits vergeben!"
+msgstr "Account registration failed! Maybe this user name is already in use by another person."
+
+#: register.php:23
+#: register.php:33
+#: settings.php:142
+msgid "name@domain.tld"
+msgstr "user@domain.tld"
+
+#: register.php:25
+msgid "Registrieren."
+msgstr "Sign Up"
+
+#: register.php:37
+#: settings.php:224
+msgid "Abbrechen"
+msgstr "Cancel"
+
 #: settings.php:10
 msgid "Einstellungen"
 msgstr "Settings"
 
-#: navi.inc.php:87
-#: settings.php:172
-msgid "Fehler"
-msgstr "Error"
-
-#: navi.inc.php:87
-#: settings.php:172
-msgid "Dieser Feed konnte kürzlich nicht erfolgreich abgerufen werden."
-msgstr "While fetching this feed an error occurred."
-
-#: navi.inc.php:92
-msgid "Zeige nur Ungelesenes"
-msgstr "Show unread only"
-
-#: navi.inc.php:93
-msgid "Zeige alle Feeds"
-msgstr "Show all feeds"
-
-#: navi.inc.php:95
-msgid "Entwickler und Betreiber:"
-msgstr "Developed by"
-
-#: navi.inc.php:95
-msgid "Icons von"
-msgstr "Icons from"
-
-#: new_ajax.php:75
-msgid "Nicht eingeloggt!"
-msgstr "You are not logged in."
-
-#: reg.php:12
-msgid "Registrierung erfolgreich!"
-msgstr "Your account was created successfully."
-
-#: reg.php:12
-msgid "Zur Hauptseite"
-msgstr "Back"
-
-#: reg.php:14
-msgid "Registrierung fehlgeschlagen! Eventuell ist dieser Nutzername bereits vergeben!"
-msgstr "Account registration failed! Maybe this user name is already in use by another person."
-
-#: reg.php:21
-#: reg.php:30
-msgid "name@domain.tld"
-msgstr "user@domain.tld"
-
-#: reg.php:23
-msgid "Registrieren."
-msgstr "Sign Up"
-
-#: reg.php:34
-msgid "Abbrechen"
-msgstr "Cancel"
-
-#: settings.php:30
+#: settings.php:31
 msgid "Deine E-Mail-Adresse wurde erfolgreich geändert."
 msgstr "Your e-mail address was changed successfully."
 
-#: settings.php:36
+#: settings.php:37
 msgid "Es werden nur http:// und https://-URLs akzeptiert."
 msgstr "We only accept http:// and https:// addresses."
 
-#: settings.php:40
+#: settings.php:41
 msgid "Der Server, auf dem sich der Feed befindet, konnte nicht erreicht werden. Versuche es später erneut."
 msgstr "The server on which this feed ist located could not be reached. Try again later."
 
-#: settings.php:42
+#: settings.php:43
 msgid "Dein Feed wurde erfolgreich hinzugefügt. Nach dem nächsten Feed-Update (in spätestens 5 Minuten) wird dann links in der Leiste auch sein korrekter Titel angezeigt."
 msgstr "You subscribed to this feed successfully. The correct title should be shown in the left sidebar after the next feed update in less than five minutes."
 
-#: settings.php:45
+#: settings.php:46
 msgid "Du hast diesen Feed bereits abonniert."
 msgstr "You are already a subscriber of this feed."
 
-#: settings.php:55
-#, fuzzy
+#: settings.php:56
 msgid "Dein Abonnement des Feeds wurde erfolgreich entfernt."
-msgstr "You have successfully unsubscribed from this feed."
+msgstr "You did successfully unsubscribe from this feed."
 
-#: settings.php:68
+#: settings.php:69
 msgid "Das neue Passwort muss zweimal gleich eingegeben werden."
 msgstr "You must enter the new password twice."
 
-#: settings.php:73
+#: settings.php:74
 msgid "Das Passwort wurde geändert."
 msgstr "Your password has been changed successfully."
 
-#: settings.php:80
+#: settings.php:81
 #, php-format
 msgid "„%s“ ist keine gültige E-Mail-Adresse. Wenn du das anders siehst, kontaktiere uns bitte."
 msgstr "\"%s\" is not a valid e-mail address. If you think we are wrong on this, feel free to contact us."
 
-#: settings.php:83
+#: settings.php:84
 msgid "Bestätigung der Änderung der E-Mail-Adresse"
 msgstr "Confirmation of the change of your e-mail address"
 
-#: settings.php:83
+#: settings.php:84
 #, php-format
 msgid ""
 "Hallo!\n"
@@ -428,110 +367,150 @@ msgstr ""
 "\n"
 "%s"
 
-#: settings.php:90
+#: settings.php:91
 #, php-format
 msgid "Es wurde eine Bestätigung zur Änderung der Mailadresse an %s versandt."
 msgstr "We've sent an e-mail to %s for confirmation."
 
-#: settings.php:96
+#: settings.php:97
 msgid "Das aktuelle Passwort wurde nicht korrekt eingegeben!"
 msgstr "The current password wasn't entered correctly."
 
-#: settings.php:107
+#: settings.php:108
 #, php-format
 msgid "Deine Sprache wurde auf %s umgestellt."
 msgstr "Your locale is now %s."
 
-#: settings.php:113
+#: settings.php:114
 msgid "Lokalisierung"
 msgstr "Localization"
 
-#: settings.php:120
-#: settings.php:146
-#: settings.php:218
+#: settings.php:121
+#: settings.php:147
+#: settings.php:224
 msgid "Speichern"
 msgstr "Save"
 
-#: settings.php:123
+#: settings.php:124
 msgid "Persönliche Einstellungen"
 msgstr "Personal settings"
 
-#: settings.php:128
+#: settings.php:129
 msgid "Aktuelles Passwort:"
 msgstr "Current password:"
 
-#: settings.php:132
+#: settings.php:133
 msgid "Neues Passwort:"
 msgstr "New password:"
 
-#: settings.php:136
+#: settings.php:137
 msgid "Neues Passwort wiederholen:"
 msgstr "Repeat new password:"
 
-#: settings.php:140
+#: settings.php:141
 msgid "E-Mail-Adresse:"
 msgstr "e-mail address:"
 
-#: settings.php:142
+#: settings.php:143
 msgid "Nicht wundern: Nachdem du deine E-Mail-Adresse geändert hast, wird hier weiterhin deine alte Adresse stehen, <br />bis du einen Link in einer E-Mail, die wir an deine neue Adresse senden, angeklickt hast!"
 msgstr "Don't be surprised: After you have entered your e-mail address you will continue to see you're old address here, <br />until you clicked on a link in an e-mail we send you for confirmation."
 
-#: settings.php:151
+#: settings.php:152
 msgid "Feed abonnieren"
 msgstr "Subscribe"
 
-#: settings.php:155
+#: settings.php:156
 msgid "Abonnieren"
 msgstr "Subscribe"
 
-#: settings.php:158
+#: settings.php:159
 msgid "Abos"
 msgstr "Subscriptions"
 
-#: settings.php:161
+#: settings.php:162
 msgid "Keine Feeds gefunden."
 msgstr "No feeds."
 
-#: settings.php:165
+#: settings.php:166
 msgid "Name"
 msgstr "Title"
 
-#: settings.php:166
+#: settings.php:167
 msgid "Alias"
 msgstr "Alias"
 
-#: settings.php:167
-#: settings.php:174
+#: settings.php:173
+msgid "Fehler"
+msgstr "Error"
+
+#: settings.php:173
+msgid "Dieser Feed konnte kürzlich nicht erfolgreich abgerufen werden."
+msgstr "While fetching this feed an error occurred."
+
+#: settings.php:175
 msgid "Löschen"
 msgstr "Remove"
 
-#: settings.php:174
+#: settings.php:175
 msgid "Alias setzen"
 msgstr "Set alias"
 
-#: settings.php:182
+#: settings.php:183
 msgid "Desktop Notifications"
 msgstr "Desktop notifications"
 
-#: settings.php:184
+#: settings.php:185
 msgid "Nicht wundern: Einstellung wird nur für diesen Computer gespeichert (als Cookie)."
 msgstr "Don't be surprised: Setting is saved in a cookie and thus only for this machine."
 
-#: settings.php:186
+#: settings.php:187
 msgid "Desktop Notifications aktivieren"
 msgstr "Enable desktop notifications"
 
-#: settings.php:187
+#: settings.php:188
 msgid "Desktop Notifications deaktivieren"
 msgstr "Disable desktop notifications"
 
-#: settings.php:200
+#: settings.php:201
 msgid "Test"
 msgstr "Test"
 
-#: settings.php:200
+#: settings.php:201
 msgid "erfolgreich"
 msgstr "successful"
+
+#~ msgid "Zur Desktop-Version"
+#~ msgstr "Use desktop version"
+
+#~ msgid "Zur mobilen Version"
+#~ msgstr "Use mobile version"
+
+#~ msgid "Ausloggen"
+#~ msgstr "Log Out"
+
+#~ msgid "Merkliste"
+#~ msgstr "Bookmarks"
+
+#~ msgid "Es ist ein Fehler aufgetreten! Bitte laden die Seite neu ;-)"
+#~ msgstr "An error occurred. Please reload this page ;-)"
+
+#~ msgid "%d neue Nachrichten"
+#~ msgstr "%d new posts"
+
+#~ msgid "Fehler!"
+#~ msgstr "Error!"
+
+#~ msgid "Zeige nur Ungelesenes"
+#~ msgstr "Show unread only"
+
+#~ msgid "Zeige alle Feeds"
+#~ msgstr "Show all feeds"
+
+#~ msgid "Entwickler und Betreiber:"
+#~ msgstr "Developed by"
+
+#~ msgid "Icons von"
+#~ msgstr "Icons from"
 
 #~ msgid "d.m.Y H:i"
 #~ msgstr "d-m-Y H:i"

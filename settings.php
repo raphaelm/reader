@@ -1,7 +1,7 @@
 <?php
+require_once 'includes/dbconnect.php';
 session_start();
-if (isset($_SESSION['loggedin_as'])) {
-	require_once 'includes/dbconnect.php';
+if ($user_id) {
 	require_once 'includes/functions.php';
 	require 'includes/application_header.php';
 	require 'includes/application_navi.php';
@@ -10,6 +10,7 @@ if (isset($_SESSION['loggedin_as'])) {
 		  <div id="wrap" class="settingspage"><h2>'._('Einstellungen').'</h2>';
 	
 	function add_feed($url){
+		global $user_id;
 		$url = fetch_feedurl(trim($url));
 		if($url === -7){
 			return -7;
@@ -18,7 +19,7 @@ if (isset($_SESSION['loggedin_as'])) {
 		if($feedname == '') $feedname = htmlspecialchars($url);
 		mysql_query("INSERT IGNORE INTO `feeds` (`name`, `url`, `lastupdate`) VALUES ('". mysql_real_escape_string($feedname). "', '". mysql_real_escape_string($url)."', ".time().")");
 		echo mysql_error();
-		mysql_query("INSERT IGNORE INTO `feeds_subscription` (`feedid`, `userid`) VALUES ((SELECT `id` FROM `feeds` WHERE `url` = '". mysql_real_escape_string($url)."'), '". $_SESSION['loggedin_as']. "')");
+		mysql_query("INSERT IGNORE INTO `feeds_subscription` (`feedid`, `userid`) VALUES ((SELECT `id` FROM `feeds` WHERE `url` = '". mysql_real_escape_string($url)."'), '". $user_id. "')");
 		echo mysql_error();
 	}
 	
@@ -31,7 +32,7 @@ if (isset($_SESSION['loggedin_as'])) {
 	
 	if (isset($_POST['feedurl']) && !empty($_POST['feedurl'])) {
 		if(!in_array($_REQUEST['hash'], $_SESSION['add_csrf_hashes'])) die("Error.");
-		if(mysql_num_rows(mysql_query('SELECT * FROM feeds_subscription a WHERE a.userid = '.$_SESSION['loggedin_as'].' and 1 = (SELECT COUNT(*) FROM feeds f WHERE f.id = a.feedid AND f.url = "'.mysql_real_escape_string($_POST['feedurl']).'")')) == 0){
+		if(mysql_num_rows(mysql_query('SELECT * FROM feeds_subscription a WHERE a.userid = '.$user_id.' and 1 = (SELECT COUNT(*) FROM feeds f WHERE f.id = a.feedid AND f.url = "'.mysql_real_escape_string($_POST['feedurl']).'")')) == 0){
 			if(strpos($_POST['feedurl'], 'http') !== 0){
 				echo '<p class="error">'._('Es werden nur http:// und https://-URLs akzeptiert.').'</p>';
 			}else{
@@ -46,7 +47,7 @@ if (isset($_SESSION['loggedin_as'])) {
 	}
 	if (!empty($_GET["del"])) {
 		if(!in_array($_GET['hash'], $_SESSION['add_csrf_hashes'])) die("Error.");
-		mysql_query("DELETE FROM `feeds_subscription` WHERE `feedid` ='". intval($_GET["del"]). "' AND `userid` =". $_SESSION['loggedin_as']);
+		mysql_query("DELETE FROM `feeds_subscription` WHERE `feedid` ='". intval($_GET["del"]). "' AND `userid` =". $user_id);
 		$abo_del_qry = mysql_query("SELECT 0 FROM `feeds_subscription` WHERE `feedid` = ". intval(($_GET["del"]))); 
 		if (mysql_num_rows($abo_del_qry) == 0) {
 			mysql_query("DELETE FROM `feeds_entries` WHERE feed_id = '". intval($_GET["del"]). "'"); 
@@ -55,12 +56,12 @@ if (isset($_SESSION['loggedin_as'])) {
 		echo '<p class="okay">'._('Dein Abonnement des Feeds wurde erfolgreich entfernt.').'</p>';
 	}
 	
-	$meq = mysql_query('SELECT * FROM user WHERE id = '.intval($_SESSION['loggedin_as']));
+	$meq = mysql_query('SELECT * FROM user WHERE id = '.intval($user_id));
 	$me = mysql_fetch_object($meq);
 	
 	if(isset($_POST['oldpw'])){
 		$password = sha1($_POST["oldpw"]. $salt);
-		$login_qry = mysql_query("SELECT `id` FROM `user` WHERE `id` = ". $_SESSION['loggedin_as']. " AND `password` = '". $password. "'");
+		$login_qry = mysql_query("SELECT `id` FROM `user` WHERE `id` = ". $user_id. " AND `password` = '". $password. "'");
 		if (mysql_num_rows($login_qry) == 1) {
 			if(isset($_POST['newpw']) and !empty($_POST['newpw'])){
 				if($_POST['newpw'] != $_POST['newpw2'])
@@ -68,7 +69,7 @@ if (isset($_SESSION['loggedin_as'])) {
 						'._('Das neue Passwort muss zweimal gleich eingegeben werden.').'
 					</p>';
 				else {
-					mysql_query("UPDATE user SET password = '".sha1($_POST["newpw"]. $salt)."' WHERE `id` = ". $_SESSION['loggedin_as']);
+					mysql_query("UPDATE user SET password = '".sha1($_POST["newpw"]. $salt)."' WHERE `id` = ". $user_id);
 					echo '<p class="okay">
 						'._('Das Passwort wurde geändert.').'
 					</p>';
@@ -99,7 +100,7 @@ ignoriere diese E-Mail einfach.
 	}
 	if(isset($_POST['locale'])){
 		if(in_array($_POST['locale'], $locales)){
-			mysql_query("UPDATE user SET locale = '".mysql_real_escape_string($_POST['locale'])."' WHERE `id` = ". $_SESSION['loggedin_as']);
+			mysql_query("UPDATE user SET locale = '".mysql_real_escape_string($_POST['locale'])."' WHERE `id` = ". $user_id);
 			$locale = $_POST['locale'];
 			putenv('LC_ALL='.$locale);
 			setlocale(LC_ALL, $locale);
@@ -156,7 +157,7 @@ ignoriere diese E-Mail einfach.
 	</form>
 	<?php
 	echo '<h3>'._('Abos').'</h3>';
-	$feeds_qry = mysql_query("SELECT `feedid`, `feedname`, `alias`, `origname`, `feedurl`, `lastupdate` FROM `view_feed_subscriptions` WHERE `userid` =". $_SESSION['loggedin_as']. " AND feedid > 0 ORDER by `feedname` asc");
+	$feeds_qry = mysql_query("SELECT `feedid`, `feedname`, `alias`, `origname`, `feedurl`, `lastupdate` FROM `view_feed_subscriptions` WHERE `userid` =". $user_id. " AND feedid > 0 ORDER by `feedname` asc");
 	if(mysql_num_rows($feeds_qry) == 0){
 		echo "<p>"._("Keine Feeds gefunden.")."</p>";
 	} else {
@@ -224,7 +225,7 @@ ignoriere diese E-Mail einfach.
 			$("#editaliaslink_"+id).hide();
 			$("#editalias_"+id).bind('submit', function(){
 				newa = $("#alias_"+id+" input.alias").val();
-				$.get('settings_setalias_ajax.php?hash=<?php echo sha1($_SESSION['loggedin_as'].$salt); ?>&id='+id+'&alias='+escape(newa), function(){
+				$.get('settings_setalias_ajax.php?hash=<?php echo sha1($user_id.$salt.date('Ymd')); ?>&id='+id+'&alias='+escape(newa), function(){
 						$("#alias_"+id).html(newa);
 						$("#editaliaslink_"+id).fadeIn();
 					});

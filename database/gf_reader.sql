@@ -93,6 +93,19 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- --------------------------------------------------------
 
 --
+-- Tabellenstruktur für Tabelle `sessions`
+--
+
+CREATE TABLE IF NOT EXISTS `sessions` (
+  `session_key` varchar(255) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `expires` int(11) NOT NULL,
+  PRIMARY KEY (`session_key`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Stellvertreter-Struktur des Views `view_feed_subscriptions`
 --
 CREATE TABLE IF NOT EXISTS `view_feed_subscriptions` (

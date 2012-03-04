@@ -1,7 +1,6 @@
 <?php
-session_start();
-if (isset($_SESSION['loggedin_as'])) {
-	require_once 'includes/dbconnect.php';
+require_once 'includes/dbconnect.php';
+if ($user_id) {
 	
 	if(isset($_GET['feedid'])){
 		// alles als gelesen markieren
@@ -17,7 +16,7 @@ if (isset($_SESSION['loggedin_as'])) {
 							FROM
 								`feeds_read`
 							WHERE
-								`user_id` = ". $_SESSION['loggedin_as']. "
+								`user_id` = ". $user_id. "
 								AND
 								`feeds_read`.`article_id` = `feeds_entries`.`article_id`
 						)
@@ -27,7 +26,7 @@ if (isset($_SESSION['loggedin_as'])) {
 							FROM
 								`feeds_subscription`
 							WHERE
-								`userid` =". $_SESSION['loggedin_as']. "
+								`userid` =". $user_id. "
 								AND
 								`feeds_subscription`.`feedid` = `feeds_entries`.`feed_id`
 						)
@@ -45,7 +44,7 @@ if (isset($_SESSION['loggedin_as'])) {
 							FROM
 								`feeds_read`
 							WHERE
-								`user_id` = ". $_SESSION['loggedin_as']. "
+								`user_id` = ". $user_id. "
 								AND
 								`feeds_read`.`article_id` = `feeds_entries`.`article_id`
 						)
@@ -58,7 +57,7 @@ if (isset($_SESSION['loggedin_as'])) {
         $iqval = array();
         $dummy = mysql_query($query);
         while($row = mysql_fetch_assoc($dummy)){
-			$iqval[] = "(".$row['article_id'].", ".$_SESSION['loggedin_as'].")";
+			$iqval[] = "(".$row['article_id'].", ".$user_id.")";
 		}
 		$iq .= join(", ", $iqval);
 		mysql_query($iq);
@@ -69,7 +68,7 @@ if (isset($_SESSION['loggedin_as'])) {
 			
 	}elseif(isset($_GET['article'])){
 		
-		mysql_query("INSERT INTO `feeds_read` (`article_id`, `user_id`) VALUES (".intval($_GET['article']).", ".intval($_SESSION['loggedin_as']).")");
+		mysql_query("INSERT INTO `feeds_read` (`article_id`, `user_id`) VALUES (".intval($_GET['article']).", ".intval($user_id).")");
 		
 		$all_qry = mysql_query("SELECT
 					COUNT(`feed_id`) as c,
@@ -85,7 +84,7 @@ if (isset($_SESSION['loggedin_as'])) {
 						FROM
 							`feeds_read`
 						WHERE
-							`user_id` = ". $_SESSION['loggedin_as']. "
+							`user_id` = ". $user_id. "
 							AND
 							`feeds_read`.`article_id` = `feeds_entries`.`article_id`
 					)
@@ -95,7 +94,7 @@ if (isset($_SESSION['loggedin_as'])) {
 						FROM
 							`feeds_subscription`
 						WHERE
-							`userid` =". $_SESSION['loggedin_as']. "
+							`userid` =". $user_id. "
 							AND
 							`feeds_subscription`.`feedid` = `feeds_entries`.`feed_id`
 						)

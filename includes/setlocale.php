@@ -4,10 +4,9 @@ if(defined('SETLOCATE_INCLUDED') or !$db_connection)
 else
 	define('SETLOCATE_INCLUDED', true);
 	
-require_once 'config.inc.php';
-if (isset($_SESSION['loggedin_as']) and isset($dbhostname)) {
-	require_once 'includes/dbconnect.php';
-	$q = mysql_query('SELECT locale FROM user WHERE id = '.intval($_SESSION['loggedin_as']));
+require_once 'includes/dbconnect.php';
+if ($user_id and isset($dbhostname)) {
+	$q = mysql_query('SELECT locale FROM user WHERE id = '.intval($user_id));
 	$r = mysql_fetch_object($q);
 	$l = $r->locale;
 }

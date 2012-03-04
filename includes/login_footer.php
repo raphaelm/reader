@@ -5,7 +5,6 @@ if(is_mobile()){
 		<a href='?'>"._("Zur Desktop-Version")."</a>
 	</div>";
 }else{
-	if(!isset($_SESSION['loggedin_as'])){
 		?>
 			<div id="footer">
 				<p>
@@ -23,7 +22,6 @@ if(is_mobile()){
 				<p><a href='?mobile=true'><?php echo _("Zur mobilen Version"); ?></a></p>
 			</div>
 		<?php
-	}
 }
 ?>
 	

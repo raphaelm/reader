@@ -1,14 +1,13 @@
 <?php
-session_start();
-if (isset($_SESSION['loggedin_as'])) {
+require_once 'includes/dbconnect.php';
+if ($user_id) {
 	if (empty($_GET["feedid"])) {
 		exit;
 	}
-	require_once 'includes/dbconnect.php';
 	require_once 'includes/functions.php';
 	
 	if (!empty($_GET["feedid"])) {
-		$is_sub = mysql_query("SELECT `feeds`.`name` FROM `feeds_subscription` INNER JOIN `feeds` ON `feeds`.`id` = `feeds_subscription`.`feedid` WHERE `feedid` = ". intval(($_GET["feedid"])). " AND `userid` =". $_SESSION['loggedin_as']); 
+		$is_sub = mysql_query("SELECT `feeds`.`name` FROM `feeds_subscription` INNER JOIN `feeds` ON `feeds`.`id` = `feeds_subscription`.`feedid` WHERE `feedid` = ". intval(($_GET["feedid"])). " AND `userid` =". $user_id); 
 		if (mysql_num_rows($is_sub) == 1) {
 			$feed = mysql_fetch_assoc($is_sub);
 			
@@ -24,14 +23,14 @@ if (isset($_SESSION['loggedin_as'])) {
 							FROM
 								`feeds_read`
 							WHERE
-								`user_id` = ". $_SESSION['loggedin_as']. "
+								`user_id` = ". $user_id. "
 								AND
 								`feeds_read`.`article_id` = `feeds_entries`.`article_id`
 							)
 							AND"
 						: '')."
 						timestamp < ".intval($_GET['lasttimestamp'])."	
-						AND `feed_id` = ". intval(($_GET["feedid"])). "	
+						AND `feed_id` = ". intval($_GET["feedid"]). "	
 					ORDER by 
 						timestamp DESC	
 					LIMIT 30");
@@ -43,7 +42,7 @@ if (isset($_SESSION['loggedin_as'])) {
 						`title`, 
 						`url`, 
 						`timestamp`, 
-						(SELECT COUNT(*) FROM sticky s WHERE user_id = ".$_SESSION['loggedin_as']." AND s.article_id = `feeds_entries`.article_id) as `sticky`,
+						(SELECT COUNT(*) FROM sticky s WHERE user_id = ".$user_id." AND s.article_id = `feeds_entries`.article_id) as `sticky`,
 						`summary`, 
 						(
 							SELECT
@@ -51,21 +50,21 @@ if (isset($_SESSION['loggedin_as'])) {
 							FROM
 								`feeds_read`
 							WHERE
-								`user_id` = ". $_SESSION['loggedin_as']. "
+								`user_id` = ". $user_id. "
 								AND
 								`feeds_read`.`article_id` = `feeds_entries`.`article_id`
 						) as `read_status` 
 					FROM 
 						`feeds_entries` 
 					WHERE 
-						`feed_id` = ". intval(($_GET["feedid"])). " ".(
+						`feed_id` = ". intval($_GET["feedid"]). " ".(
 						(!isset($_GET['show']) || $_GET['show'] == 'unread') ?
 							"AND 0 = (SELECT
 								COUNT(`article_id`)
 							FROM
 								`feeds_read`
 							WHERE
-								`user_id` = ". $_SESSION['loggedin_as']. "
+								`user_id` = ". $user_id. "
 								AND
 								`feeds_read`.`article_id` = `feeds_entries`.`article_id`
 							)"

@@ -16,5 +16,6 @@ $localenames = array(
 					'en_GB' => 'English',
 					'eo'    => 'Esperanto'
 					);
+$cookiename = "geeksfactoryreader_session";
 
 date_default_timezone_set('Europe/Berlin');

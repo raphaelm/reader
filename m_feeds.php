@@ -1,15 +1,14 @@
 <?php
 define('IS_MOBILE', true);
-session_start();
-if (isset($_SESSION['loggedin_as'])) {
+require_once 'includes/dbconnect.php';
+if ($user_id) {
 	if (empty($_GET["feedid"])) {
 		header('Location: m_all.php?mobile=true'); exit;
 	}
-	require_once 'includes/dbconnect.php';
 	require_once 'includes/functions.php';
 	require 'includes/mobile_header.php';
 	if (!empty($_GET["feedid"])) {
-		$is_sub = mysql_query("SELECT `feeds`.`name`, alias FROM `feeds_subscription` INNER JOIN `feeds` ON `feeds`.`id` = `feeds_subscription`.`feedid` WHERE `feedid` = ". intval(($_GET["feedid"])). " AND `userid` =". $_SESSION['loggedin_as']); 
+		$is_sub = mysql_query("SELECT `feeds`.`name`, alias FROM `feeds_subscription` INNER JOIN `feeds` ON `feeds`.`id` = `feeds_subscription`.`feedid` WHERE `feedid` = ". intval(($_GET["feedid"])). " AND `userid` =". $user_id); 
 		if (mysql_num_rows($is_sub) == 1) {
 			$feed = mysql_fetch_assoc($is_sub);
 			?>
@@ -35,7 +34,7 @@ if (isset($_SESSION['loggedin_as'])) {
 							FROM
 								`feeds_read`
 							WHERE
-								`user_id` = ". $_SESSION['loggedin_as']. "
+								`user_id` = ". $user_id. "
 								AND
 								`feeds_read`.`article_id` = `feeds_entries`.`article_id`
 							)
@@ -54,14 +53,14 @@ if (isset($_SESSION['loggedin_as'])) {
 						`title`, 
 						`url`, 
 						`timestamp`,
-						(SELECT COUNT(*) FROM sticky s WHERE user_id = ".$_SESSION['loggedin_as']." AND s.article_id = `feeds_entries`.article_id) as `sticky`,
+						(SELECT COUNT(*) FROM sticky s WHERE user_id = ".$user_id." AND s.article_id = `feeds_entries`.article_id) as `sticky`,
 						`summary`,
 						(SELECT
 								COUNT(`article_id`)
 							FROM
 								`feeds_read`
 							WHERE
-								`user_id` = ". $_SESSION['loggedin_as']. "
+								`user_id` = ". $user_id. "
 								AND
 								`feeds_read`.`article_id` = `feeds_entries`.`article_id`
 						) as `read_status`
@@ -76,7 +75,7 @@ if (isset($_SESSION['loggedin_as'])) {
 								FROM
 									`feeds_read`
 								WHERE
-									`user_id` = ". $_SESSION['loggedin_as']. "
+									`user_id` = ". $user_id. "
 									AND
 									`feeds_read`.`article_id` = `feeds_entries`.`article_id`
 							)"

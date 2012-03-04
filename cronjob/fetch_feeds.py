@@ -12,6 +12,7 @@ def main():
 	g.cursor.execute("DELETE FROM `feeds_read` WHERE 0 = (SELECT COUNT(`article_id`) FROM `feeds_entries` WHERE `feeds_entries`.`article_id` = `feeds_read`.`article_id`)") # verwaiste einträge in feeds_read
 	g.cursor.execute("DELETE FROM `sticky` WHERE 0 = (SELECT COUNT(`article_id`) FROM `feeds_entries` WHERE `feeds_entries`.`article_id` = `sticky`.`article_id`)") # verwaiste einträge in sticky
 	g.cursor.execute("DELETE FROM `feeds_subscription` WHERE 0 = (SELECT COUNT(`id`) FROM `feeds` WHERE `feeds`.`id` = `feeds_subscription`.`feedid`) OR 0 = (SELECT COUNT(`id`) FROM `user` WHERE `user`.`id` = `feeds_subscription`.`userid`)") # verwaiste einträge in subscriptions
+	g.cursor.execute("DELETE FROM `sessions` WHERE `expire` < %d" % time.time()) # abgelaufene sessions
 	g.getFeeds(4)
 	return 0
 

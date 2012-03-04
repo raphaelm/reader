@@ -85,6 +85,16 @@ a
 	box-shadow: 0 0 6px 1px #888;
 	outline: none;
 }
+.checkboxl {
+	margin-bottom: 15px;
+}
+.checkboxl label
+{
+	line-height: 19px;
+	display: inline-block;
+	position: relative;
+	top: -2px;
+}
 .buttonl
 {
 	width: 160px;

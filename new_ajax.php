@@ -1,7 +1,6 @@
 <?php
-session_start();
-if (isset($_SESSION['loggedin_as'])) {
-	require_once 'includes/dbconnect.php';
+require_once 'includes/dbconnect.php';
+if ($user_id) {
 
 	$all_qry = mysql_query("SELECT
 				COUNT(`feed_id`) as c,
@@ -17,7 +16,7 @@ if (isset($_SESSION['loggedin_as'])) {
 					FROM
 						`feeds_read`
 					WHERE
-							`user_id` = ". $_SESSION['loggedin_as']. "
+							`user_id` = ". $user_id. "
 						AND
 							`feeds_read`.`article_id` = `feeds_entries`.`article_id`
 				)
@@ -27,7 +26,7 @@ if (isset($_SESSION['loggedin_as'])) {
 					FROM
 						`feeds_subscription`
 					WHERE
-							`userid` =". $_SESSION['loggedin_as']. "
+							`userid` =". $user_id. "
 						AND
 							`feeds_subscription`.`feedid` = `feeds_entries`.`feed_id`
 					)
@@ -52,7 +51,7 @@ if (isset($_SESSION['loggedin_as'])) {
 					FROM
 						`sticky`
 					WHERE
-						`user_id` = ". $_SESSION['loggedin_as']. "
+						`user_id` = ". $user_id. "
 						AND
 						`sticky`.`article_id` = `feeds_entries`.`article_id`
 				)
@@ -62,7 +61,7 @@ if (isset($_SESSION['loggedin_as'])) {
 					FROM
 						`feeds_subscription`
 					WHERE
-						`userid` =". $_SESSION['loggedin_as']. "
+						`userid` =". $user_id. "
 						AND
 						`feeds_subscription`.`feedid` = `feeds_entries`.`feed_id`
 					)");

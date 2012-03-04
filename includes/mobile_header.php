@@ -1,5 +1,5 @@
 <?php 
-require_once 'config.inc.php';
+require_once 'includes/dbconnect.php';
 require 'includes/setlocale.php'; ?>
 <!DOCTYPE html>
 <html>
@@ -17,7 +17,7 @@ require 'includes/setlocale.php'; ?>
   <body>
 <?php
 function selarea($actual){
-	global $locale, $locales;
+	global $locale, $locales, $user_id;
 	/*if(strlen($actual) > 14)
 		$actual = substr($actual, 0, 11)."…";*/
 	echo '<a href="logout.php?mobile=true" id="logout"><img src="images/door_out.png" alt="'._('Ausloggen').'" /></a>';
@@ -43,7 +43,7 @@ function selarea($actual){
 				FROM
 					`feeds_read`
 				WHERE
-					`user_id` = ". $_SESSION['loggedin_as']. "
+					`user_id` = ". $user_id. "
 					AND
 					`feeds_read`.`article_id` = `feeds_entries`.`article_id`
 			)
@@ -53,7 +53,7 @@ function selarea($actual){
 				FROM
 					`feeds_subscription`
 				WHERE
-					`userid` =". $_SESSION['loggedin_as']. "
+					`userid` =". $user_id. "
 					AND
 					`feeds_subscription`.`feedid` = `feeds_entries`.`feed_id`
 				)
@@ -77,7 +77,7 @@ function selarea($actual){
 					FROM
 						`sticky`
 					WHERE
-						`user_id` = ". $_SESSION['loggedin_as']. "
+						`user_id` = ". $user_id. "
 						AND
 						`sticky`.`article_id` = `feeds_entries`.`article_id`
 				)
@@ -87,7 +87,7 @@ function selarea($actual){
 					FROM
 						`feeds_subscription`
 					WHERE
-						`userid` =". $_SESSION['loggedin_as']. "
+						`userid` =". $user_id. "
 						AND
 						`feeds_subscription`.`feedid` = `feeds_entries`.`feed_id`
 					)");
@@ -97,7 +97,7 @@ function selarea($actual){
 	echo "<li><a href=\"m_all.php\">"._("Alle Feeds")." <span id='unreadcount_all'>".($unread["all"] > 0 ? '('.$unread["all"].')': '')."</span></a></li>";
 	echo "<li><a href=\"m_sticky.php\">"._("Merkliste")." <span id='unreadcount_sticky'>".($sticky > 0 ? '('.$sticky.')': '')."</span></a></li>";
 		  
-	$feeds_qry = mysql_query("SELECT `feedid`, `feedname` FROM `view_feed_subscriptions` WHERE `userid` =". $_SESSION['loggedin_as']. " AND feedid > 0 ORDER by `feedname` asc");
+	$feeds_qry = mysql_query("SELECT `feedid`, `feedname` FROM `view_feed_subscriptions` WHERE `userid` =". $user_id. " AND feedid > 0 ORDER by `feedname` asc");
 	if(mysql_num_rows($feeds_qry) == 0){
 		echo "<p>Keine Feeds gefunden.</p>";
 	} else {
