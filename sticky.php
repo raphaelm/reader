@@ -22,6 +22,7 @@ if ($user_id) {
 				`timestamp`,
 				`article_id`,
 				`summary`,
+				`updated`,
 				`feeds_entries`.`url` as `articleurl`,
 				(
 					SELECT
@@ -69,7 +70,11 @@ if ($user_id) {
 	}
 	while ($row = mysql_fetch_assoc($all_qry)) {
 		echo '<div id="article_'.$row["article_id"].'" class="sticky">';
-		echo '<a href="'. $row["articleurl"]. '" class="titlelink" target="_blank">'. utf_correct($row["title"]). '</a><br />';
+		echo '<a href="'. $row["articleurl"]. '" class="titlelink" target="_blank">'. utf_correct($row["title"]). '</a>';
+		if($row["updated"] > 0){
+			echo '<span class="updated" title="'.sprintf(_("Dieser Artikel hat sich %d mal geändert"), $row["updated"]).'">'.$row["updated"].'</span>';
+		}
+		echo '<br />';
 		echo '<em>'. date(_("d.m.Y - H:i"), $row["timestamp"]). ': '. $row["feedtitle"]. '</em>';
 		echo ' &middot; <a href="javascript:unstickyremove('.$row["article_id"].');">'._('aus Merkliste entfernen').'</a>';
 		echo '<br />';

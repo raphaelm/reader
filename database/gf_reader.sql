@@ -1,3 +1,14 @@
+-- phpMyAdmin SQL Dump
+-- version 3.4.5deb1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Erstellungszeit: 06. Mrz 2012 um 13:59
+-- Server Version: 5.1.49
+-- PHP-Version: 5.3.3-7+squeeze8
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
 --
 -- Datenbank: `gf_reader`
 --
@@ -16,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `feeds` (
   `slower` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `url` (`url`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=137 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=140 ;
 
 -- --------------------------------------------------------
 
@@ -33,9 +44,11 @@ CREATE TABLE IF NOT EXISTS `feeds_entries` (
   `contenthash` varchar(255) DEFAULT NULL,
   `timestamp` int(11) NOT NULL,
   `summary` longtext NOT NULL COMMENT 'zlib compressed',
+  `updated` int(11) NOT NULL,
+  `original_guid` varchar(255) NOT NULL,
   PRIMARY KEY (`article_id`),
   UNIQUE KEY `guid` (`guid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=169808 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=46571 ;
 
 -- --------------------------------------------------------
 
@@ -59,7 +72,21 @@ CREATE TABLE IF NOT EXISTS `feeds_subscription` (
   `feedid` int(11) NOT NULL,
   `userid` int(11) NOT NULL,
   `alias` varchar(255) NOT NULL,
+  `updates` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`feedid`,`userid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `sessions`
+--
+
+CREATE TABLE IF NOT EXISTS `sessions` (
+  `session_key` varchar(255) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `expires` int(11) NOT NULL,
+  PRIMARY KEY (`session_key`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -93,24 +120,12 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `sessions`
---
-
-CREATE TABLE IF NOT EXISTS `sessions` (
-  `session_key` varchar(255) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `expires` int(11) NOT NULL,
-  PRIMARY KEY (`session_key`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Stellvertreter-Struktur des Views `view_feed_subscriptions`
 --
 CREATE TABLE IF NOT EXISTS `view_feed_subscriptions` (
 `feedid` int(11)
 ,`lastupdate` int(11)
+,`updates` tinyint(1)
 ,`userid` int(11)
 ,`feedname` varchar(255)
 ,`alias` varchar(255)
@@ -124,4 +139,4 @@ CREATE TABLE IF NOT EXISTS `view_feed_subscriptions` (
 --
 DROP TABLE IF EXISTS `view_feed_subscriptions`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_feed_subscriptions` AS select `s`.`feedid` AS `feedid`,`f`.`lastupdate` AS `lastupdate`,`s`.`userid` AS `userid`,if((`s`.`alias` <> ''),`s`.`alias`,`f`.`name`) AS `feedname`,`s`.`alias` AS `alias`,`f`.`name` AS `origname`,`f`.`url` AS `feedurl` from (`feeds_subscription` `s` join `feeds` `f` on((`f`.`id` = `s`.`feedid`)));
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_feed_subscriptions` AS select `s`.`feedid` AS `feedid`,`f`.`lastupdate` AS `lastupdate`,`s`.`updates` AS `updates`,`s`.`userid` AS `userid`,if((`s`.`alias` <> ''),`s`.`alias`,`f`.`name`) AS `feedname`,`s`.`alias` AS `alias`,`f`.`name` AS `origname`,`f`.`url` AS `feedurl` from (`feeds_subscription` `s` join `feeds` `f` on((`f`.`id` = `s`.`feedid`)));

@@ -240,7 +240,14 @@ td.top {
 	background: #EEEEFF;
 }
 .abos tr td:nth-child(2) {
-	min-width: 305px;
+	min-width: 100px;
+}
+.abos th {
+	vertical-align: bottom;
+}
+.abos .update_column {
+	width: 100px;
+	text-align: center;
 }
 .abos td {
 	height: 30px;
@@ -296,4 +303,12 @@ input[type=submit]:focus, input[type=button]:focus {
 }
 .biggerbtn:hover {
 	border: 1px solid #888;
+}
+.updated {
+	background: #FFD4E5;
+	color: #000;
+	display: inline-block;
+	line-height: 19px;
+	padding: 1px 10px;
+	margin-left: 7px;
 }

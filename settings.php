@@ -157,7 +157,7 @@ ignoriere diese E-Mail einfach.
 	</form>
 	<?php
 	echo '<h3>'._('Abos').'</h3>';
-	$feeds_qry = mysql_query("SELECT `feedid`, `feedname`, `alias`, `origname`, `feedurl`, `lastupdate` FROM `view_feed_subscriptions` WHERE `userid` =". $user_id. " AND feedid > 0 ORDER by `feedname` asc");
+	$feeds_qry = mysql_query("SELECT `feedid`, `feedname`, `alias`, `origname`, `feedurl`, `lastupdate`, `updates` FROM `view_feed_subscriptions` WHERE `userid` =". $user_id. " AND feedid > 0 ORDER by `feedname` asc");
 	if(mysql_num_rows($feeds_qry) == 0){
 		echo "<p>"._("Keine Feeds gefunden.")."</p>";
 	} else {
@@ -165,6 +165,7 @@ ignoriere diese E-Mail einfach.
 				<tr>
 				  <th>'._('Name').'</th>
 				  <th>'._('Alias').'</th>
+				  <th class="update_column">'._('Bei Update eines Artikels wieder als ungelesen anzeigen').'</th>
 				  <th></th>
 				</tr>';
 		while ($row = mysql_fetch_assoc($feeds_qry)) {
@@ -172,7 +173,9 @@ ignoriere diese E-Mail einfach.
 			if(time()-$row["lastupdate"] > 1000){
 				echo '<img src="images/error.png" class="erroricon" alt="'._('Fehler').'" title="'._('Dieser Feed konnte kürzlich nicht erfolgreich abgerufen werden.').'" /> ';
 			}
-			echo '<a href="'.$row['feedurl'].'" class="feedlink" target="_blank">'.utf_correct($row["origname"]). '</a></td><td id="alias_'.$row["feedid"].'">'. utf_correct($row["alias"]). '</td><td><a href="settings.php?del='. $row["feedid"]. '&hash='.$s.'">'._('Löschen').'</a> | <a href="javascript:editalias('.$row["feedid"].')" id="editaliaslink_'.$row["feedid"].'">'._('Alias setzen').'</a></td></tr>';
+			echo '<a href="'.$row['feedurl'].'" class="feedlink" target="_blank">'.utf_correct($row["origname"]). '</a></td><td id="alias_'.$row["feedid"].'">'. utf_correct($row["alias"]). '</td>';
+			echo '<td class="update_column"><input type="checkbox" class="updates_box"'.($row['updates'] ? ' checked="checked"' : '').' value="'.$row["feedid"].'" /></td>';
+			echo '<td><a href="settings.php?del='. $row["feedid"]. '&hash='.$s.'">'._('Löschen').'</a> | <a href="javascript:editalias('.$row["feedid"].')" id="editaliaslink_'.$row["feedid"].'">'._('Alias setzen').'</a></td></tr>';
 		}
 		echo '</table>';
 	}   
@@ -232,6 +235,10 @@ ignoriere diese E-Mail einfach.
 				return false;
 			});
 		}
+		$(".updates_box").bind("click", function(){
+			id = $(this).val();
+			$.get('settings_setupdates_ajax.php?hash=<?php echo sha1($user_id.$salt.date('Ymd')); ?>&id='+id);
+		});
 	</script>
 	
 	</div></div>

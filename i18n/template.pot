@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfreader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-04 00:56+0100\n"
+"POT-Creation-Date: 2012-03-06 14:00+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,7 +39,7 @@ msgid ""
 "dieses bald behoben werden kann."
 msgstr ""
 
-#: all.php:120 feeds.php:93 m_all.php:117 m_feeds.php:92
+#: all.php:121 feeds.php:94 m_all.php:117 m_feeds.php:92
 #, php-format
 msgid ""
 "Dieser Feed besitzt keine%s Einträge. Wenn du ihn gerade erst aboniert hast, "
@@ -47,25 +47,30 @@ msgid ""
 "werden keine Einträge angezeigt, die älter als 30 Tage sind."
 msgstr ""
 
-#: all.php:120 feeds.php:93 m_all.php:117 m_feeds.php:92
+#: all.php:121 feeds.php:94 m_all.php:117 m_feeds.php:92
 msgid " ungelesenen"
 msgstr ""
 
-#: all.php:124 feeds.php:97
+#: all.php:125 feeds.php:98
 msgid "Neu laden"
 msgstr ""
 
-#: all.php:131 all_ajax.php:112 feeds.php:104 feeds_ajax.php:86 m_all.php:123
-#: m_feeds.php:98 m_sticky.php:78 sticky.php:73
+#: all.php:133 feeds.php:106 sticky.php:75
+#, php-format
+msgid "Dieser Artikel hat sich %d mal geändert"
+msgstr ""
+
+#: all.php:136 all_ajax.php:112 feeds.php:109 feeds_ajax.php:86 m_all.php:123
+#: m_feeds.php:98 m_sticky.php:78 sticky.php:78
 msgid "d.m.Y - H:i"
 msgstr ""
 
-#: all.php:132 all_ajax.php:113 feeds.php:105 feeds_ajax.php:87 m_all.php:124
+#: all.php:137 all_ajax.php:113 feeds.php:110 feeds_ajax.php:87 m_all.php:124
 #: m_feeds.php:99
 msgid "nicht merken"
 msgstr ""
 
-#: all.php:133 all_ajax.php:114 feeds.php:106 feeds_ajax.php:88 m_all.php:125
+#: all.php:138 all_ajax.php:114 feeds.php:111 feeds_ajax.php:88 m_all.php:125
 #: m_feeds.php:100
 msgid "merken"
 msgstr ""
@@ -108,7 +113,7 @@ msgid ""
 "Minuten auch alles wieder gehen."
 msgstr ""
 
-#: feeds.php:110 feeds_ajax.php:93 m_feeds.php:105
+#: feeds.php:115 feeds_ajax.php:93 m_feeds.php:105
 msgid "Du abonnierst diesen Feed nicht."
 msgstr ""
 
@@ -116,27 +121,27 @@ msgstr ""
 msgid "Nutzer nicht gefunden oder Passwort falsch."
 msgstr ""
 
-#: login.php:6 login.php:20 register.php:21 register.php:31
+#: login.php:6 login.php:21 register.php:21 register.php:31
 msgid "Nutzername"
 msgstr ""
 
-#: login.php:8 login.php:21 register.php:22 register.php:32
+#: login.php:8 login.php:22 register.php:22 register.php:32
 msgid "Passwort"
 msgstr ""
 
 #: login.php:10 login.php:23
-msgid "Anmelden"
-msgstr ""
-
-#: login.php:12 login.php:25 register.php:29 register.php:35
-msgid "Registrieren"
-msgstr ""
-
-#: login.php:22
 msgid "Eingeloggt bleiben"
 msgstr ""
 
-#: login.php:28 lostpw.php:37 lostpw.php:53
+#: login.php:11 login.php:24
+msgid "Anmelden"
+msgstr ""
+
+#: login.php:13 login.php:26 register.php:29 register.php:35
+msgid "Registrieren"
+msgstr ""
+
+#: login.php:29 lostpw.php:37 lostpw.php:53
 msgid "Passwort vergessen?"
 msgstr ""
 
@@ -208,11 +213,11 @@ msgstr ""
 msgid "Alle entfernen"
 msgstr ""
 
-#: m_sticky.php:72 sticky.php:67
+#: m_sticky.php:72 sticky.php:68
 msgid "Du hast dir keine Einträge gemerkt!"
 msgstr ""
 
-#: m_sticky.php:79 sticky.php:74
+#: m_sticky.php:79 sticky.php:79
 msgid "aus Merkliste entfernen"
 msgstr ""
 
@@ -242,7 +247,7 @@ msgstr ""
 msgid "Registrieren."
 msgstr ""
 
-#: register.php:37 settings.php:224
+#: register.php:37 settings.php:227
 msgid "Abbrechen"
 msgstr ""
 
@@ -327,7 +332,7 @@ msgstr ""
 msgid "Lokalisierung"
 msgstr ""
 
-#: settings.php:121 settings.php:147 settings.php:224
+#: settings.php:121 settings.php:147 settings.php:227
 msgid "Speichern"
 msgstr ""
 
@@ -382,44 +387,48 @@ msgstr ""
 msgid "Alias"
 msgstr ""
 
-#: settings.php:173
+#: settings.php:168
+msgid "Bei Update eines Artikels wieder als ungelesen anzeigen"
+msgstr ""
+
+#: settings.php:174
 msgid "Fehler"
 msgstr ""
 
-#: settings.php:173
+#: settings.php:174
 msgid "Dieser Feed konnte kürzlich nicht erfolgreich abgerufen werden."
 msgstr ""
 
-#: settings.php:175
+#: settings.php:178
 msgid "Löschen"
 msgstr ""
 
-#: settings.php:175
+#: settings.php:178
 msgid "Alias setzen"
 msgstr ""
 
-#: settings.php:183
+#: settings.php:186
 msgid "Desktop Notifications"
 msgstr ""
 
-#: settings.php:185
+#: settings.php:188
 msgid ""
 "Nicht wundern: Einstellung wird nur für diesen Computer gespeichert (als "
 "Cookie)."
 msgstr ""
 
-#: settings.php:187
+#: settings.php:190
 msgid "Desktop Notifications aktivieren"
 msgstr ""
 
-#: settings.php:188
+#: settings.php:191
 msgid "Desktop Notifications deaktivieren"
 msgstr ""
 
-#: settings.php:201
+#: settings.php:204
 msgid "Test"
 msgstr ""
 
-#: settings.php:201
+#: settings.php:204
 msgid "erfolgreich"
 msgstr ""

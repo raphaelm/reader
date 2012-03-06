@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfreader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-04 00:56+0100\n"
-"PO-Revision-Date: 2012-03-04 01:13+0100\n"
+"POT-Creation-Date: 2012-03-06 14:00+0100\n"
+"PO-Revision-Date: 2012-03-06 14:01+0100\n"
 "Last-Translator: Raphael <raphael@geeksfactory.de>\n"
 "Language-Team: Raphael Michel <raphael@geeksfactory.de>\n"
 "Language: \n"
@@ -48,49 +48,56 @@ msgstr "Mark all as read"
 msgid "Wir leiden derzeit leider unter einem technischen Problem und hoffen, dass dieses bald behoben werden kann."
 msgstr "We're sorry, but we are currently experiencing technical problems. We hope, they'll be fixed soon."
 
-#: all.php:120
-#: feeds.php:93
+#: all.php:121
+#: feeds.php:94
 #: m_all.php:117
 #: m_feeds.php:92
 #, php-format
 msgid "Dieser Feed besitzt keine%s Einträge. Wenn du ihn gerade erst aboniert hast, kann es bis zu fünf Minuten dauern, bis hier Einträge erscheinen. Außerdem werden keine Einträge angezeigt, die älter als 30 Tage sind."
 msgstr "This feed doesn't have any %s posts. If you subscribed to it very recently it can take up to five minutes until the first posts appear. Additionally, no posts older than 30 days are shown."
 
-#: all.php:120
-#: feeds.php:93
+#: all.php:121
+#: feeds.php:94
 #: m_all.php:117
 #: m_feeds.php:92
 msgid " ungelesenen"
 msgstr " unread"
 
-#: all.php:124
-#: feeds.php:97
+#: all.php:125
+#: feeds.php:98
 msgid "Neu laden"
 msgstr "Reload page"
 
-#: all.php:131
+#: all.php:133
+#: feeds.php:106
+#: sticky.php:75
+#, php-format
+msgid "Dieser Artikel hat sich %d mal geändert"
+msgstr "This post changed %d times"
+
+#: all.php:136
 #: all_ajax.php:112
-#: feeds.php:104
+#: feeds.php:109
 #: feeds_ajax.php:86
 #: m_all.php:123
 #: m_feeds.php:98
 #: m_sticky.php:78
-#: sticky.php:73
+#: sticky.php:78
 msgid "d.m.Y - H:i"
 msgstr "d-m-Y - H:i"
 
-#: all.php:132
+#: all.php:137
 #: all_ajax.php:113
-#: feeds.php:105
+#: feeds.php:110
 #: feeds_ajax.php:87
 #: m_all.php:124
 #: m_feeds.php:99
 msgid "nicht merken"
 msgstr "remove bookmark"
 
-#: all.php:133
+#: all.php:138
 #: all_ajax.php:114
-#: feeds.php:106
+#: feeds.php:111
 #: feeds_ajax.php:88
 #: m_all.php:125
 #: m_feeds.php:100
@@ -136,7 +143,7 @@ msgstr "Mark all posts from this feed as read"
 msgid "Das Abrufen dieses Feeds schlug leider kürzlich fehl. Stelle sicher, dass die Feed-Adresse noch aktuell ist. Wenn alles stimmt, sollte in wenigen Minuten auch alles wieder gehen."
 msgstr "While fetching this feed an error occurred. Make sure the feed URL is still correct. If everything is right, this message should be gone in a few minutes."
 
-#: feeds.php:110
+#: feeds.php:115
 #: feeds_ajax.php:93
 #: m_feeds.php:105
 msgid "Du abonnierst diesen Feed nicht."
@@ -147,14 +154,14 @@ msgid "Nutzer nicht gefunden oder Passwort falsch."
 msgstr "Invalid user or password."
 
 #: login.php:6
-#: login.php:20
+#: login.php:21
 #: register.php:21
 #: register.php:31
 msgid "Nutzername"
 msgstr "User"
 
 #: login.php:8
-#: login.php:21
+#: login.php:22
 #: register.php:22
 #: register.php:32
 msgid "Passwort"
@@ -162,21 +169,22 @@ msgstr "Password"
 
 #: login.php:10
 #: login.php:23
+msgid "Eingeloggt bleiben"
+msgstr "Stay logged in"
+
+#: login.php:11
+#: login.php:24
 msgid "Anmelden"
 msgstr "Log In"
 
-#: login.php:12
-#: login.php:25
+#: login.php:13
+#: login.php:26
 #: register.php:29
 #: register.php:35
 msgid "Registrieren"
 msgstr "Sign Up"
 
-#: login.php:22
-msgid "Eingeloggt bleiben"
-msgstr "Stay logged in"
-
-#: login.php:28
+#: login.php:29
 #: lostpw.php:37
 #: lostpw.php:53
 msgid "Passwort vergessen?"
@@ -266,12 +274,12 @@ msgid "Alle entfernen"
 msgstr "Remove all"
 
 #: m_sticky.php:72
-#: sticky.php:67
+#: sticky.php:68
 msgid "Du hast dir keine Einträge gemerkt!"
 msgstr "You don't have any bookmarks."
 
 #: m_sticky.php:79
-#: sticky.php:74
+#: sticky.php:79
 msgid "aus Merkliste entfernen"
 msgstr "remove bookmark"
 
@@ -302,7 +310,7 @@ msgid "Registrieren."
 msgstr "Sign Up"
 
 #: register.php:37
-#: settings.php:224
+#: settings.php:227
 msgid "Abbrechen"
 msgstr "Cancel"
 
@@ -387,7 +395,7 @@ msgstr "Localization"
 
 #: settings.php:121
 #: settings.php:147
-#: settings.php:224
+#: settings.php:227
 msgid "Speichern"
 msgstr "Save"
 
@@ -439,43 +447,47 @@ msgstr "Title"
 msgid "Alias"
 msgstr "Alias"
 
-#: settings.php:173
+#: settings.php:168
+msgid "Bei Update eines Artikels wieder als ungelesen anzeigen"
+msgstr "Show updated posts as unread again"
+
+#: settings.php:174
 msgid "Fehler"
 msgstr "Error"
 
-#: settings.php:173
+#: settings.php:174
 msgid "Dieser Feed konnte kürzlich nicht erfolgreich abgerufen werden."
 msgstr "While fetching this feed an error occurred."
 
-#: settings.php:175
+#: settings.php:178
 msgid "Löschen"
 msgstr "Remove"
 
-#: settings.php:175
+#: settings.php:178
 msgid "Alias setzen"
 msgstr "Set alias"
 
-#: settings.php:183
+#: settings.php:186
 msgid "Desktop Notifications"
 msgstr "Desktop notifications"
 
-#: settings.php:185
+#: settings.php:188
 msgid "Nicht wundern: Einstellung wird nur für diesen Computer gespeichert (als Cookie)."
 msgstr "Don't be surprised: Setting is saved in a cookie and thus only for this machine."
 
-#: settings.php:187
+#: settings.php:190
 msgid "Desktop Notifications aktivieren"
 msgstr "Enable desktop notifications"
 
-#: settings.php:188
+#: settings.php:191
 msgid "Desktop Notifications deaktivieren"
 msgstr "Disable desktop notifications"
 
-#: settings.php:201
+#: settings.php:204
 msgid "Test"
 msgstr "Test"
 
-#: settings.php:201
+#: settings.php:204
 msgid "erfolgreich"
 msgstr "successful"
 

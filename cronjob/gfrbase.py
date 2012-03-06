@@ -207,13 +207,16 @@ class GFR:
 				
 				# Create a unique identifier for the post
 				entry_guid = None
+				origguid = "" # DEBUGGING
 				try:
 					# The feed provides one? Awesome!
 					entry_guid = hashlib.sha1(str(feed_id)+entry['id'].encode("utf-8")).hexdigest()
+					origguid = entry['id'].encode("utf-8") # DEBUGGING
 				finally:
 					# The feed doesn't? We choose.
 					if entry_guid is None or len(entry_guid) < 10:
 						entry_guid = hashlib.sha1(entry_link+entry_title+str(feed_id)).hexdigest()
+						origguid = entry_link+entry_title.encode("utf-8")+str(feed_id) # DEBUGGING
 						
 				try:
 					entry_updated = entry['updated_parsed']
@@ -232,17 +235,18 @@ class GFR:
 				
 				entry_summary_zipped = zlib.compress(entry_summary, 9)
 				
-				qp = (feed_id, entry_title, entry_link, entry_guid, entry_contenthash, int(entry_timestamp), entry_summary_zipped)
+				qp = (feed_id, entry_title, entry_link, entry_guid, entry_contenthash, int(entry_timestamp), entry_summary_zipped, origguid)
 				if entry_guid not in self.guids: # no duplicates
 					try:
-						self._threaded_sql_exec("INSERT INTO `feeds_entries` (`feed_id`, `title`, `url`, `guid`, `contenthash`, `timestamp`, `summary`) VALUES (%s, %s, %s, %s, %s, %s, %s)", qp)
+						self._threaded_sql_exec("INSERT INTO `feeds_entries` (`feed_id`, `title`, `url`, `guid`, `contenthash`, `timestamp`, `summary`, original_guid) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)", qp)
 						self.hashs.add(entry_contenthash)
 						self.guids.add(entry_guid)
 					finally:
 						pass
 				elif entry_contenthash not in self.hashs:
 					try:
-						self._threaded_sql_exec("REPLACE INTO `feeds_entries` (`feed_id`, `title`, `url`, `guid`, `contenthash`, `timestamp`, `summary`) VALUES (%s, %s, %s, %s, %s, %s, %s)", qp)
+						self._threaded_sql_exec("UPDATE `feeds_entries` Set `title` = %s, `url` = %s, `contenthash` = %s, `timestamp` = %s, `summary` = %s, `updated` = `updated`+1 WHERE `guid` = %s", (qp[1], qp[2], qp[4], qp[5], qp[6], qp[3]))
+						self._threaded_sql_exec("DELETE FROM `feeds_read` WHERE `article_id` = (SELECT `article_id` FROM `feeds_entries` WHERE `guid` = %s) AND (SELECT `updates` FROM `feeds_subscription` WHERE `feeds_read`.`user_id` = `feeds_subscription`.`userid` AND `feeds_subscription`.`feedid` = (SELECT `feed_id` FROM `feeds_entries` WHERE `guid` = %s)) = 1", (qp[3],qp[3]))
 						self.hashs.add(entry_contenthash)
 					finally:
 						pass
