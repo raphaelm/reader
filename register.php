@@ -1,7 +1,7 @@
 <?php
 require_once('includes/login_header.php');
 
-if (!empty($_POST['regusername']) && !empty($_POST['regpassword']) && !empty($_POST['regmail'])) {
+if (!empty($_POST['regusername']) && !empty($_POST['regpassword'])) {
 	require_once 'includes/dbconnect.php';
 	$username = mysql_real_escape_string($_POST["regusername"]);
 	$password = sha1($_POST["regpassword"]. $salt);
