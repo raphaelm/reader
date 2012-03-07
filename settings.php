@@ -115,7 +115,7 @@ ignoriere diese E-Mail einfach.
 	echo '<form action="settings.php" method="post">
 			<select name="locale">';
 	foreach ($locales as $loc) {
-		echo '<option'.($loc == $me->locale ? ' selected="selected"' : '').'>'.$loc.' ('.$localenames[$loc].')</option>';
+		echo '<option'.($loc == $me->locale ? ' selected="selected"' : '').' value="'.$loc.'">'.$loc.' ('.$localenames[$loc].')</option>';
 	}
 	echo '</select>
 			<input type="submit" value="'._('Speichern').'" />
