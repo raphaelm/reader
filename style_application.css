@@ -177,6 +177,9 @@ a.feedlink {
 	text-align: center;
 	font-size: 16px;
 }
+#navi p {
+	padding: 10px;
+}
 #navi ul li#infoline, p.about {
 	text-align: center;
 	font-size: 10px;
