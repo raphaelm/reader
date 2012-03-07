@@ -236,8 +236,13 @@ ignoriere diese E-Mail einfach.
 			});
 		}
 		$(".updates_box").bind("click", function(){
-			id = $(this).val();
+			var id = $(this).val();
 			$.get('settings_setupdates_ajax.php?hash=<?php echo sha1($user_id.$salt.date('Ymd')); ?>&id='+id);
+			var p = $(this).parent();
+			x = p.css("background-color");
+			p.stop().animate({backgroundColor: '#449944'}, function(){
+				$(this).animate({backgroundColor:x});
+			});
 		});
 	</script>
 	
