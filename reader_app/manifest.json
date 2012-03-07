@@ -1,0 +1,19 @@
+{
+  "name": "geek's factory reader",
+  "description": "Fancy and full-featured feed reader",
+  "version": "1",
+  "app": {
+    "urls": [
+      "*://reader.geeksfactory.de/"
+    ],
+    "launch": {
+      "web_url": "http://reader.geeksfactory.de/"
+    }
+  },
+  "icons": {
+    "128": "icon_128.png"
+  },
+  "permissions": [
+    "notifications"
+  ]
+}

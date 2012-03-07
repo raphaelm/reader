@@ -1,4 +1,5 @@
 config.inc.php
 cronjob/config.py
+reader_app.pem
 *.pyc
 
