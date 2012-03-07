@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfreader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-06 14:00+0100\n"
+"POT-Creation-Date: 2012-03-07 15:37+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: all.php:7 m_all.php:10
+#: all.php:7 m_all.php:10 includes/application_navi.php:73
+#: includes/mobile_header.php:97
 msgid "Alle Feeds"
 msgstr ""
 
@@ -66,12 +67,12 @@ msgid "d.m.Y - H:i"
 msgstr ""
 
 #: all.php:137 all_ajax.php:113 feeds.php:110 feeds_ajax.php:87 m_all.php:124
-#: m_feeds.php:99
+#: m_feeds.php:99 includes/jslocale.php:7
 msgid "nicht merken"
 msgstr ""
 
 #: all.php:138 all_ajax.php:114 feeds.php:111 feeds_ajax.php:88 m_all.php:125
-#: m_feeds.php:100
+#: m_feeds.php:100 includes/jslocale.php:8
 msgid "merken"
 msgstr ""
 
@@ -201,7 +202,7 @@ msgstr ""
 msgid "Zurück"
 msgstr ""
 
-#: m_all.php:129 m_feeds.php:108
+#: m_all.php:129 m_feeds.php:108 includes/jslocale.php:9
 msgid "Mehr laden"
 msgstr ""
 
@@ -251,7 +252,7 @@ msgstr ""
 msgid "Abbrechen"
 msgstr ""
 
-#: settings.php:10
+#: settings.php:10 includes/application_navi.php:75
 msgid "Einstellungen"
 msgstr ""
 
@@ -391,11 +392,11 @@ msgstr ""
 msgid "Bei Update eines Artikels wieder als ungelesen anzeigen"
 msgstr ""
 
-#: settings.php:174
+#: settings.php:174 includes/application_navi.php:88
 msgid "Fehler"
 msgstr ""
 
-#: settings.php:174
+#: settings.php:174 includes/application_navi.php:88
 msgid "Dieser Feed konnte kürzlich nicht erfolgreich abgerufen werden."
 msgstr ""
 
@@ -431,4 +432,50 @@ msgstr ""
 
 #: settings.php:204
 msgid "erfolgreich"
+msgstr ""
+
+#: includes/application_footer.php:5 includes/login_footer.php:5
+#: includes/mobile_footer.php:2
+msgid "Zur Desktop-Version"
+msgstr ""
+
+#: includes/application_navi.php:74 includes/mobile_header.php:98
+msgid "Merkliste"
+msgstr ""
+
+#: includes/application_navi.php:76 includes/mobile_header.php:23
+msgid "Ausloggen"
+msgstr ""
+
+#: includes/application_navi.php:93
+msgid "Zeige nur Ungelesenes"
+msgstr ""
+
+#: includes/application_navi.php:94
+msgid "Zeige alle Feeds"
+msgstr ""
+
+#: includes/application_navi.php:96
+msgid "Entwickler und Betreiber:"
+msgstr ""
+
+#: includes/application_navi.php:96
+msgid "Icons von"
+msgstr ""
+
+#: includes/jslocale.php:3
+msgid "Es ist ein Fehler aufgetreten! Bitte laden die Seite neu ;-)"
+msgstr ""
+
+#: includes/jslocale.php:5
+#, php-format
+msgid "%d neue Nachrichten"
+msgstr ""
+
+#: includes/jslocale.php:6
+msgid "Fehler!"
+msgstr ""
+
+#: includes/login_footer.php:22
+msgid "Zur mobilen Version"
 msgstr ""
