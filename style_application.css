@@ -291,6 +291,13 @@ input[type=submit]:focus, input[type=button]:focus {
 	box-shadow: 0 0 6px 1px #888;
 	outline: none;
 }
+.imagebtn {
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	position: relative;
+	top: 3px;
+}
 .abos input[type=text], .abos input[type=password] {
 	width: 130px;
 }

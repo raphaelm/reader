@@ -224,7 +224,7 @@ ignoriere diese E-Mail einfach.
 			}else{
 				orig = alias;
 			}
-			$("#alias_"+id).html('<form action="" id="editalias_'+id+'"><input type="text" class="alias" value="'+alias+'" /> <input type="submit" value="<?php echo _('Speichern'); ?>" /><input type="button" onclick="$(\'#alias_'+id+'\').html(\''+orig+'\');$(\'#editaliaslink_'+id+'\').fadeIn();" value="<?php echo _('Abbrechen'); ?>" /></form>');
+			$("#alias_"+id).html('<form action="" id="editalias_'+id+'"><input type="text" class="alias" value="'+alias+'" /> <input type="image" src="images/accept.png" alt="<?php echo _('Speichern'); ?>" value="<?php echo _('Speichern'); ?>" class="imagebtn" /> <a href="javascript:void(0);" class="imagebtn" onclick="$(\'#alias_'+id+'\').html(\''+orig+'\');$(\'#editaliaslink_'+id+'\').fadeIn();" title="<?php echo _('Abbrechen'); ?>"><img src="images/cancel.png" alt="<?php echo _('Abbrechen'); ?>" /></a></form>');
 			$("#editaliaslink_"+id).hide();
 			$("#editalias_"+id).bind('submit', function(){
 				newa = $("#alias_"+id+" input.alias").val();
