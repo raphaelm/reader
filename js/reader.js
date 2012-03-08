@@ -105,11 +105,13 @@ function loadUnreadCount(){
 
 function markasread(){
 	$('.unreadarticle').each(function(key,val){ 
-			if( $("#right-col").scrollTop() > parseInt( $(val).position().top+$("#right-col").scrollTop() ) + parseInt( $(val).css('height') ) - 150
+			/*if( //$("#right-col").scrollTop() > parseInt( $(val).position().top+$("#right-col").scrollTop() ) + parseInt( $(val).css('height') ) - 50
+			$(val).position().top < $(".focused").position().top
 			||
 			$("#right-col").scrollTop()+parseInt($("#right-col").innerHeight()) > parseInt($("#wrap").innerHeight())-20 
 			||
-			($("#right-col").scrollTop() == 0 && parseInt( $(val).position().top+$("#right-col").scrollTop() ) + parseInt( $(val).css('height') ) - 300 < parseInt($("#right-col").innerHeight() / 1.5) )){
+			($("#right-col").scrollTop() == 0 && parseInt( $(val).position().top+$("#right-col").scrollTop() ) + parseInt( $(val).css('height') ) - 300 < parseInt($("#right-col").innerHeight() / 1.5) )){*/
+			if($(val).position().top+$(val).height() < $("#right-col").height()){
 				$.getJSON('markasread.php?article='+$(val).attr('id').substr(8,9), parseunreadcount);
 				$(val).removeClass('unreadarticle').addClass('readarticle');
 			}
@@ -205,22 +207,16 @@ function unstickyremove(id){
 	$.getJSON('sticky_ajax.php?unsticky='+id, parseunreadcount);
 }
 
-var dashboardAddFeedActive = false;
-function dashboardAddFeed(){
-	if(dashboardAddFeedActive){
-		("#inputfeedurl").focus();
-		return false;
-	}
-	$(".dashboardbox.addfeed").html("<form action='settings.php' method='POST'><input type='text' name='feedurl' id='inputfeedurl' value='http://' /><input type='hidden' name='submit' value='true' /><input type='hidden' name='hash' value='"+$(this).attr("rel")+"' /></form>");
-	$("#inputfeedurl").focus();
-	dashboardAddFeedActive = true;
-}
+
 var articleselector = ".readarticle, .unreadarticle, .sticky";
-var uglyfixommitnext;
 function scroll_next(){
 	var jump = $(".focused").next(articleselector);
 	if(!jump) return false;
-	$("#right-col").scrollTop($("#right-col").scrollTop() + jump.position().top - 5);
+	if(jump.height()+20 >  $("#right-col").height()){
+		$("#right-col").scrollTop($("#right-col").scrollTop() + jump.position().top - 5);
+	}else{
+		$("#right-col").scrollTop($("#right-col").scrollTop() - $("#right-col").height() + jump.height() + jump.position().top + 20);
+	}
 	
 	$(".focused").removeClass("focused");
 	jump.addClass("focused");
@@ -233,10 +229,13 @@ function scroll_next(){
 function scroll_prev(){
 	var jump = $(".focused").prev(articleselector);
 	if(!jump) return false;
-	$("#right-col").scrollTop($("#right-col").scrollTop() + jump.position().top - 5);
+	if(jump.height()+20 >  $("#right-col").height()){
+		$("#right-col").scrollTop($("#right-col").scrollTop() + jump.position().top - 5);
+	}else{
+		$("#right-col").scrollTop($("#right-col").scrollTop() - $("#right-col").height() + jump.height() + jump.position().top + 20);
+	}
 	$(".focused").removeClass("focused");
 	jump.addClass("focused");
-	uglyfixommitnext = true;
 }
 function scroll_sticky(){
 	var id = parseInt($(".focused").attr("id").substr(8));
@@ -259,6 +258,24 @@ function register_scroll_hotkeys(){
 
 function register_scroll_readhandler(){
 	$('#right-col').scroll(function () { 
+		var focus_prio1 = false;
+		var focus_prio2 = false;
+		var focus = false;
+		$(articleselector).each(function() {
+			if (($(this).offset().top+$(this).height() < $("#right-col").height() && $(this).offset().top+$(this).height() > 20))
+				focus_prio1 = $(this);
+			if ($(this).offset().top < 20 && $(this).offset().top+$(this).height() > $("#right-col").height())
+				focus_prio2 = $(this);
+		});
+		if(focus_prio1) focus = focus_prio1;
+		else if(focus_prio2) focus = focus_prio2;
+		
+		console.log(focus_prio1, focus_prio2, focus);
+		
+		if(focus && !focus.hasClass('focused')){
+			$(".focused").removeClass('focused')
+			focus.addClass('focused');
+		}
 		markasread();
 		loadmore();
 	});
@@ -266,18 +283,18 @@ function register_scroll_readhandler(){
 function register_focus_handler(){
 	if($(".focused").length == 0)
 		$(articleselector).first().addClass("focused");
-	$(articleselector).not(".has_mouseenter_event").addClass("has_mouseenter_event").bind("mouseenter", function(){
-		if(uglyfixommitnext){
-			uglyfixommitnext = false;
-			return;
-		}
-		
-		//$.getJSON('markasread.php?article='+parseInt($(this).attr('id').substr(8)), parseunreadcount);
-		//$(this).removeClass('unreadarticle').addClass('readarticle');
-		
-		$(articleselector).removeClass("focused");
-		$(this).addClass("focused");
-	});
+}
+
+/* Dashboard */
+var dashboardAddFeedActive = false;
+function dashboardAddFeed(){
+	if(dashboardAddFeedActive){
+		("#inputfeedurl").focus();
+		return false;
+	}
+	$(".dashboardbox.addfeed").html("<form action='settings.php' method='POST'><input type='text' name='feedurl' id='inputfeedurl' value='http://' /><input type='hidden' name='submit' value='true' /><input type='hidden' name='hash' value='"+$(this).attr("rel")+"' /></form>");
+	$("#inputfeedurl").focus();
+	dashboardAddFeedActive = true;
 }
 
 /* Navigation */

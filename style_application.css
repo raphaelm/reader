@@ -151,11 +151,11 @@ a:hover
 	padding: 5px;
 }
 .readarticle, .unreadarticle, .sticky {
-	border-left: 3px solid #fff;
+	border-left: 2px solid #fff;
 }
 .focused
 {
-	/*border-left: 3px solid #8D8DED;*/
+	border-left: 2px solid #BBBBEF;
 }
 .error {
 	padding: 10px;
