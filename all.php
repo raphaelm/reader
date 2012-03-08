@@ -141,7 +141,12 @@ if ($user_id) {
 	
 	echo '</div></div>
 		<div id="right-gap"></div>
-		<div class="clear"></div>'; 
+		<div class="clear"></div>
+		<script type="text/javascript">
+			register_scroll_hotkeys();
+			register_focus_handler();
+			register_scroll_readhandler();
+		</script>'; 
 		
 	require 'includes/application_footer.php';
 	

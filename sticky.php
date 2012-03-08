@@ -4,7 +4,7 @@ if ($user_id) {
 	require 'includes/application_header.php';
 	require 'includes/application_navi.php';
 	echo '<div id="right-col">';
-	echo '<div id="wrap" class="reader-field"><h2>'._('Gemerkte Artikel').'</h2><p>';
+	echo '<div id="wrap" class="reader-field removeunstickied"><h2>'._('Gemerkte Artikel').'</h2><p>';
 	echo '<a href="sticky_ajax.php?unsticky=all">'._('Alle entfernen').'</a>';
 	echo '</p>';
 	
@@ -83,7 +83,11 @@ if ($user_id) {
 	
 	echo '</div></div>
 		<div id="right-gap"></div>
-		<div class="clear"></div>'; 
+		<div class="clear"></div>
+		<script type="text/javascript">
+			register_scroll_hotkeys();
+			register_focus_handler();
+		</script>'; 
 		
 	require 'includes/application_footer.php';
 	

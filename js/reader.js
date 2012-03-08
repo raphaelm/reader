@@ -7,7 +7,7 @@ var unread = 0;
 var focused = true;
 var noti = false;
 
-	
+/* Utilities */
 function createCookie(name,value,days) {
 	if (days) {
 		var date = new Date();
@@ -33,6 +33,7 @@ function eraseCookie(name) {
 	createCookie(name,"",-1);
 }
 
+/* Background updates */
 var favicon = { // Thanks: http://softwareas.com/dynamic-favicons
 	change: function(iconURL) {
 	  if (arguments.length==2) {
@@ -100,17 +101,19 @@ function loadUnreadCount(){
 	$.getJSON('/new_ajax.php', parseunreadcount);
 }
 
+/* Reading */
+
 function markasread(){
 	$('.unreadarticle').each(function(key,val){ 
-				if( $("#right-col").scrollTop() > parseInt( $(val).position().top+$("#right-col").scrollTop() ) + parseInt( $(val).css('height') ) - 150
-				||
-				$("#right-col").scrollTop()+parseInt($("#right-col").innerHeight()) > parseInt($("#wrap").innerHeight())-20 
-				||
-				($("#right-col").scrollTop() == 0 && parseInt( $(val).position().top+$("#right-col").scrollTop() ) + parseInt( $(val).css('height') ) - 300 < parseInt($("#right-col").innerHeight() / 1.5) )){
-					$.getJSON('markasread.php?article='+$(val).attr('id').substr(8,9), parseunreadcount);
-					$(val).removeClass('unreadarticle').addClass('readarticle');
-				}
-			});
+			if( $("#right-col").scrollTop() > parseInt( $(val).position().top+$("#right-col").scrollTop() ) + parseInt( $(val).css('height') ) - 150
+			||
+			$("#right-col").scrollTop()+parseInt($("#right-col").innerHeight()) > parseInt($("#wrap").innerHeight())-20 
+			||
+			($("#right-col").scrollTop() == 0 && parseInt( $(val).position().top+$("#right-col").scrollTop() ) + parseInt( $(val).css('height') ) - 300 < parseInt($("#right-col").innerHeight() / 1.5) )){
+				$.getJSON('markasread.php?article='+$(val).attr('id').substr(8,9), parseunreadcount);
+				$(val).removeClass('unreadarticle').addClass('readarticle');
+			}
+		});
 }
 
 function loadmore(){
@@ -127,19 +130,20 @@ function loadmore(){
 			var show = escape(get.show[1]);
 		}
 		
-		if($("#right-col").scrollTop()+parseInt($("#right-col").innerHeight()) > parseInt($("#wrap").innerHeight())-80){
+		if($("#right-col").scrollTop()+parseInt($("#right-col").innerHeight()) > parseInt($("#wrap").innerHeight())-160){
 			scrollandloadmore = false;
-			$("#wrap").append("<center><img	src='images/loading.gif' class='load_more_content' /></center>");
+			$("#right-col").append("<center class='load_more_content'><img	src='images/loading.gif' /></center>");
 			$.get('all_ajax.php?show='+show+'&lasttimestamp='+lasttimestamp, function(data, status){
 				if(status != 'success'){
 					$('.load_more_content').remove();
-					$('#wrap').append('<em style="color:red;">'+lang.error+'</em>');
+					$('#right-col').append('<em style="color:red;">'+lang.error+'</em>');
 					scrollandloadmore = true;
 					return false;
 				}else{
 					$('.load_more_content').remove();
 					if(data.search(/<!-- NOTHING MORE -->/) == -1){
 						$('#wrap').append(data);
+						register_focus_handler();
 						scrollandloadmore = true;
 					}else{
 						scrollandloadmore = false;
@@ -162,19 +166,20 @@ function loadmore(){
 		
 		var feedid = parseInt(get.feedid[0]);
 		
-		if($("#right-col").scrollTop()+parseInt($("#right-col").innerHeight()) > parseInt($("#wrap").innerHeight())-80){
+		if($("#right-col").scrollTop()+parseInt($("#right-col").innerHeight()) > parseInt($("#wrap").innerHeight())-160){
 			scrollandloadmore = false;
-			$("#wrap").append("<center><img	src='images/loading.gif' class='load_more_content' /></center>");
+			$("#right-col").append("<center class='load_more_content'><img	src='images/loading.gif' /></center>");
 			$.get('feeds_ajax.php?feedid='+feedid+'&show='+show+'&lasttimestamp='+lasttimestamp, function(data, status){
 				if(status != 'success'){
 					$('.load_more_content').remove();
-					$('#wrap').append('<em style="color:red;">'+lang.error+'!</em>');
+					$('#right-col').append('<em style="color:red;">'+lang.error+'!</em>');
 					scrollandloadmore = true;
 					return false;
 				}else{
 					$('.load_more_content').remove();
 					if(data.search(/<!-- NOTHING MORE -->/) == -1){
 						$('#wrap').append(data);
+						register_focus_handler();
 						scrollandloadmore = true;
 					}else{
 						scrollandloadmore = false;
@@ -199,6 +204,7 @@ function unstickyremove(id){
 	$("#article_"+id).slideUp();
 	$.getJSON('sticky_ajax.php?unsticky='+id, parseunreadcount);
 }
+
 var dashboardAddFeedActive = false;
 function dashboardAddFeed(){
 	if(dashboardAddFeedActive){
@@ -209,6 +215,72 @@ function dashboardAddFeed(){
 	$("#inputfeedurl").focus();
 	dashboardAddFeedActive = true;
 }
+var articleselector = ".readarticle, .unreadarticle, .sticky";
+var uglyfixommitnext;
+function scroll_next(){
+	var jump = $(".focused").next(articleselector);
+	if(!jump) return false;
+	$("#right-col").scrollTop($("#right-col").scrollTop() + jump.position().top - 5);
+	
+	$(".focused").removeClass("focused");
+	jump.addClass("focused");
+	uglyfixommitnext = true;
+	
+	$.getJSON('markasread.php?article='+parseInt($(".focused").attr('id').substr(8)), parseunreadcount);
+	$(".focused").removeClass('unreadarticle').addClass('readarticle');
+	
+}
+function scroll_prev(){
+	var jump = $(".focused").prev(articleselector);
+	if(!jump) return false;
+	$("#right-col").scrollTop($("#right-col").scrollTop() + jump.position().top - 5);
+	$(".focused").removeClass("focused");
+	jump.addClass("focused");
+	uglyfixommitnext = true;
+}
+function scroll_sticky(){
+	var id = parseInt($(".focused").attr("id").substr(8));
+	if($(".focused").hasClass("sticky")){
+		if($("#wrap").hasClass("removeunstickied"))
+			unstickyremove(id);
+		else
+			unsticky(id);
+	}else{
+		sticky(id);
+	}
+}
+
+
+function register_scroll_hotkeys(){
+	$(document).bind('keydown', 'n', scroll_next);
+	$(document).bind('keydown', 'p', scroll_prev);
+	$(document).bind('keydown', 'm', scroll_sticky);
+}
+
+function register_scroll_readhandler(){
+	$('#right-col').scroll(function () { 
+		markasread();
+		loadmore();
+	});
+}
+function register_focus_handler(){
+	if($(".focused").length == 0)
+		$(articleselector).first().addClass("focused");
+	$(articleselector).not(".has_mouseenter_event").addClass("has_mouseenter_event").bind("mouseenter", function(){
+		if(uglyfixommitnext){
+			uglyfixommitnext = false;
+			return;
+		}
+		
+		//$.getJSON('markasread.php?article='+parseInt($(this).attr('id').substr(8)), parseunreadcount);
+		//$(this).removeClass('unreadarticle').addClass('readarticle');
+		
+		$(articleselector).removeClass("focused");
+		$(this).addClass("focused");
+	});
+}
+
+/* Navigation */
 function collapsing(){
 	$(".uncollapse").show();
 	$(".collapse").hide();
@@ -225,12 +297,9 @@ function collapsing(){
 		}
 	});
 }
+
+/* Startup */
 $(document).ready(function(){
-			
-	$('#right-col').scroll(function () { 
-		markasread();
-		loadmore();
-	});
 	
 	$(window).bind('focus', function(){focused=true;if(noti)noti.cancel();});
 	$(window).bind('blur', function(){focused=false;});

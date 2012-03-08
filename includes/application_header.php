@@ -12,6 +12,7 @@ require 'includes/setlocale.php';
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="js/jquery.color.js"></script>
 		<script type="text/javascript" src="js/jquery.placeholder.min.js"></script>
+		<script type="text/javascript" src="js/jquery.hotkeys.js"></script>
 		<script type="text/javascript" src="js/reader.js"></script>
 	</head>
 	<body>
