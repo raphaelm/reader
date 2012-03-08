@@ -23,6 +23,11 @@ if ($user_id) {
 	echo '<div class="dashboardbox right addfeed" rel="'.$s.'">'._('Neuen Feed abonnieren').'</div>';
 	
 	echo '<div style="clear: both;"></div>';
+	
+	if(mysql_num_rows(mysql_query('SELECT * FROM feeds_subscription WHERE userid = '.$user_id)) <= 1){
+		echo '<a class="dashboardbox fullwidth" href="import.php">'._('Abonnements aus einem anderen Feedreader (z.B. Google Reader) importieren').'</a>';
+	}
+	
 
 	
 	echo '</div></div>
