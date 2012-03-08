@@ -162,6 +162,10 @@ a:hover
 	background: #FFAEAE;
 	margin: 10px auto 10px auto;
 }
+td.err {
+	color: #900;
+	font-weight: bold;
+}
 .okay {
 	padding: 10px;
 	background: #B3FFAE;

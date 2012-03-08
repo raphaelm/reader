@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfreader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-07 15:37+0100\n"
-"PO-Revision-Date: 2012-03-07 15:38+0100\n"
+"POT-Creation-Date: 2012-03-08 23:04+0100\n"
+"PO-Revision-Date: 2012-03-08 23:06+0100\n"
 "Last-Translator: Raphael <raphael@geeksfactory.de>\n"
 "Language-Team: Raphael Michel <raphael@geeksfactory.de>\n"
 "Language: \n"
@@ -152,6 +152,54 @@ msgstr "While fetching this feed an error occurred. Make sure the feed URL is st
 #: m_feeds.php:105
 msgid "Du abonnierst diesen Feed nicht."
 msgstr "You aren't a subscriber of this feed."
+
+#: import.php:10
+msgid "Abonnements importieren"
+msgstr "Import subscriptions"
+
+#: import.php:22
+#: import.php:71
+#: settings.php:37
+msgid "Es werden nur http:// und https://-URLs akzeptiert."
+msgstr "We only accept http:// and https:// addresses."
+
+#: import.php:28
+#: import.php:74
+#: settings.php:46
+msgid "Du hast diesen Feed bereits abonniert."
+msgstr "You are already a subscriber of this feed."
+
+#: import.php:31
+msgid "Die Feeds wurden erfolgreich hinzugefügt. Es kann allerdings wenige Minuten dauern, bis ihre Beiträge erscheinen."
+msgstr "The feeds were added successfully. It can take a few minutes until posts of this feeds appear."
+
+#: import.php:47
+msgid "Diese Datei enthält XML-Fehler."
+msgstr "This file contains invalid XML."
+
+#: import.php:48
+msgid "Details anzeigen"
+msgstr "Show details"
+
+#: import.php:60
+msgid "Diese Datei konnte leider nicht als OPML-Datei erkannt werden."
+msgstr "This file was not recognized as a valid OPML file."
+
+#: import.php:64
+msgid "Feeds auswählen"
+msgstr "Select feeds to import"
+
+#: import.php:101
+msgid "Feeds hinzufügen"
+msgstr "Subscribe!"
+
+#: import.php:110
+msgid "OPML-Import (Google Reader, Mozilla Thunderbird, …)"
+msgstr "OPML import (Google reader, Mozilla Thunderbird, …)"
+
+#: import.php:113
+msgid "Import starten"
+msgstr "Import!"
 
 #: index.php:32
 msgid "Nutzer nicht gefunden oder Passwort falsch."
@@ -315,7 +363,7 @@ msgid "Registrieren."
 msgstr "Sign Up"
 
 #: register.php:37
-#: settings.php:227
+#: settings.php:230
 msgid "Abbrechen"
 msgstr "Cancel"
 
@@ -328,10 +376,6 @@ msgstr "Settings"
 msgid "Deine E-Mail-Adresse wurde erfolgreich geändert."
 msgstr "Your e-mail address was changed successfully."
 
-#: settings.php:37
-msgid "Es werden nur http:// und https://-URLs akzeptiert."
-msgstr "We only accept http:// and https:// addresses."
-
 #: settings.php:41
 msgid "Der Server, auf dem sich der Feed befindet, konnte nicht erreicht werden. Versuche es später erneut."
 msgstr "The server on which this feed ist located could not be reached. Try again later."
@@ -339,10 +383,6 @@ msgstr "The server on which this feed ist located could not be reached. Try agai
 #: settings.php:43
 msgid "Dein Feed wurde erfolgreich hinzugefügt. Nach dem nächsten Feed-Update (in spätestens 5 Minuten) wird dann links in der Leiste auch sein korrekter Titel angezeigt."
 msgstr "You subscribed to this feed successfully. The correct title should be shown in the left sidebar after the next feed update in less than five minutes."
-
-#: settings.php:46
-msgid "Du hast diesen Feed bereits abonniert."
-msgstr "You are already a subscriber of this feed."
 
 #: settings.php:56
 msgid "Dein Abonnement des Feeds wurde erfolgreich entfernt."
@@ -401,7 +441,7 @@ msgstr "Localization"
 
 #: settings.php:121
 #: settings.php:147
-#: settings.php:227
+#: settings.php:230
 msgid "Speichern"
 msgstr "Save"
 
@@ -438,64 +478,68 @@ msgid "Abonnieren"
 msgstr "Subscribe"
 
 #: settings.php:159
+msgid "Abonnements aus einem anderen Feedreader (z.B. Google Reader) importieren"
+msgstr "Import subscriptions from another feedreader (for example Google reader)"
+
+#: settings.php:162
 msgid "Abos"
 msgstr "Subscriptions"
 
-#: settings.php:162
+#: settings.php:165
 msgid "Keine Feeds gefunden."
 msgstr "No feeds."
 
-#: settings.php:166
+#: settings.php:169
 msgid "Name"
 msgstr "Title"
 
-#: settings.php:167
+#: settings.php:170
 msgid "Alias"
 msgstr "Alias"
 
-#: settings.php:168
+#: settings.php:171
 msgid "Bei Update eines Artikels wieder als ungelesen anzeigen"
 msgstr "Show updated posts as unread again"
 
-#: settings.php:174
+#: settings.php:177
 #: includes/application_navi.php:88
 msgid "Fehler"
 msgstr "Error"
 
-#: settings.php:174
+#: settings.php:177
 #: includes/application_navi.php:88
 msgid "Dieser Feed konnte kürzlich nicht erfolgreich abgerufen werden."
 msgstr "While fetching this feed an error occurred."
 
-#: settings.php:178
+#: settings.php:181
 msgid "Löschen"
 msgstr "Remove"
 
-#: settings.php:178
+#: settings.php:181
 msgid "Alias setzen"
 msgstr "Set alias"
 
-#: settings.php:186
+#: settings.php:189
 msgid "Desktop Notifications"
 msgstr "Desktop notifications"
 
-#: settings.php:188
+#: settings.php:191
 msgid "Nicht wundern: Einstellung wird nur für diesen Computer gespeichert (als Cookie)."
 msgstr "Don't be surprised: Setting is saved in a cookie and thus only for this machine."
 
-#: settings.php:190
+#: settings.php:193
 msgid "Desktop Notifications aktivieren"
 msgstr "Enable desktop notifications"
 
-#: settings.php:191
+#: settings.php:194
 msgid "Desktop Notifications deaktivieren"
 msgstr "Disable desktop notifications"
 
-#: settings.php:204
+#: settings.php:207
 msgid "Test"
 msgstr "Test"
 
-#: settings.php:204
+#: settings.php:207
 msgid "erfolgreich"
 msgstr "successful"
 

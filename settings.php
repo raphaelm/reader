@@ -155,6 +155,9 @@ ignoriere diese E-Mail einfach.
 	  <input type="hidden" name="hash" value="<?php echo $s; ?>" />
 	  <input type="submit" value="<?php echo _('Abonnieren'); ?>" /> 
 	</form>
+	<p>
+		<a href="import.php"><?php echo _('Abonnements aus einem anderen Feedreader (z.B. Google Reader) importieren'); ?></a>
+	</p>
 	<?php
 	echo '<h3>'._('Abos').'</h3>';
 	$feeds_qry = mysql_query("SELECT `feedid`, `feedname`, `alias`, `origname`, `feedurl`, `lastupdate`, `updates` FROM `view_feed_subscriptions` WHERE `userid` =". $user_id. " AND feedid > 0 ORDER by `feedname` asc");

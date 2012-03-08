@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfreader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-07 15:37+0100\n"
+"POT-Creation-Date: 2012-03-08 23:04+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -116,6 +116,52 @@ msgstr ""
 
 #: feeds.php:115 feeds_ajax.php:93 m_feeds.php:105
 msgid "Du abonnierst diesen Feed nicht."
+msgstr ""
+
+#: import.php:10
+msgid "Abonnements importieren"
+msgstr ""
+
+#: import.php:22 import.php:71 settings.php:37
+msgid "Es werden nur http:// und https://-URLs akzeptiert."
+msgstr ""
+
+#: import.php:28 import.php:74 settings.php:46
+msgid "Du hast diesen Feed bereits abonniert."
+msgstr ""
+
+#: import.php:31
+msgid ""
+"Die Feeds wurden erfolgreich hinzugefügt. Es kann allerdings wenige Minuten "
+"dauern, bis ihre Beiträge erscheinen."
+msgstr ""
+
+#: import.php:47
+msgid "Diese Datei enthält XML-Fehler."
+msgstr ""
+
+#: import.php:48
+msgid "Details anzeigen"
+msgstr ""
+
+#: import.php:60
+msgid "Diese Datei konnte leider nicht als OPML-Datei erkannt werden."
+msgstr ""
+
+#: import.php:64
+msgid "Feeds auswählen"
+msgstr ""
+
+#: import.php:101
+msgid "Feeds hinzufügen"
+msgstr ""
+
+#: import.php:110
+msgid "OPML-Import (Google Reader, Mozilla Thunderbird, …)"
+msgstr ""
+
+#: import.php:113
+msgid "Import starten"
 msgstr ""
 
 #: index.php:32
@@ -248,7 +294,7 @@ msgstr ""
 msgid "Registrieren."
 msgstr ""
 
-#: register.php:37 settings.php:227
+#: register.php:37 settings.php:230
 msgid "Abbrechen"
 msgstr ""
 
@@ -258,10 +304,6 @@ msgstr ""
 
 #: settings.php:31
 msgid "Deine E-Mail-Adresse wurde erfolgreich geändert."
-msgstr ""
-
-#: settings.php:37
-msgid "Es werden nur http:// und https://-URLs akzeptiert."
 msgstr ""
 
 #: settings.php:41
@@ -275,10 +317,6 @@ msgid ""
 "Dein Feed wurde erfolgreich hinzugefügt. Nach dem nächsten Feed-Update (in "
 "spätestens 5 Minuten) wird dann links in der Leiste auch sein korrekter "
 "Titel angezeigt."
-msgstr ""
-
-#: settings.php:46
-msgid "Du hast diesen Feed bereits abonniert."
 msgstr ""
 
 #: settings.php:56
@@ -333,7 +371,7 @@ msgstr ""
 msgid "Lokalisierung"
 msgstr ""
 
-#: settings.php:121 settings.php:147 settings.php:227
+#: settings.php:121 settings.php:147 settings.php:230
 msgid "Speichern"
 msgstr ""
 
@@ -373,64 +411,69 @@ msgid "Abonnieren"
 msgstr ""
 
 #: settings.php:159
-msgid "Abos"
+msgid ""
+"Abonnements aus einem anderen Feedreader (z.B. Google Reader) importieren"
 msgstr ""
 
 #: settings.php:162
+msgid "Abos"
+msgstr ""
+
+#: settings.php:165
 msgid "Keine Feeds gefunden."
 msgstr ""
 
-#: settings.php:166
+#: settings.php:169
 msgid "Name"
 msgstr ""
 
-#: settings.php:167
+#: settings.php:170
 msgid "Alias"
 msgstr ""
 
-#: settings.php:168
+#: settings.php:171
 msgid "Bei Update eines Artikels wieder als ungelesen anzeigen"
 msgstr ""
 
-#: settings.php:174 includes/application_navi.php:88
+#: settings.php:177 includes/application_navi.php:88
 msgid "Fehler"
 msgstr ""
 
-#: settings.php:174 includes/application_navi.php:88
+#: settings.php:177 includes/application_navi.php:88
 msgid "Dieser Feed konnte kürzlich nicht erfolgreich abgerufen werden."
 msgstr ""
 
-#: settings.php:178
+#: settings.php:181
 msgid "Löschen"
 msgstr ""
 
-#: settings.php:178
+#: settings.php:181
 msgid "Alias setzen"
 msgstr ""
 
-#: settings.php:186
+#: settings.php:189
 msgid "Desktop Notifications"
 msgstr ""
 
-#: settings.php:188
+#: settings.php:191
 msgid ""
 "Nicht wundern: Einstellung wird nur für diesen Computer gespeichert (als "
 "Cookie)."
 msgstr ""
 
-#: settings.php:190
+#: settings.php:193
 msgid "Desktop Notifications aktivieren"
 msgstr ""
 
-#: settings.php:191
+#: settings.php:194
 msgid "Desktop Notifications deaktivieren"
 msgstr ""
 
-#: settings.php:204
+#: settings.php:207
 msgid "Test"
 msgstr ""
 
-#: settings.php:204
+#: settings.php:207
 msgid "erfolgreich"
 msgstr ""
 
