@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfreader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-08 23:04+0100\n"
-"PO-Revision-Date: 2012-03-08 23:06+0100\n"
+"POT-Creation-Date: 2012-03-11 12:38+0100\n"
+"PO-Revision-Date: 2012-03-11 12:39+0100\n"
 "Last-Translator: Raphael <raphael@geeksfactory.de>\n"
 "Language-Team: Raphael Michel <raphael@geeksfactory.de>\n"
 "Language: \n"
@@ -138,6 +138,11 @@ msgstr "%s bookmarked articles"
 msgid "Neuen Feed abonnieren"
 msgstr "Subscribe"
 
+#: dashboard.php:28
+#: settings.php:159
+msgid "Abonnements aus einem anderen Feedreader (z.B. Google Reader) importieren"
+msgstr "Import subscriptions from another feedreader (for example Google reader)"
+
 #: feeds.php:18
 #: m_feeds.php:23
 msgid "Alles in diesem Feed als gelesen markieren"
@@ -206,7 +211,6 @@ msgid "Nutzer nicht gefunden oder Passwort falsch."
 msgstr "Invalid user or password."
 
 #: login.php:6
-#: login.php:21
 #: register.php:21
 #: register.php:31
 msgid "Nutzername"
@@ -235,6 +239,11 @@ msgstr "Log In"
 #: register.php:35
 msgid "Registrieren"
 msgstr "Sign Up"
+
+#: login.php:21
+#, fuzzy
+msgid "Nutzername oder E-Mail-Adresse"
+msgstr "User or e-mail address"
 
 #: login.php:29
 #: lostpw.php:37
@@ -476,10 +485,6 @@ msgstr "Subscribe"
 #: settings.php:156
 msgid "Abonnieren"
 msgstr "Subscribe"
-
-#: settings.php:159
-msgid "Abonnements aus einem anderen Feedreader (z.B. Google Reader) importieren"
-msgstr "Import subscriptions from another feedreader (for example Google reader)"
 
 #: settings.php:162
 msgid "Abos"

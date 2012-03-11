@@ -18,7 +18,7 @@ if(is_mobile()){
 	<div id="header"></div>
 	<div id="content" class="gradient">
 		<form id="login" action="index.php" method="POST">
-			<input class="inputl" type="text" name="username" id="username" value="" placeholder="<?php echo _('Nutzername') ?>" />
+			<input class="inputl" type="text" name="username" id="username" value="" placeholder="<?php echo _('Nutzername oder E-Mail-Adresse') ?>" />
 			<input class="inputl" type="password" name="password" id="password" value="" placeholder="<?php echo _('Passwort') ?>" />
 			<div class="checkboxl"><input type="checkbox" name="long" value="yes" id="long" /> <label for="long"><?php echo _('Eingeloggt bleiben') ?></label></div>
 			<input class="buttonl" type="submit" id="loginbtn" value="<?php echo _('Anmelden') ?>" /> 

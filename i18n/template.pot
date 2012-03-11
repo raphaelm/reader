@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfreader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-08 23:04+0100\n"
+"POT-Creation-Date: 2012-03-11 12:38+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -103,6 +103,11 @@ msgstr ""
 msgid "Neuen Feed abonnieren"
 msgstr ""
 
+#: dashboard.php:28 settings.php:159
+msgid ""
+"Abonnements aus einem anderen Feedreader (z.B. Google Reader) importieren"
+msgstr ""
+
 #: feeds.php:18 m_feeds.php:23
 msgid "Alles in diesem Feed als gelesen markieren"
 msgstr ""
@@ -168,7 +173,7 @@ msgstr ""
 msgid "Nutzer nicht gefunden oder Passwort falsch."
 msgstr ""
 
-#: login.php:6 login.php:21 register.php:21 register.php:31
+#: login.php:6 register.php:21 register.php:31
 msgid "Nutzername"
 msgstr ""
 
@@ -186,6 +191,10 @@ msgstr ""
 
 #: login.php:13 login.php:26 register.php:29 register.php:35
 msgid "Registrieren"
+msgstr ""
+
+#: login.php:21
+msgid "Nutzername oder E-Mail-Adresse"
 msgstr ""
 
 #: login.php:29 lostpw.php:37 lostpw.php:53
@@ -408,11 +417,6 @@ msgstr ""
 
 #: settings.php:156
 msgid "Abonnieren"
-msgstr ""
-
-#: settings.php:159
-msgid ""
-"Abonnements aus einem anderen Feedreader (z.B. Google Reader) importieren"
 msgstr ""
 
 #: settings.php:162

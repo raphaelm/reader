@@ -5,7 +5,7 @@ if (isset($_POST['password'])) {
 	
 	$username = mysql_real_escape_string($_POST["username"]);
 	$password = sha1($_POST["password"].$salt);
-	$login_qry = mysql_query("SELECT `id` FROM `user` WHERE `name` = '". $username. "' AND `password` = '". $password. "'");
+	$login_qry = mysql_query("SELECT `id` FROM `user` WHERE (`name` = '". $username. "' AND `password` = '". $password. "') OR (`mail` = '". $username. "' AND `mail` != '' AND `password` = '". $password. "')");
 	
 	if (mysql_num_rows($login_qry) == 1) {
 		$userid = mysql_fetch_assoc($login_qry);
