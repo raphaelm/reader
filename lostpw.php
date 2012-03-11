@@ -30,17 +30,21 @@ Hier ist dein neues Passwort für den %s!
 }
 
 if($_POST['username']){
-	$q = mysql_query('SELECT mail, id FROM user WHERE mail = "'.mysql_real_escape_string($_POST['username']).'" OR name = "'.mysql_real_escape_string($_POST['username']).'"');
+	$q = mysql_query('SELECT mail, id FROM user WHERE (mail = "'.mysql_real_escape_string($_POST['username']).'" and mail != "") OR name = "'.mysql_real_escape_string($_POST['username']).'"');
 	if(mysql_num_rows($q) == 1){
 		$me = mysql_fetch_object($q);
-		echo "<div style='text-align: center' class='okay'>"._("Du hast per E-Mail weitere Anweisungen erhalten!")."</div>";
-		mail($me->mail, '['.$title.'] '._('Passwort vergessen?'), sprintf(_('Hallo!
+		if(strpos($me->mail, '@') === false){
+			echo "<div style='text-align: center' class='wrongpw'>"._('Dieser Benutzer wurde ohne E-Mail-Adresse registriert. Tut uns leid, aber jetzt können wir auch nichts mehr machen!')."</div>";
+		}else{
+			echo "<div style='text-align: center' class='okay'>"._("Du hast per E-Mail weitere Anweisungen erhalten!")."</div>";
+			mail($me->mail, '['.$title.'] '._('Passwort vergessen?'), sprintf(_('Hallo!
 du hast im %s ein neues Passwort angefordert!
 Wenn du das wirklich selbst warst, klicke auf untenstehenden Link. Wenn das
 jemand anderes gewesen sein muss, brauchst du diese E-Mail nur zu ignorieren.
 Achtung! Der Link gilt nur bis heute abend, 23:59!
 
 %s'), $title, $mainurl."lostpw.php?user=".$me->id."&hash=".sha1($me->id.$secret."NEWPW".date("d.m.Y"))), 'From: '.$mailsender);
+		}
 
 	} else {
 		echo "<div style='text-align: center' class='wrongpw'>"._('Es tut uns leid, aber diesen Nutzer haben wir leider nicht im System!')."</div>";

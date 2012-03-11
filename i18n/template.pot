@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfreader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-11 12:38+0100\n"
+"POT-Creation-Date: 2012-03-11 12:42+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -197,7 +197,7 @@ msgstr ""
 msgid "Nutzername oder E-Mail-Adresse"
 msgstr ""
 
-#: login.php:29 lostpw.php:37 lostpw.php:53
+#: login.php:29 lostpw.php:40 lostpw.php:57
 msgid "Passwort vergessen?"
 msgstr ""
 
@@ -224,11 +224,17 @@ msgstr ""
 msgid "Das ist leider schiefgegangen! War der Link schon abgelaufen?"
 msgstr ""
 
-#: lostpw.php:36
+#: lostpw.php:37
+msgid ""
+"Dieser Benutzer wurde ohne E-Mail-Adresse registriert. Tut uns leid, aber "
+"jetzt können wir auch nichts mehr machen!"
+msgstr ""
+
+#: lostpw.php:39
 msgid "Du hast per E-Mail weitere Anweisungen erhalten!"
 msgstr ""
 
-#: lostpw.php:37
+#: lostpw.php:40
 #, php-format
 msgid ""
 "Hallo!\n"
@@ -241,19 +247,19 @@ msgid ""
 "%s"
 msgstr ""
 
-#: lostpw.php:46
+#: lostpw.php:50
 msgid "Es tut uns leid, aber diesen Nutzer haben wir leider nicht im System!"
 msgstr ""
 
-#: lostpw.php:55
+#: lostpw.php:59
 msgid "Nutzername oder E-Mail"
 msgstr ""
 
-#: lostpw.php:56
+#: lostpw.php:60
 msgid "Abschicken"
 msgstr ""
 
-#: lostpw.php:58 register.php:16
+#: lostpw.php:62 register.php:16
 msgid "Zurück"
 msgstr ""
 

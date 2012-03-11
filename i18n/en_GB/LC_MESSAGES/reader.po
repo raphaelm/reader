@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gfreader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-11 12:38+0100\n"
-"PO-Revision-Date: 2012-03-11 12:39+0100\n"
+"POT-Creation-Date: 2012-03-11 12:42+0100\n"
+"PO-Revision-Date: 2012-03-11 12:43+0100\n"
 "Last-Translator: Raphael <raphael@geeksfactory.de>\n"
 "Language-Team: Raphael Michel <raphael@geeksfactory.de>\n"
 "Language: \n"
@@ -241,13 +241,12 @@ msgid "Registrieren"
 msgstr "Sign Up"
 
 #: login.php:21
-#, fuzzy
 msgid "Nutzername oder E-Mail-Adresse"
 msgstr "User or e-mail address"
 
 #: login.php:29
-#: lostpw.php:37
-#: lostpw.php:53
+#: lostpw.php:40
+#: lostpw.php:57
 msgid "Passwort vergessen?"
 msgstr "Lost password?"
 
@@ -280,11 +279,15 @@ msgstr "You have got another mail with a new password."
 msgid "Das ist leider schiefgegangen! War der Link schon abgelaufen?"
 msgstr "We're sorry, this didn't work. Was the e-mail with the link to old?"
 
-#: lostpw.php:36
+#: lostpw.php:37
+msgid "Dieser Benutzer wurde ohne E-Mail-Adresse registriert. Tut uns leid, aber jetzt können wir auch nichts mehr machen!"
+msgstr "This user was registered without providing an e-mail address. We're sorry, but in this case we cannot help you."
+
+#: lostpw.php:39
 msgid "Du hast per E-Mail weitere Anweisungen erhalten!"
 msgstr "We've sent you an e-mail with further instructions!"
 
-#: lostpw.php:37
+#: lostpw.php:40
 #, php-format
 msgid ""
 "Hallo!\n"
@@ -302,19 +305,19 @@ msgstr ""
 "\n"
 "%s"
 
-#: lostpw.php:46
+#: lostpw.php:50
 msgid "Es tut uns leid, aber diesen Nutzer haben wir leider nicht im System!"
 msgstr "This user doesn't exist."
 
-#: lostpw.php:55
+#: lostpw.php:59
 msgid "Nutzername oder E-Mail"
 msgstr "User or e-mail address"
 
-#: lostpw.php:56
+#: lostpw.php:60
 msgid "Abschicken"
 msgstr "Send"
 
-#: lostpw.php:58
+#: lostpw.php:62
 #: register.php:16
 msgid "Zurück"
 msgstr "Back"
