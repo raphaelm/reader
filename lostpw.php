@@ -1,5 +1,6 @@
 <?php
 require_once 'includes/dbconnect.php';
+require_once 'includes/functions.php';
 require_once 'includes/login_header.php';
 
 if(isset($_GET['hash'])){
@@ -11,7 +12,7 @@ if(isset($_GET['hash'])){
 		for($i = 0; $i < 8; $i++){
 			$autopw .= substr($charset, mt_rand(0, strlen($charset)-1), 1);
 		}
-		$m = mail($me->mail, '['.$title.'] '._('Neues Passwort'), sprintf(_('Hallo!
+		$m = _mail($me->mail, '['.$title.'] '._('Neues Passwort'), sprintf(_('Hallo!
 Hier ist dein neues Passwort für den %s!
 
 %s
@@ -37,7 +38,7 @@ if($_POST['username']){
 			echo "<div style='text-align: center' class='wrongpw'>"._('Dieser Benutzer wurde ohne E-Mail-Adresse registriert. Tut uns leid, aber jetzt können wir auch nichts mehr machen!')."</div>";
 		}else{
 			echo "<div style='text-align: center' class='okay'>"._("Du hast per E-Mail weitere Anweisungen erhalten!")."</div>";
-			mail($me->mail, '['.$title.'] '._('Passwort vergessen?'), sprintf(_('Hallo!
+			_mail($me->mail, '['.$title.'] '._('Passwort vergessen?'), sprintf(_('Hallo!
 du hast im %s ein neues Passwort angefordert!
 Wenn du das wirklich selbst warst, klicke auf untenstehenden Link. Wenn das
 jemand anderes gewesen sein muss, brauchst du diese E-Mail nur zu ignorieren.

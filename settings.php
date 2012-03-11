@@ -81,7 +81,7 @@ if ($user_id) {
 						'.sprintf(_('„%s“ ist keine gültige E-Mail-Adresse. Wenn du das anders siehst, kontaktiere uns bitte.'), htmlspecialchars($_POST['mail'])).'
 					</p>';
 				else{
-					mail($_POST['mail'], '['.$title.'] '._('Bestätigung der Änderung der E-Mail-Adresse'), sprintf(_('Hallo!
+					_mail($_POST['mail'], '['.$title.'] '._('Bestätigung der Änderung der E-Mail-Adresse'), sprintf(_('Hallo!
 jemand möchte seine im %s angegebene E-Mailadresse zu dieser ändern.
 Wenn du das warst, klicke bitte untenstehenden Link an. Wenn nicht,
 ignoriere diese E-Mail einfach.

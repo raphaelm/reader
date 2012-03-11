@@ -149,3 +149,7 @@ function is_mobile(){
 	require_once 'lib/mobile_device_detect.php';
 	return mobile_device_detect(true,false,true,true,true,true,true,false,false);
 }
+function _mail($to, $subject, $message, $additional_headers = '', $additional_parameters = null){
+	$header_ = 'MIME-Version: 1.0' . "\r\n" . 'Content-type: text/plain; charset=UTF-8' . "\r\n";
+	return mail($to, '=?UTF-8?B?'.base64_encode($subject).'?=', $message, $header_ . $additional_headers);
+}
