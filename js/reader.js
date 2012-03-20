@@ -257,27 +257,34 @@ function register_scroll_hotkeys(){
 }
 
 function register_scroll_readhandler(){
-	$('#right-col').scroll(function () { 
-		var focus_prio1 = false;
-		var focus_prio2 = false;
-		var focus = false;
-		$(articleselector).each(function() {
-			if (($(this).offset().top+$(this).height() < $("#right-col").height() && $(this).offset().top+$(this).height() > 20))
-				focus_prio1 = $(this);
-			if ($(this).offset().top < 20 && $(this).offset().top+$(this).height() > $("#right-col").height())
-				focus_prio2 = $(this);
-		});
-		if(focus_prio1) focus = focus_prio1;
-		else if(focus_prio2) focus = focus_prio2;
-		
-		console.log(focus_prio1, focus_prio2, focus);
-		
-		if(focus && !focus.hasClass('focused')){
-			$(".focused").removeClass('focused')
-			focus.addClass('focused');
-		}
-		markasread();
-		loadmore();
+	$(document).ready(function(){
+		window.setTimeout(function(){
+				$("#right-col").scrollTop(0);
+			}, 100);
+		window.setTimeout(function(){
+			$('#right-col').scroll(function () {
+				var focus_prio1 = false;
+				var focus_prio2 = false;
+				var focus = false;
+				$(articleselector).each(function() {
+					if (($(this).offset().top+$(this).height() < $("#right-col").height() && $(this).offset().top+$(this).height() > 20))
+						focus_prio1 = $(this);
+					if ($(this).offset().top < 20 && $(this).offset().top+$(this).height() > $("#right-col").height())
+						focus_prio2 = $(this);
+				});
+				if(focus_prio1) focus = focus_prio1;
+				else if(focus_prio2) focus = focus_prio2;
+				
+				console.log(focus_prio1, focus_prio2, focus);
+				
+				if(focus && !focus.hasClass('focused')){
+					$(".focused").removeClass('focused')
+					focus.addClass('focused');
+				}
+				markasread();
+				loadmore();
+			});
+		}, 500);
 	});
 }
 function register_focus_handler(){
